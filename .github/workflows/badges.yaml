@@ -1,0 +1,33 @@
+name: generate-badges
+on: push
+jobs:
+  generate-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v2
+      - name: setup java 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+          cache: 'maven'
+      - name: generate report
+        run: mvn jacoco:prepare-agent test install jacoco:report
+      - name: generate coverage badges
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          generate-branches-badge: true
+      - name: wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'run-tests'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: download test badge
+        run: curl https://img.shields.io/github/workflow/status/weichware-10/util/tests/${GITHUB_REF#refs/heads/}?label=tests > .github/badges/tests.svg
+      - name: add and commit
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: updated badges
+          default_author: github_actions

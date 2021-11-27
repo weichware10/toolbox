@@ -1,0 +1,25 @@
+name: update
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v2
+      - name: download workflows
+        run: |
+          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/badges.yaml > .github/workflows/badges.yaml
+          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/tests.yaml > .github/workflows/tests.yaml
+          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/update.yaml > .github/workflows/update.yaml
+      - name: download checkstyle
+        run: curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/checkstyle.xml > checkstyle.xml
+      - name: set post buffer
+        run: git config http.postBuffer 524288000
+      - name: add and commit
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: update from weichware-10/repo-aids
+          default_author: github_actions
+          branch: main
