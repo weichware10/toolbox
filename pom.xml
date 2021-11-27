@@ -18,6 +18,13 @@
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
+  <repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -25,6 +32,11 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	    <groupId>com.github.weichware10</groupId>
+	    <artifactId>util</artifactId>
+	    <version>acc6c30</version>
+	  </dependency>
   </dependencies>
 
   <reporting>
@@ -60,27 +72,6 @@
               <version>9.1</version>
             </dependency>
           </dependencies>
-        </plugin>
-        <!-- ENFORCER -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0</version>
-          <executions>
-            <execution>
-              <id>enforce-maven</id>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireMavenVersion>
-                    <version>3.3.9</version>
-                  </requireMavenVersion>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
