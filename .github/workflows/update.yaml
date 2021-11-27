@@ -1,7 +1,13 @@
 name: update
+permissions:
+  actions: write
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Commit Message'
+        required: true
+        default: 'update from weichware10/repo-utils'
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -10,16 +16,23 @@ jobs:
         uses: actions/checkout@v2
       - name: download workflows
         run: |
-          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/badges.yaml > .github/workflows/badges.yaml
-          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/tests.yaml > .github/workflows/tests.yaml
-          curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/workflows/update.yaml > .github/workflows/update.yaml
+          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/badges.yaml --output .github/workflows/badges.yaml --create-dirs
+          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/tests.yaml --output .github/workflows/tests.yaml --create-dirs
+          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/update.yaml --output .github/workflows/update.yaml --create-dirs
       - name: download checkstyle
-        run: curl https://raw.githubusercontent.com/weichware-10/repo-aid/main/checkstyle.xml > checkstyle.xml
-      - name: set post buffer
-        run: git config http.postBuffer 524288000
-      - name: add and commit
-        uses: EndBug/add-and-commit@v7
+        run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/checkstyle.xml --output checkstyle.xml --create-dirs
+      - name: download gitignore
+        run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/.gitignore --output .gitignore --create-dirs
+      - name: commit files
+        uses: swinton/commit@v2.x
+        env:
+          GH_TOKEN: ${{ secrets.WEICHWARE_UPDATE }}
         with:
-          message: update from weichware-10/repo-aids
-          default_author: github_actions
-          branch: main
+          files: |
+            .github/workflows/badges.yaml
+            .github/workflows/tests.yaml
+            .github/workflows/update.yaml
+            checkstyle.xml
+            .gitignore
+          commit-message: ${{ github.event.inputs.message }}
+          ref: refs/heads/main
