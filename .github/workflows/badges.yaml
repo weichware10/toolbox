@@ -1,8 +1,7 @@
 name: generate-badges
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 jobs:
   generate-badges:
     runs-on: ubuntu-latest

@@ -19,6 +19,7 @@ jobs:
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/badges.yaml --output .github/workflows/badges.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/tests.yaml --output .github/workflows/tests.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/update.yaml --output .github/workflows/update.yaml --create-dirs
+          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/checkstyle.yaml --output .github/workflows/checkstyle.yaml --create-dirs
       - name: download checkstyle
         run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/checkstyle.xml --output checkstyle.xml --create-dirs
       - name: download gitignore
@@ -32,6 +33,7 @@ jobs:
             .github/workflows/badges.yaml
             .github/workflows/tests.yaml
             .github/workflows/update.yaml
+            .github/workflows/checkstyle.yaml
             checkstyle.xml
             .gitignore
           commit-message: ${{ github.event.inputs.message }}
