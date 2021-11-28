@@ -1,0 +1,17 @@
+name: checkstyle
+on: [pull_request]
+jobs:
+  checkstyle:
+    name: checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: info
+          filter_mode: nofilter
+          checkstyle_config: ./checkstyle.xml
+          checkstyle_version: 9.1
+          fail_on_error: true

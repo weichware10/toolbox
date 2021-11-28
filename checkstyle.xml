@@ -19,7 +19,6 @@
 
 <module name = "Checker">
   <!-- added -->
-  <module name="LineLength"/>
   <module name="RegexpSingleline">
     <property name="format" value="\s+$" />
     <property name="message" value="Line has trailing whitespaces." />
@@ -179,68 +178,73 @@
     <module name="PackageName">
       <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
       <message key="name.invalidPattern"
-             value="Package name ''{0}'' must match pattern ''{1}''."/>
+             value="Package name ''{0}'' must match pattern ''{1}'' (only lowercase alphanumerical, start with a letter)."/>
     </module>
     <module name="TypeName">
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
                     ANNOTATION_DEF, RECORD_DEF"/>
       <message key="name.invalidPattern"
-             value="Type name ''{0}'' must match pattern ''{1}''."/>
+             value="Type name ''{0}'' must match pattern ''{1}'' (CamelCase, start with uppercase, only alphanumerical)."/>
     </module>
     <module name="MemberName">
       <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
       <message key="name.invalidPattern"
-             value="Member name ''{0}'' must match pattern ''{1}''."/>
+             value="Member name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="ParameterName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-             value="Parameter name ''{0}'' must match pattern ''{1}''."/>
+             value="Parameter name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="LambdaParameterName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-             value="Lambda parameter name ''{0}'' must match pattern ''{1}''."/>
+             value="Lambda parameter name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="CatchParameterName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-             value="Catch parameter name ''{0}'' must match pattern ''{1}''."/>
+             value="Catch parameter name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="LocalVariableName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-             value="Local variable name ''{0}'' must match pattern ''{1}''."/>
+             value="Local variable name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="PatternVariableName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-             value="Pattern variable name ''{0}'' must match pattern ''{1}''."/>
+             value="Pattern variable name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="ClassTypeParameterName">
       <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
       <message key="name.invalidPattern"
-             value="Class type name ''{0}'' must match pattern ''{1}''."/>
+             value="Class type name ''{0}'' must match pattern ''{1}'' (any single uppercase character followed by 0-1 numbers OR any uppercase character, followed by any amount of alphanumerical characters (any case), followed by an uppercase T)."/>
     </module>
     <module name="RecordComponentName">
       <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
       <message key="name.invalidPattern"
-               value="Record component name ''{0}'' must match pattern ''{1}''."/>
+               value="Record component name ''{0}'' must match pattern ''{1}'' (camelCase, start with lowercase, only alphanumerical)."/>
     </module>
     <module name="RecordTypeParameterName">
       <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
       <message key="name.invalidPattern"
-               value="Record type name ''{0}'' must match pattern ''{1}''."/>
+               value="Record type name ''{0}'' must match pattern ''{1}'' (any single uppercase character followed by 0-1 numbers OR any uppercase character, followed by any amount of alphanumerical characters (any case), followed by an uppercase T)."/>
     </module>
     <module name="MethodTypeParameterName">
       <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
       <message key="name.invalidPattern"
-             value="Method type name ''{0}'' must match pattern ''{1}''."/>
+             value="Method type name ''{0}'' must match pattern ''{1}''. (any single uppercase character followed by 0-1 numbers OR any uppercase character, followed by any amount of alphanumerical characters (any case), followed by an uppercase T)"/>
     </module>
     <module name="InterfaceTypeParameterName">
       <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
       <message key="name.invalidPattern"
-             value="Interface type name ''{0}'' must match pattern ''{1}''."/>
+             value="Interface type name ''{0}'' must match pattern ''{1}'' (any single uppercase character followed by 0-1 numbers OR any uppercase character, followed by any amount of alphanumerical characters (any case), followed by an uppercase T)."/>
+    </module>
+    <!-- added by JJ -->
+    <module name="ConstantName">
+      <message key="name.invalidPattern"
+             value="Interface type name ''{0}'' must match pattern ''{1}'' (only uppercase, starting with a letter, can contain underscores)."/>
     </module>
     <module name="NoFinalizer"/>
     <module name="GenericWhitespace">

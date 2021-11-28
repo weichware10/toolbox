@@ -1,5 +1,5 @@
 name: tests
-on: push
+on: [pull_request]
 jobs:
   run-tests:
     runs-on: ubuntu-latest
@@ -17,6 +17,5 @@ jobs:
       - name: publish test report
         if: ${{ always() }}
         uses: scacap/action-surefire-report@v1
-      - uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
-          path: '**/checkstyle-result.xml'
+          fail_on_test_failures: false # change this to true once it matters
