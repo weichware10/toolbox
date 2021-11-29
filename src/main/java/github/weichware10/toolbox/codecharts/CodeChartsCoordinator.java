@@ -7,6 +7,4 @@ import github.weichware10.util.Data;
  */
 public class CodeChartsCoordinator {
     protected Data data;
-
-    
 }
