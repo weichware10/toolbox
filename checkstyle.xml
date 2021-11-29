@@ -53,7 +53,7 @@
   <module name="TreeWalker">
     <!-- addded -->
     <module name="Regexp">
-      <property name="format" value="(@param [a-z][a-zA-Z0-9]*)( -\S|\S- |\S-\S| [^-])"/>
+      <property name="format" value="(@param [a-z][a-zA-Z0-9]*)( ++-\S|\S- |\S-\S| ++[^-])"/>
       <property name="illegalPattern" value="true"/>
       <property name="message" value="The parameter name and description are not seperated by &quot; - &quot;" />
     </module>
