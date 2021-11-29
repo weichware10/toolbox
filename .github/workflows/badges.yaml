@@ -5,6 +5,7 @@ on:
 jobs:
   generate-badges:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'updated badges')"
     steps:
       - name: checkout the repository
         uses: actions/checkout@v2
@@ -38,3 +39,4 @@ jobs:
             .github/badges/jacoco.svg
             .github/badges/tests.svg
           ref: refs/heads/main
+          commit-message: updated badges
