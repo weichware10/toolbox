@@ -17,6 +17,9 @@
 
 <module name="Checker">
   <!-- added -->
+  <module name="NewlineAtEndOfFile">
+    <property name="fileExtensions" value="java, xml, yml"/>
+  </module>
   <module name="RegexpSingleline">
     <property name="format" value="\s+$" />
     <property name="message" value="Line has trailing whitespaces." />
