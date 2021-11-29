@@ -28,8 +28,13 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: download test badge
         run: curl https://img.shields.io/github/workflow/status/weichware-10/util/tests/${GITHUB_REF#refs/heads/}?label=tests > .github/badges/tests.svg
-      - name: add and commit
-        uses: EndBug/add-and-commit@v7
+      - name: commit files
+        uses: swinton/commit@v2.x
+        env:
+          GH_TOKEN: ${{ secrets.WEICHWARE_UPDATE }}
         with:
-          message: updated badges
-          default_author: github_actions
+          files: |
+            .github/badges/branches.svg
+            .github/badges/jacoco.svg
+            .github/badges/tests.svg
+          ref: refs/heads/main
