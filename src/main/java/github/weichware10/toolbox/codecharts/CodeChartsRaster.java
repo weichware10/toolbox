@@ -1,5 +1,7 @@
 package github.weichware10.toolbox.codecharts;
 
+import github.weichware10.util.Data;
+
 /**
  * TODO: Fertigstellen.
  */
@@ -9,6 +11,7 @@ public class CodeChartsRaster {
     private int[] coords = new int[2];
     private String input;
     private boolean isRealtive;
+    private CodeChartsCoordinator coordinator;
 
     public void show() {
     }
@@ -17,6 +20,7 @@ public class CodeChartsRaster {
      * Was macht setInput()?.
      */
     public void setInput() {
+        ;
     }
 
     /**
@@ -32,7 +36,8 @@ public class CodeChartsRaster {
      * TODO: Funktion füllen
      * Sendet die Daten an das Speichermedium.
      */
-    public static void sendData() {
+    public void sendData() {
+        ;
     }
 
     /**
@@ -43,6 +48,9 @@ public class CodeChartsRaster {
      * Und parallel dazu eine Arraylist mit Rastergröße der einzelnen Durchläufe.
      */
     private void loadPastRuns() {
+        Data data = coordinator.data;
+        data.getData();
+        ;
     }
 
     /**

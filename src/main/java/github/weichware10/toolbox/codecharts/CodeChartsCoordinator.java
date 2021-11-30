@@ -7,8 +7,8 @@ import github.weichware10.util.Data;
  * Daten in loadConfigData auf Variablen speichern.
  */
 public class CodeChartsCoordinator {
-    private Data data;
-    private long[] speed = new long[2];
+    protected Data data;
+    private long[] speed = new long[2]; // TODO: muss umgerechnet werden s->ms
     private static boolean isRelative;
     private static int[] dimensions = new int[2];
     private static String[] strings;
@@ -35,20 +35,24 @@ public class CodeChartsCoordinator {
         if (configData == false) {
             errorMessage();
         }
-        // CodeChartsBild.show();
+        // CodeChartsBild bild = new CodeChartsBild("location");
+        // CodeChartsRaster raster = new CodeChartsRaster();
+        // CodeChartsEingabefenster fenster = new CodeChartsEingabefenster();
+        // bild.show();
         // wait(speed[0]);
-        // CodeChartsBild.hide();
-        // CodeChartsRaster.show();
+        // bild.hide();
+        // raster.show();
         // wait(speed[1]);
-        // CodeChartsEingabefenster.show();
+        // fenster.show();
         // ...
-        CodeChartsRaster.sendData();
+        // raster.sendData();
     }
 
     /**
      * Gibt Fehlermeldung bei falscher Config data.
      */
     private void errorMessage() {
+        ;
     }
 
     /**
@@ -72,4 +76,3 @@ public class CodeChartsCoordinator {
         return configData;
     }
 }
-
