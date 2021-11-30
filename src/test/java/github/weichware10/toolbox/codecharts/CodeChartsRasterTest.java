@@ -32,7 +32,7 @@ public class CodeChartsRasterTest {
     }
 
     /**
-     * teste die Berechnung der Coordinaten
+     * teste die Berechnung der Coordinaten.
      */
     @Test
     @Ignore
