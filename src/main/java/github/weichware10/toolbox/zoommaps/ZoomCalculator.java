@@ -14,7 +14,7 @@ public class ZoomCalculator {
     /**
      * verarbeitet Input von Benutzer/System.
      *
-     * @param rawInput - Screenkoordinaten vom Mausklick (float[2])
+     * @param rawInput - Screenkoordinaten vom Mausklick (int[2])
      */
     public void processInput(int[] rawInput) {
         ; // pass
@@ -32,7 +32,7 @@ public class ZoomCalculator {
     /**
      * Berechnet die neue position des Bildes aus den Rohdaten.
      *
-     * @param rawInput - Screenkoordinaten vom Mausklick (float[2])
+     * @param rawInput - Screenkoordinaten vom Mausklick (int[2])
      * @return neue Screenkoordinaten
      */
     private float[] calculate(int[] rawInput) {

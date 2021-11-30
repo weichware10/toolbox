@@ -2,7 +2,7 @@ package github.weichware10.toolbox.zoommaps;
 
 /**
  * Nimmt Systeminput bzgl. der Koordinaten entgegen und verarbeitet sie
- * zu rawInput (float[2]).
+ * zu rawInput (int[2]).
  */
 public class ZoomInput {
 
