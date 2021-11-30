@@ -21,8 +21,8 @@ public class EyetrackingBild extends Bild {
     /**
      * Erstellt Bildschirmkoordinaten.
      */
-    public void loadGrid() {
-        ; // noch nichts implementiert
+    public int[][] loadGrid() {
+        return new int[][] { { height } , { width } } ; // noch nichts implementiert
     }
 
 }

@@ -3,9 +3,7 @@ package github.weichware10.toolbox.eyetracking;
 import org.junit.Ignore;
 import org.junit.Test;
 
-/**
- * TODO: Nils.
- */
+
 public class EyeCalcTest {
     
     /**
