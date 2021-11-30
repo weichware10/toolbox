@@ -1,8 +1,9 @@
 package github.weichware10.toolbox.codecharts;
 
 /**
- * TODO: David.
+ * TODO:
+ * Extends Bild, und Funktionen ausfüllen.
+ * => URL aus abstakter Klasse
  */
 public class CodeChartsBild {
-
 }
