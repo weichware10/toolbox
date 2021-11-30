@@ -1,7 +1,7 @@
 package github.weichware10.toolbox.codecharts;
 
 /**
- * TODO: Fertigstllen.
+ * TODO: Fertigstellen.
  */
 public class CodeChartsEingabefenster {
     private boolean button;
