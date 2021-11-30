@@ -5,10 +5,15 @@ package github.weichware10.toolbox.codecharts;
  * Überprüft den String auf Korrektheit.
  */
 public class CodeChartsEingabefenster {
+    private final CodeChartsCoordinator coordinator;
     private boolean button;
-    private CodeChartsCoordinator coordinator;
-    private String[] strings = coordinator.getStrings();
+    private String[] strings;
     private String string;
+
+    public CodeChartsEingabefenster(CodeChartsCoordinator coordinator) {
+        this.coordinator = coordinator;
+        strings = coordinator.getStrings();
+    }
 
     /**
      * Zeigt das Eingabefenster.

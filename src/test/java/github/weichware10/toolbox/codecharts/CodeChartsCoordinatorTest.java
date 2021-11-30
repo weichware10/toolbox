@@ -4,10 +4,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * TODO: David.
+ * Testet CodeChartsCoordinator.
  */
 public class CodeChartsCoordinatorTest {
-    
+
     /**
      * testet Datenspeicherung.
      */

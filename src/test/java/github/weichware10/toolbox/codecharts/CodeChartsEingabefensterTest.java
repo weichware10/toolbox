@@ -15,7 +15,8 @@ public class CodeChartsEingabefensterTest {
      */
     @Test
     public void inputIsRecordedCorrectly() {
-        CodeChartsEingabefenster testfenster = new CodeChartsEingabefenster();
+        CodeChartsCoordinator coordinator = new CodeChartsCoordinator();
+        CodeChartsEingabefenster testfenster = new CodeChartsEingabefenster(coordinator);
         String input = "owls are cute";
         String output = testfenster.show();
         // Eingabe simulieren
@@ -28,7 +29,8 @@ public class CodeChartsEingabefensterTest {
     @Test
     @Ignore
     public void inputValidationShouldWork() {
-        CodeChartsEingabefenster testfenster = new CodeChartsEingabefenster();
+        CodeChartsCoordinator coordinator = new CodeChartsCoordinator();
+        CodeChartsEingabefenster testfenster = new CodeChartsEingabefenster(coordinator);
         testfenster.show();
         // Falsche Eingabe simulieren, Fehlermeldung erwarten
         // Richtige Eingabe simulieren, keine Fehlermeldung erwarten
