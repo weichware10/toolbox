@@ -3,6 +3,9 @@ package github.weichware10.toolbox.eyetracking;
 import org.junit.Ignore;
 import org.junit.Test;
 
+/**
+ * Unittests der Nutzereingabe CalcFKT.
+ */
 
 public class EyeCalcTest {
     

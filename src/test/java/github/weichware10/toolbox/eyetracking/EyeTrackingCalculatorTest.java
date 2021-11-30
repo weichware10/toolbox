@@ -10,6 +10,10 @@ import java.util.Arrays;
 import org.junit.Ignore;
 import org.junit.Test;
 
+
+/**
+ * Unittests der Positionsbestimmung calcFkt.
+ */
 public class EyeTrackingCalculatorTest {
 
     @Test
