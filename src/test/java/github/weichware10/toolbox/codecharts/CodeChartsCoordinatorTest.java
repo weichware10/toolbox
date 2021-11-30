@@ -7,6 +7,7 @@ import org.junit.Test;
  * TODO: David.
  */
 public class CodeChartsCoordinatorTest {
+    
     /**
      * testet Datenspeicherung.
      */
