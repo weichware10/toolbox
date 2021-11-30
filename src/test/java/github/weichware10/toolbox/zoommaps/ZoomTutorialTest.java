@@ -20,10 +20,10 @@ public class ZoomTutorialTest {
         ConfigClient configClient = new ConfigClient();
         configClient.loadConfiguration("www.weichware10.com/config");
         ZoomTutorial testsubject = new ZoomTutorial(configClient);
-        configClient.getConfig().getCodeChartsConfiguration().setTutorial(true);
+        configClient.getConfig().getZoomMapsConfiguration().setTutorial(true);
         testsubject.start();
         // Überprüfen, ob Tutorial angezeigt wird, da der Config-Wert true ist
-        configClient.getConfig().getCodeChartsConfiguration().setTutorial(false);
+        configClient.getConfig().getZoomMapsConfiguration().setTutorial(false);
         testsubject.start();
         // Überprüfen, ob Tutorial nicht angezeigt wird, da der Config-Wert false ist
     }
