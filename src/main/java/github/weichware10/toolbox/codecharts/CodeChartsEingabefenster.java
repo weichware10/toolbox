@@ -12,19 +12,21 @@ public class CodeChartsEingabefenster {
      * Zeigt das Eingabefenster.
      * Startet alle darunterliegenden Funktionen.
      */
-    public void show() {
-        checkButton();
-        boolean validate = validateString();
-        if (validate == false) {
-            errorMessage();
-            // => Erneuter Eingabeaufruf
-        }
+    public String show() {
+        // checkButton();
+        // boolean validate = validateString();
+        // if (validate == false) {
+        //     errorMessage();
+        //      => Erneuter Eingabeaufruf
+        // }
+        return "owls are cute";
     }
 
     /**
      * Gibt fehlermeldung für inkorrekten String aus.
      */
     private void errorMessage() {
+        ;
     }
 
     /**

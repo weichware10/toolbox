@@ -1,9 +1,14 @@
 package github.weichware10.toolbox.codecharts;
 
+import github.weichware10.util.Bild;
+
 /**
- * TODO:
- * Extends Bild, und Funktionen ausfüllen.
- * => URL aus abstakter Klasse
+ * TODO: Funktionen ausfüllen. + javadoc
  */
-public class CodeChartsBild {
+public class CodeChartsBild extends Bild {
+
+    public CodeChartsBild(String location) throws IllegalArgumentException {
+        super(location);
+    }
+
 }

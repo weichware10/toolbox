@@ -10,9 +10,8 @@ public class CodeChartsBildTest {
     /**
      * Testet ob die URL richtig ist.
      */
-    @Ignore
-    @Test
-    public boolean correctUrl() {
-        return false;
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowAtWrongPicture() {
+        new CodeChartsBild("www.thisisnotapicture.com/owl.html");
     }
 }
