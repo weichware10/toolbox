@@ -1,16 +1,25 @@
 package github.weichware10.toolbox.zoommaps;
 
-// TODO: benötigt Update von Util-Package (Tutorial)
+import github.weichware10.util.Enums.ToolType;
+import github.weichware10.util.Tutorial;
+import github.weichware10.util.config.ConfigClient;
 
 /**
  * Zeigt das Tutorial ZoomBild in einem allgemeinen Tutorialfenster.
  */
-public class ZoomTutorial {
+public class ZoomTutorial extends Tutorial {
 
     /**
-     * Lädt das Tutorial zu ZoomBild.
+     * Instanziiert ein neues ZoomTutorial.
+     *
+     * @param configClient - Der Config Client für die Einstellungen.
      */
-    private void tutorial() {
+    public ZoomTutorial(ConfigClient configClient) {
+        super(configClient, ToolType.ZOOMMAPS);
+    }
+
+    @Override
+    protected void tutorial() {
         ;
     }
 }

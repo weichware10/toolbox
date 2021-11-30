@@ -20,8 +20,9 @@ public class ZoomCalculatorTest {
      */
     @Test
     @Ignore
-    public void processedInput() {
+    public void processInputCorrectly() {
         ZoomCalculator testcalculator = new ZoomCalculator();
-        // testcalculator.processInput(new int[]{0, 0});
+        testcalculator.processInput(new int[]{0, 0});
+        // Überprüfen, ob Input richtig gesetzt wurde
     }
 }

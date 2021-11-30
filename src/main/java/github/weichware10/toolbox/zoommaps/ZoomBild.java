@@ -1,12 +1,22 @@
 package github.weichware10.toolbox.zoommaps;
 
-// TODO: benötigt Update von Util-Package (Bild)
+import github.weichware10.util.Bild;
 
 /**
  * Ändert den aktuellen Bildausschnitt mit Hilfe gegebener Koordianten
  * und gibt die neuen Koordinaten an ZoomCalculator zurück.
  */
-public class ZoomBild {
+public class ZoomBild extends Bild {
+
+    /**
+     * Instanziiert ein neues ZoomBild.
+     *
+     * @param location - die Quelle der zu benutzenden Bilddatei
+     * @throws IllegalArgumentException falls die Location falsch ist
+     */
+    public ZoomBild(String location) throws IllegalArgumentException {
+        super(location);
+    }
 
     /**
      * Bewegt das Bild an die gegebenen Koordinaten, neue
@@ -15,7 +25,7 @@ public class ZoomBild {
      * @param position - gegebene Koordinaten (float[3])
      * @return neue Koordinaten
      */
-    public float[] move(float[] position) {
+    protected float[] move(float[] position) {
         return new float[]{0, 0, 0};
     }
 }
