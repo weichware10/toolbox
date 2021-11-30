@@ -1,24 +1,20 @@
 package github.weichware10.toolbox.eyetracking;
 
-import github.weichware10.util.Data;
-
 /**
  * Bestimmung der Blickkoordinaten und Abspeicherung der Versuchsdaten.
  */
 public class Auge {
-    
+
+    float[][] lastPosition;
 
     /**
-     * Bestimmt Augenposition und Veränderung.
+     * Bestimmt Position von Auge und Kopf.
+     *
+     * <p>Rückgabeformat: [[Augenposition], [Kopfposition]]
+     *
+     * @return Position, als zwei-dimensionales Array.
      */
-    public int getEye() {
-        ; // noch nichts implementiert
-    }
-
-    /**
-     * Bestimmt Pupillenposition und Veränderung.
-     */
-    public int getPupil() {
-        ; // noch nichts implementiert
+    public float[][] getPosition() {
+        return new float[][] { { -1f, -1f }, { -1f, -1f } };
     }
 }

@@ -5,15 +5,15 @@ import github.weichware10.util.Data;
 /**
  * Bestimmung der Blickkoordinaten und Abspeicherung der Versuchsdaten.
  */
-public class EyeTrackingTutorial {
-    
+public class EyetrackingBild {
+    private int width;
+    private int height;
 
     /**
-     * Startet das Tutorial und die Grundeinrichtung.
+     * Erstellt Bildschirmkoordinaten.
      */
-    public void tutorial() {
+    public void loadGrid() {
         ; // noch nichts implementiert
     }
 
-    
 }

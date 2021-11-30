@@ -5,7 +5,7 @@ import github.weichware10.util.Data;
 /**
  * Bestimmung der Blickkoordinaten und Abspeicherung der Versuchsdaten.
  */
-public class EyeCalc {
+public class EyeTrackingCoordinator {
     private float distance;
     private float position;
     private Data data;
@@ -14,6 +14,10 @@ public class EyeCalc {
      * Startet den Versuch.
      */
     public void start() {
+        Auge auge = new Auge();
+        float[][] position = auge.getPosition();
+        int[] coords = EyeTrackingCalculator.calculateScreenCoordinates(position);
+        // data.save(coords)
         ; // noch nichts implementiert
     }
 
