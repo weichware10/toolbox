@@ -22,7 +22,7 @@ public class EyeTrackingCalculatorTest {
     }
 
     @Test
-    @Ignore
+    @Ignore // da zur Zeit immer das gleiche zurückgegeben wird
     public void testCalculationChanged() {
         int[] oldResult = EyeTrackingCalculator.calculateScreenCoordinates(
                 new float[][] { { 1, 1 }, { 1, 2 } });
