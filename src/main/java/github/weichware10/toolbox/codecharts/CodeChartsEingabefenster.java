@@ -6,7 +6,8 @@ package github.weichware10.toolbox.codecharts;
  */
 public class CodeChartsEingabefenster {
     private boolean button;
-    private String[] strings = CodeChartsCoordinator.getStrings();
+    private CodeChartsCoordinator coordinator;
+    private String[] strings = coordinator.getStrings();
     private String string;
 
     /**
