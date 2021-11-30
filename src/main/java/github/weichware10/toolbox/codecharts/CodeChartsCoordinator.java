@@ -3,26 +3,26 @@ package github.weichware10.toolbox.codecharts;
 import github.weichware10.util.Data;
 
 /**
- * TODO:
- * Daten in loadConfigData auf Variablen speichern.
+ * Steuert den Datenverkehr und gibt die BEfehle zum anzeigen.
+ * von Bild Raster und Eingabefenster.
  */
 public class CodeChartsCoordinator {
     protected Data data;
-    private long[] speed = new long[2]; // TODO: muss umgerechnet werden s->ms
+    // private long[] speed = new long[2];
     private static boolean isRelative;
     private static int[] dimensions = new int[2];
     private static String[] strings;
     private boolean configData;
 
-    public static int[] getDimensions() {
+    public int[] getDimensions() {
         return dimensions;
     }
 
-    public static String[] getStrings() {
+    public String[] getStrings() {
         return strings;
     }
 
-    public static boolean getIsRelative() {
+    public boolean getIsRelative() {
         return isRelative;
     }
 
@@ -36,6 +36,7 @@ public class CodeChartsCoordinator {
             errorMessage();
         }
         // CodeChartsBild bild = new CodeChartsBild("location");
+        // Speichert location in Data für Berechnung in Raster
         // CodeChartsRaster raster = new CodeChartsRaster();
         // CodeChartsEingabefenster fenster = new CodeChartsEingabefenster();
         // bild.show();
@@ -43,7 +44,8 @@ public class CodeChartsCoordinator {
         // bild.hide();
         // raster.show();
         // wait(speed[1]);
-        // fenster.show();
+        // String string = fenster.show();
+        // raster.setInput(string);
         // ...
         // raster.sendData();
     }
@@ -68,6 +70,7 @@ public class CodeChartsCoordinator {
         // } else {
         //     configData = true;
         // }
+        // speed => Umrechnung von float zu long
         // speed[0] = aus Config;
         // speed[1] = aus Config;
         // dimensions[0] = aus Config;

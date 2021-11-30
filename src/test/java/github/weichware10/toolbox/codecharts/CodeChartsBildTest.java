@@ -1,10 +1,9 @@
 package github.weichware10.toolbox.codecharts;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * TODO: David.
+ * testet CodeChartsBild.
  */
 public class CodeChartsBildTest {
     /**

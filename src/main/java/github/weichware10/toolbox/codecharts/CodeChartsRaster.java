@@ -1,9 +1,13 @@
 package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.util.Data;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
- * TODO: Fertigstellen.
+ * Zeigt das Raster an und ist für die Berechnung.
+ * von Rastergröße und Koordinate zuständig.
  */
 public class CodeChartsRaster {
     private int[] dimensions;
@@ -12,45 +16,55 @@ public class CodeChartsRaster {
     private String input;
     private boolean isRealtive;
     private CodeChartsCoordinator coordinator;
+    private List<Integer> pastRuns = new ArrayList<Integer>();
 
+    /**
+     * Zeigt das Raster an.
+     */
     public void show() {
     }
 
+
     /**
-     * Was macht setInput()?.
+     * Bekommt den String von Eingabefenster.
+     * über den Coordinator zur berechnung.
      */
-    public void setInput() {
-        ;
+    public void setInput(String string) {
+        this.input = string;
+    }
+
+    /**
+     * für Test.
+     */
+    public String getInput() {
+        return this.input;
     }
 
     /**
      * Speichert die Daten aus CodeChartsCoordinator in den Variablen.
      */
     public void setData() {
-        this.dimensions = CodeChartsCoordinator.getDimensions();
-        this.strings = CodeChartsCoordinator.getStrings();
-        this.isRealtive = CodeChartsCoordinator.getIsRelative();
+        this.dimensions = coordinator.getDimensions();
+        this.strings = coordinator.getStrings();
+        this.isRealtive = coordinator.getIsRelative();
     }
 
     /**
-     * TODO: Funktion füllen
-     * Sendet die Daten an das Speichermedium.
+     * Sendet die Daten an das Coordinator.
      */
     public void sendData() {
-        ;
+        // coordinator.data.setData(data);
     }
 
     /**
-     * Soll eigentlich die Daten holen uns für die Berechnung speichern.
-     * Sinnlos, weil man die Coordinaten der Vorherigen durchläufe
-     * auch einfach in einer Arraylist anlegen könnte.
-     * Und parallel dazu eine Arraylist mit Datum und Uhrzeit für das Speichern im Speichermedium.
-     * Und parallel dazu eine Arraylist mit Rastergröße der einzelnen Durchläufe.
+     * Holt die Daten aus data in Coordinator für die Berechnungen.
+     * Speichert die Daten in ArrayList.
      */
     private void loadPastRuns() {
         Data data = coordinator.data;
         data.getData();
-        ;
+        // pastRuns.add(420);
+        // Lädt alle vorherien DUrchläufe in die Strucktur in Rasterklasse.
     }
 
     /**
@@ -70,7 +84,10 @@ public class CodeChartsRaster {
         this.coords[1] = y;
 
         if (isRealtive == true) {
+            loadPastRuns();
             // Berechnung der relativen Rastergöße.
         }
+
+        // Speichert die Coordinate in Coordinator.
     }
 }

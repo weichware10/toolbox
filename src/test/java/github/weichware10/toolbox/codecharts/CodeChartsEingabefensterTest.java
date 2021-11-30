@@ -6,12 +6,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * TODO: David.
+ * Testet die Eingabe Klasse.
  */
 public class CodeChartsEingabefensterTest {
 
     /**
-     * TODO: was macht der Test.
+     * Überprüft ob der Input korrket zurückgegeben wird.
      */
     @Test
     public void inputIsRecordedCorrectly() {
@@ -22,6 +22,9 @@ public class CodeChartsEingabefensterTest {
         assertEquals(String.format("Output should match '%s'", input), input, output);
     }
 
+    /**
+     * Testet die Überprüfug des Inputs.
+     */
     @Test
     @Ignore
     public void inputValidationShouldWork() {

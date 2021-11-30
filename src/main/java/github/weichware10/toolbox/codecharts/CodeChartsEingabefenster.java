@@ -1,7 +1,8 @@
 package github.weichware10.toolbox.codecharts;
 
 /**
- * TODO: Fertigstellen.
+ * Zeigt das Eingabefenster an und nimmt den Stringinput.
+ * Überprüft den String auf Korrektheit.
  */
 public class CodeChartsEingabefenster {
     private boolean button;
