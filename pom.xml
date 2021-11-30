@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.github.weichware10</groupId>
       <artifactId>util</artifactId>
-      <version>140d005</version>
+      <version>3730021</version>
     </dependency>
   </dependencies>
 
