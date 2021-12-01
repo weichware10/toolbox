@@ -27,7 +27,7 @@ jobs:
       - name: commit files
         uses: swinton/commit@v2.x
         env:
-          GH_TOKEN: ${{ secrets.WEICHWARE_UPDATE }}
+          GH_TOKEN: ${{ secrets.WEICHBOT }}
         with:
           files: |
             .github/workflows/badges.yaml
