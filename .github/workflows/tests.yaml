@@ -6,6 +6,7 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    if: "!contains(github.actor, 'weichbot10')"
     steps:
       - name: checkout the repository
         uses: actions/checkout@v2
