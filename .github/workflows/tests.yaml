@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
       branches: [main]
-      paths: ['**.java']
+      paths: ['**.java, **.xml']
 
 jobs:
   run-tests:
