@@ -5,7 +5,7 @@
 
   <groupId>com.github.weichware10</groupId>
   <artifactId>toolbox</artifactId>
-  <version>0.1</version>
+  <version>v0.1-SNAPSHOT</version>
 
   <name>toolbox</name>
   <url>https://github.com/weichware10/toolbox</url>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>com.github.weichware10</groupId>
       <artifactId>util</artifactId>
-      <version>3730021</version>
+      <version>v0.1</version>
     </dependency>
   </dependencies>
 
