@@ -19,6 +19,7 @@ jobs:
       # limit to owners
       if: contains('["joshuajeschek, weichbot10"]', github.actor)
       steps:
+        - uses: actions/checkout@v2
         - run: mvn -B test --file pom.xml
   # CREATE TAG AND UPDATE POM.XML
   create-tag:
