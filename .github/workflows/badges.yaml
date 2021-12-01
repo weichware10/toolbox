@@ -32,6 +32,14 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: download test badge
         run: curl https://img.shields.io/github/workflow/status/weichware-10/util/tests/${GITHUB_REF#refs/heads/}?label=tests > .github/badges/tests.svg
+      - name: import GPG
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.WEICHBOT_GPG_PRIVATE }}
+          passphrase: ${{ secrets.WEICHBOT_GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
       - name: auto commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

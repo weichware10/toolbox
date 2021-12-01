@@ -23,8 +23,6 @@ jobs:
           cache: 'maven'
       - name: increase version in pom.xml
         run: mvn versions:set -DnewVersion="${{ github.event.inputs.tag }}"
-      - name: Build
-        run: echo ${{ github.sha }} > Release.txt
       - name: import GPG
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v4
