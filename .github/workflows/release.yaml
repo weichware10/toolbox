@@ -13,9 +13,18 @@ on:
         default: 'v*.*-SNAPSHOT'
 
 jobs:
+  # RUN TESTS
+  run-tests:
+      runs-on: ubuntu-latest
+      # limit to owners
+      if: contains('["joshuajeschek, weichbot10"]', github.actor)
+      steps:
+        - run: mvn -B test --file pom.xml
   # CREATE TAG AND UPDATE POM.XML
   create-tag:
     runs-on: ubuntu-latest
+    # do not release on failing tests
+    needs: run-tests
     # limit to owners
     if: contains('["joshuajeschek, weichbot10"]', github.actor)
     outputs:
