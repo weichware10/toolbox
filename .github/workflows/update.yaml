@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: checkout the repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WEICHBOT }}
       - name: download workflows
         run: |
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/badges.yaml --output .github/workflows/badges.yaml --create-dirs
@@ -24,17 +26,9 @@ jobs:
         run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/checkstyle.xml --output checkstyle.xml --create-dirs
       - name: download gitignore
         run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/.gitignore --output .gitignore --create-dirs
-      - name: commit files
-        uses: swinton/commit@v2.x
-        env:
-          GH_TOKEN: ${{ secrets.WEICHBOT }}
+      - name: auto commit
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          files: |
-            .github/workflows/badges.yaml
-            .github/workflows/tests.yaml
-            .github/workflows/update.yaml
-            .github/workflows/checkstyle.yaml
-            checkstyle.xml
-            .gitignore
-          commit-message: ${{ github.event.inputs.message }}
-          ref: refs/heads/main
+          commit_message: ${{ github.event.inputs.message }}
+          commit_user_name: 'weichbot10'
+          commit_user_email: 'weichbot10@users.noreply.github.com'
