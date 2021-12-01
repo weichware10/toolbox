@@ -2,6 +2,7 @@ name: generate-badges
 on:
   push:
     branches: [main]
+    paths: ['**.java']
 jobs:
   generate-badges:
     runs-on: ubuntu-latest
