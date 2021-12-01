@@ -22,7 +22,6 @@ jobs:
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/tests.yaml --output .github/workflows/tests.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/update.yaml --output .github/workflows/update.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/checkstyle.yaml --output .github/workflows/checkstyle.yaml --create-dirs
-          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/tag.yaml --output .github/workflows/tag.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/release.yaml --output .github/workflows/release.yaml --create-dirs
       - name: download checkstyle
         run: curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/checkstyle.xml --output checkstyle.xml --create-dirs
