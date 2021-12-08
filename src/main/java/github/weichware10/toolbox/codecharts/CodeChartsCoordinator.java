@@ -1,13 +1,13 @@
 package github.weichware10.toolbox.codecharts;
 
-import github.weichware10.util.Data;
+import github.weichware10.util.data.TrialData;
 
 /**
  * Steuert den Datenverkehr und gibt die BEfehle zum anzeigen.
  * von Bild Raster und Eingabefenster.
  */
 public class CodeChartsCoordinator {
-    protected Data data;
+    protected TrialData data;
     // private long[] speed = new long[2];
     private static boolean isRelative;
     private static int[] dimensions = new int[2];

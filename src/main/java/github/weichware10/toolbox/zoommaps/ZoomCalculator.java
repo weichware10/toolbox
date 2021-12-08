@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.util.Data;
+import github.weichware10.util.data.TrialData;
 
 /**
  * Bekommt Rohdaten des Systems (Mausklick), berechnet neue Position des Bildes
@@ -9,7 +9,7 @@ import github.weichware10.util.Data;
 public class ZoomCalculator {
     private float speed;
     private float[] position;
-    private Data data;
+    private TrialData data;
 
     /**
      * verarbeitet Input von Benutzer/System.

@@ -17,13 +17,6 @@ public class CodeChartsTutorialTest {
     @Ignore
     public void tutorialBooleanShouldBeRespected() {
         ConfigClient configClient = new ConfigClient();
-        configClient.loadConfiguration("www.weichware10.com/config");
-        CodeChartsTutorial testsubject = new CodeChartsTutorial(configClient);
-        configClient.getConfig().getCodeChartsConfiguration().setTutorial(true);
-        testsubject.start();
-        // Überprüfen, ob Tutorial angezeigt wird, da der Config-Wert true ist
-        configClient.getConfig().getCodeChartsConfiguration().setTutorial(false);
-        testsubject.start();
-        // Überprüfen, ob Tutorial nicht angezeigt wird, da der Config-Wert false ist
+        configClient.loadFromDataBase("www.weichware10.com/config");
     }
 }
