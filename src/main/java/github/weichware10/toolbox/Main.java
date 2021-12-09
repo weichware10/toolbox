@@ -26,6 +26,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("ToolBox");
 
+        // ----------Startbildschirm----------
         TextField trialIdInput = new TextField();
         trialIdInput.setPromptText("insert TrialID");
 
@@ -47,13 +48,13 @@ public class Main extends Application {
         Scene toolBoxHome = new Scene(layoutTestIdWindow, 400, 400);
 
         // ----------end----------
-        // set the action after the window got closed
+        // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                // We ourself take care for the closing
+                // Wir kümmern uns selber um das schließen
                 event.consume();
-                // Close window with yes or no
+                // Fenster schließen, ja oder nein?
                 closeProgramm(primaryStage);
             }
         });
@@ -61,6 +62,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    //Nachfrage ob Programm wirklich beendet werden soll
     private void closeProgramm(Stage window) {
         boolean answer = ConfirmBox.display();
         if (answer) {
