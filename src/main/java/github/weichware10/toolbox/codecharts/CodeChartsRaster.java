@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.codecharts;
 
-import github.weichware10.util.Data;
+import github.weichware10.util.data.TrialData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class CodeChartsRaster {
      * Speichert die Daten in ArrayList.
      */
     private void loadPastRuns() {
-        Data data = coordinator.data;
+        TrialData data = coordinator.data;
         data.getData();
         // pastRuns.add(420);
         // Lädt alle vorherien DUrchläufe in die Strucktur in Rasterklasse.

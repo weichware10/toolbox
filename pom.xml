@@ -33,7 +33,7 @@
     <dependency>
       <groupId>com.github.weichware10</groupId>
       <artifactId>util</artifactId>
-      <version>v0.1</version>
+      <version>v0.2</version>
     </dependency>
   </dependencies>
 

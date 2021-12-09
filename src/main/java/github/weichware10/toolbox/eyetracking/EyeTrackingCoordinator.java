@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.eyetracking;
 
-import github.weichware10.util.Data;
+import github.weichware10.util.data.TrialData;
 
 /**
  * Bestimmung der Blickkoordinaten und Abspeicherung der Versuchsdaten.
@@ -8,7 +8,7 @@ import github.weichware10.util.Data;
 public class EyeTrackingCoordinator {
     private float distance;
     private float position;
-    private Data data;
+    private TrialData data;
 
     /**
      * Startet den Versuch.
