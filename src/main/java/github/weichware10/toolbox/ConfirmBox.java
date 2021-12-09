@@ -10,38 +10,44 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-//How to Communicate between windows
+/**
+ * Funktion zur Abfrage, ob das Fenster wirklich geschlossen werden soll.
+ */
 public class ConfirmBox {
 
     static boolean answer;
 
-    public static boolean display(String title, String message){
+    /**
+     * Funktion zur Rücksicherung ob das Fenster wirklich geschlossen werden soll.
+     *
+     * @return - Gibt true zurück, wenn das Window geschlossen werden soll
+     */
+    public static boolean display() {
         final Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle(title);
+        window.setTitle("End the programm");
         window.setMinWidth(250);
 
         Label label1 = new Label();
-        label1.setText(message);
-        
+        label1.setText("Sure you want to quit ?");
+
         Button yesButton = new Button("Yes");
         Button noButton = new Button("No");
         yesButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event){
+            public void handle(ActionEvent event) {
                 answer = true;
                 window.close();
             }
         });
         noButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event){
+            public void handle(ActionEvent event) {
                 answer = false;
                 window.close();
             }
         });
-        
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(label1, yesButton, noButton);
@@ -53,5 +59,4 @@ public class ConfirmBox {
 
         return answer;
     }
-    
 }
