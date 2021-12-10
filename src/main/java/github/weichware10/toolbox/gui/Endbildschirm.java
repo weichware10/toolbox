@@ -1,4 +1,4 @@
-package github.weichware10.toolbox;
+package github.weichware10.toolbox.gui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +14,8 @@ import javafx.stage.Stage;
  * Kümmert sich um das Design des Endbildschirms.
  */
 public class Endbildschirm {
+    static Scene toolBoxEndscreen;
+
     /**
      * Die eigentliche Funktion, die den Endbildschirm darstellt.
      *
@@ -47,7 +49,8 @@ public class Endbildschirm {
         layoutEndscreen.setPadding(new Insets(10, 10, 10, 10));
         layoutEndscreen.getChildren().addAll(endMessage, layoutEndscreenButtons);
 
-        Scene toolBoxEndscreen = new Scene(layoutEndscreen, 400, 400);
+        toolBoxEndscreen = new Scene(layoutEndscreen, 400, 400);
+
         primaryStage.setScene(toolBoxEndscreen);
     }
 }

@@ -1,4 +1,4 @@
-package github.weichware10.toolbox;
+package github.weichware10.toolbox.gui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
