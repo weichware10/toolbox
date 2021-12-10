@@ -1,15 +1,7 @@
 package github.weichware10.toolbox;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -24,30 +16,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("ToolBox");
-
-        // ----------Startbildschirm----------
-        TextField trialIdInput = new TextField();
-        trialIdInput.setPromptText("insert TrialID");
-
-        Button startTestButton = new Button("Start");
-        startTestButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Test started");
-            }
-        });
-
-        Label trialIdExplenation = new Label("Insert the ID given in the Email");
-
-        VBox layoutTestIdWindow = new VBox(10);
-        layoutTestIdWindow.setPadding(new Insets(10, 10, 10, 10));
-        layoutTestIdWindow.getChildren().addAll(trialIdExplenation, trialIdInput, startTestButton);
-        layoutTestIdWindow.setAlignment(Pos.CENTER);
-
-        Scene toolBoxHome = new Scene(layoutTestIdWindow, 400, 400);
-
-        // ----------end----------
+        Startbildschirm.display(primaryStage);
+        
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -58,7 +28,8 @@ public class Main extends Application {
                 closeProgramm(primaryStage);
             }
         });
-        primaryStage.setScene(toolBoxHome);
+
+        //Zeigt das Fenster
         primaryStage.show();
     }
 
