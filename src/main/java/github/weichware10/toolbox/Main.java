@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Startbildschirm.display(primaryStage);
-        
+
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
