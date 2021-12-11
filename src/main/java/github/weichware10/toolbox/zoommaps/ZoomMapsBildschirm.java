@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 /**
  * Kümmert sich um das Design des Tests Zoommaps.
  */
-public class ZoomBildschirm {
+public class ZoomMapsBildschirm {
 
     /**
      * Die eigentliche Funktion, die den Zoombildschirm darstellt.
