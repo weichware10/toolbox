@@ -2,6 +2,7 @@ package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.ConfirmBox;
 import github.weichware10.toolbox.gui.Startbildschirm;
+import github.weichware10.util.config.ConfigClient;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -18,7 +19,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Startbildschirm.display(primaryStage);
+        //erstellt den Config Client um die Informationen aus der Config zu handeln
+        ConfigClient configClient = new ConfigClient();
+
+        //startet die erste Szene
+        Startbildschirm.display(primaryStage, configClient);
 
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
