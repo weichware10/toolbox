@@ -1,6 +1,8 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.zoommaps.Zoombildschirm;
+import github.weichware10.toolbox.codecharts.CodeChartBildschirm;
+import github.weichware10.toolbox.eyetracking.EyeTrackingBildschirm;
+import github.weichware10.toolbox.zoommaps.ZoomBildschirm;
 import github.weichware10.util.Enums.ToolType;
 import github.weichware10.util.config.ConfigClient;
 import javafx.event.ActionEvent;
@@ -72,7 +74,13 @@ public class Startbildschirm {
                 configClient.loadFromJson(location);
 
                 if (configClient.getConfig().getToolType().equals(ToolType.ZOOMMAPS)) {
-                    Zoombildschirm.display(primaryStage, configClient);
+                    ZoomBildschirm.display(primaryStage, configClient);
+                }
+                if (configClient.getConfig().getToolType().equals(ToolType.CODECHARTS)) {
+                    CodeChartBildschirm.display(primaryStage, configClient);
+                }
+                if (configClient.getConfig().getToolType().equals(ToolType.EYETRACKING)) {
+                    EyeTrackingBildschirm.display(primaryStage, configClient);
                 }
             }
         });

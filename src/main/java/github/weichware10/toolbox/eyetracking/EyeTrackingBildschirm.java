@@ -1,4 +1,4 @@
-package github.weichware10.toolbox.zoommaps;
+package github.weichware10.toolbox.eyetracking;
 
 import github.weichware10.toolbox.gui.Endbildschirm;
 import github.weichware10.util.config.ConfigClient;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 /**
  * Kümmert sich um das Design des Tests Zoommaps.
  */
-public class ZoomBildschirm {
+public class EyeTrackingBildschirm {
 
     /**
      * Die eigentliche Funktion, die den Zoombildschirm darstellt.
@@ -25,7 +25,7 @@ public class ZoomBildschirm {
      * @param configClient - Informationen aus der Configfile holen
      */
     public static void display(Stage primaryStage, ConfigClient configClient) {
-        primaryStage.setTitle("ZoomMaps Test");
+        primaryStage.setTitle("EyeTracking Test");
 
         Button startButton = new Button("Start");
         startButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -48,15 +48,15 @@ public class ZoomBildschirm {
         layoutButtons.getChildren().addAll(startButton, endButton);
         layoutButtons.setAlignment(Pos.CENTER);
 
-        Label testMessage = new Label("Sie können den ZoomMaps-Test starten");
+        Label testMessage = new Label("Sie können den EyeTracking-Test starten");
 
         VBox layoutFinal = new VBox(10);
         layoutFinal.setPadding(new Insets(10, 10, 10, 10));
         layoutFinal.getChildren().addAll(testMessage, layoutButtons);
         layoutFinal.setAlignment(Pos.CENTER);
 
-        Scene toolBoxZoomMaps = new Scene(layoutFinal, 400, 400);
+        Scene toolBoxEyeTracking = new Scene(layoutFinal, 400, 400);
 
-        primaryStage.setScene(toolBoxZoomMaps);
+        primaryStage.setScene(toolBoxEyeTracking);
     }
 }
