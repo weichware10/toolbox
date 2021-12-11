@@ -1,5 +1,6 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.zoommaps.Zoombildschirm;
 import github.weichware10.util.Enums.ToolType;
 import github.weichware10.util.config.ConfigClient;
 import javafx.event.ActionEvent;
@@ -65,11 +66,14 @@ public class Startbildschirm {
                 fileChooser.setTitle("JSON Config auswählen");
                 fileChooser.getExtensionFilters().add(
                     new ExtensionFilter("JSON Dateien", "*.json"));
-                //Dateipfad als String speichern
+
+                //Dateipfad als String speichern und json laden
                 String location = fileChooser.showOpenDialog(primaryStage).getAbsolutePath();
                 configClient.loadFromJson(location);
-                boolean test = configClient.getConfig().getToolType().equals(ToolType.ZOOMMAPS);
-                System.out.println(test);
+
+                if (configClient.getConfig().getToolType().equals(ToolType.ZOOMMAPS)) {
+                    Zoombildschirm.display(primaryStage, configClient);
+                }
             }
         });
         adminMenu.getItems().add(jsonTest);
