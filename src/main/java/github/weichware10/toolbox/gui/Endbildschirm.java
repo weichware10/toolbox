@@ -3,6 +3,7 @@ package github.weichware10.toolbox.gui;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,12 +43,14 @@ public class Endbildschirm {
         HBox layoutEndscreenButtons = new HBox(10);
         layoutEndscreenButtons.setPadding(new Insets(10, 10, 10, 10));
         layoutEndscreenButtons.getChildren().addAll(endProgram, backToStart);
+        layoutEndscreenButtons.setAlignment(Pos.CENTER);
 
         Label endMessage = new Label("Danke für ihre Teilnahme");
 
         VBox layoutEndscreen = new VBox(10);
         layoutEndscreen.setPadding(new Insets(10, 10, 10, 10));
         layoutEndscreen.getChildren().addAll(endMessage, layoutEndscreenButtons);
+        layoutEndscreen.setAlignment(Pos.CENTER);
 
         toolBoxEndscreen = new Scene(layoutEndscreen, 400, 400);
 
