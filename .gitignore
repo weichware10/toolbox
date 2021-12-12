@@ -4,6 +4,9 @@
 .classpath
 .project
 
+# secrets
+.env
+
 # Compiled class file
 *.class
 target/
