@@ -18,6 +18,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
           cache: 'maven'
+      - run: echo ${{ secrets.ENV }} > .env
       - name: generate report
         run: mvn jacoco:prepare-agent test install jacoco:report
       - name: generate coverage badges

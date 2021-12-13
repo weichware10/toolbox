@@ -17,6 +17,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
           cache: 'maven'
+      - run: echo ${{ secrets.ENV }} > .env
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml verify checkstyle:checkstyle
       - name: publish test report

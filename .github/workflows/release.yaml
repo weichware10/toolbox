@@ -97,6 +97,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
           cache: 'maven'
+      - run: echo ${{ secrets.ENV }} > .env
       # package to jar
       - name: package project
         run: mvn package
