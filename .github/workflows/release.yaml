@@ -26,6 +26,10 @@ jobs:
             distribution: 'adopt'
             java-version: '17'
             cache: 'maven'
+        - run: 'echo "$ENV" > .env'
+          shell: bash
+          env:
+            ENV: ${{secrets.ENV}}
         - run: mvn -B test --file pom.xml
   # CREATE TAG AND UPDATE POM.XML
   create-tag:
@@ -49,6 +53,10 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
           cache: 'maven'
+      - run: 'echo "$ENV" > .env'
+        shell: bash
+        env:
+          ENV: ${{secrets.ENV}}
       # increase /project/version of pom.xml
       - name: increase version in pom.xml
         run: mvn versions:set -DnewVersion="${{ github.event.inputs.tag }}"
