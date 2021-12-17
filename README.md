@@ -20,7 +20,7 @@ Beinhaltet Toolbox
 Achtung: die Versionsnummern unterscheiden sich zwischen den beiden Optionen. Falls zwischen fertig kompiliert und selbst kompiliert gewechselt wird, könnte eine vorherige Deinstallation unter Umständen nötig sein.
 
 ## Starten ohne Installation in Entwicklungsumgebung (VSCode)
-- herunterladen der JavaFX-SDK auf [gluonhq.com](https://gluonhq.com/products/javafx/)
+- Herunterladen der JavaFX-SDK auf [gluonhq.com](https://gluonhq.com/products/javafx/)
 - Erstellen einer `launch.json` im Verzeichnis `.vscode`:
     ```json
     // .vscode/launch.json
