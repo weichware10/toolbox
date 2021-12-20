@@ -4,9 +4,6 @@
 .classpath
 .project
 
-# platform specific jmods
-*-javafx/
-
 # secrets
 .env
 
