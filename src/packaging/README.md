@@ -1,0 +1,2 @@
+- [maven-jpackage-template](https://github.com/wiverson/maven-jpackage-template)
+    - [packaging](https://github.com/wiverson/maven-jpackage-template/tree/main/src/packaging)
