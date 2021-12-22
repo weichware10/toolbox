@@ -4,16 +4,30 @@ on:
   push:
     branches: [main]
 jobs:
-  checkstyle:
-    name: checkstyle
+  checkstyle-pr:
     runs-on: ubuntu-latest
+    if: "contains(github.event_name, 'pull_request')"
     steps:
       - uses: actions/checkout@v2
       - uses: dbelyaev/action-checkstyle@master
         with:
           github_token: ${{ secrets.WEICHBOT }}
           reporter: github-pr-review
-          level: info
+          level: error
+          filter_mode: nofilter
+          checkstyle_config: ./checkstyle.xml
+          checkstyle_version: 9.1
+          fail_on_error: true
+  checkstyle-push:
+    runs-on: ubuntu-latest
+    if: "contains(github.event_name, 'push')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.WEICHBOT }}
+          reporter: github-check
+          level: error
           filter_mode: nofilter
           checkstyle_config: ./checkstyle.xml
           checkstyle_version: 9.1
