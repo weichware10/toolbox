@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Kümmert sich um das Design des Tests Zoommaps.
+ * Kümmert sich um das Design des Tests Eyetracking.
  */
 public class EyeTrackingBildschirm {
 
