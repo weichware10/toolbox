@@ -17,7 +17,7 @@ public class ZoomTutorialTest {
     @Test
     @Ignore
     public void tutorialBooleanShouldBeRespected() {
-        ConfigClient configClient = new ConfigClient();
+        ConfigClient configClient = new ConfigClient(null);
         configClient.loadFromDataBase("www.weichware10.com/config");
     }
 }

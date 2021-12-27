@@ -35,6 +35,7 @@ public class CodeChartBildschirm {
             }
         });
 
+        //Voraussetzung der Test wurde angeschlossen
         Button endButton = new Button("Abschließen");
         endButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //erstellt den Config Client um die Informationen aus der Config zu handeln
-        ConfigClient configClient = new ConfigClient();
+        ConfigClient configClient = new ConfigClient(null);
 
         //startet die erste Szene
         Startbildschirm.display(primaryStage, configClient);
