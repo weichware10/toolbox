@@ -1,16 +1,12 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.toolbox.gui.Endbildschirm;
 import github.weichware10.util.config.ConfigClient;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -25,6 +21,16 @@ public class ZoomMapsBildschirm {
      * @param configClient - Informationen aus der Configfile holen
      */
     public static void display(Stage primaryStage, ConfigClient configClient) {
+        Label message = new Label("ZommMaps Test");
 
+        VBox layout = new VBox(10);
+        layout.getChildren().add(message);
+        layout.setAlignment(Pos.CENTER);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
+        Scene scene = new Scene(layout, screenBounds.getWidth(), screenBounds.getHeight());
+        primaryStage.setScene(scene);
+        primaryStage.setFullScreen(true);
     }
 }

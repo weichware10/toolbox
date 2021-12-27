@@ -3,7 +3,6 @@ package github.weichware10.toolbox.gui;
 import github.weichware10.toolbox.codecharts.CodeChartBildschirm;
 import github.weichware10.toolbox.eyetracking.EyeTrackingBildschirm;
 import github.weichware10.toolbox.zoommaps.ZoomMapsBildschirm;
-import github.weichware10.util.Enums.ToolType;
 import github.weichware10.util.config.ConfigClient;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,19 +11,20 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
+/**
+ * Bildschirm vorm Start des Test.
+ */
 public class TestVorbildschirm {
-
+    /**
+     * Bildschirm vorm Start des Test.
+     *
+     * @param primaryStage - Hauptfenster
+     * @param configClient - configClient für die ID
+     */
     public static void display(Stage primaryStage, ConfigClient configClient) {
         String title = null;
 
@@ -48,21 +48,25 @@ public class TestVorbildschirm {
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Endbildschirm.display(primaryStage, configClient);
-            }
-        });
-
-        Button endButton = new Button("Abschließen");
-        endButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Endbildschirm.display(primaryStage, configClient);
+                switch (configClient.getConfig().getToolType()) {
+                    case ZOOMMAPS:
+                        ZoomMapsBildschirm.display(primaryStage, configClient);
+                        break;
+                    case CODECHARTS:
+                        CodeChartBildschirm.display(primaryStage, configClient);
+                        break;
+                    case EYETRACKING:
+                        EyeTrackingBildschirm.display(primaryStage, configClient);
+                        break;
+                    default: // never
+                        break;
+                }
             }
         });
 
         HBox layoutButtons = new HBox(10);
         layoutButtons.setPadding(new Insets(10, 10, 10, 10));
-        layoutButtons.getChildren().addAll(startButton, endButton);
+        layoutButtons.getChildren().addAll(startButton);
         layoutButtons.setAlignment(Pos.CENTER);
 
         Label testMessage = new Label(String.format("Sie können den %s starten", title));

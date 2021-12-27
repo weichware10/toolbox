@@ -48,6 +48,7 @@ public class Startbildschirm {
             public void handle(ActionEvent event) {
                 boolean success = configClient.loadFromDataBase(trialIdInput.getText());
                 if (success) {
+                    //Tutorial noch hinzufügen an dieser Stelle
                     TestVorbildschirm.display(primaryStage, configClient);
                 } else {
                     warningMessage.setText("Bitte geben sie eine gültige ID ein.");
