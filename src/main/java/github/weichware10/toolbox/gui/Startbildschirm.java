@@ -44,7 +44,18 @@ public class Startbildschirm {
         startTestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Test started");
+                boolean success = configClient.loadFromDataBase(trialIdInput.getText());
+                if (success) {
+                    if (ToolType.ZOOMMAPS == configClient.getConfig().getToolType()) {
+                        ZoomMapsBildschirm.display(primaryStage, configClient);
+                    }
+                    if (ToolType.CODECHARTS == configClient.getConfig().getToolType()) {
+                        CodeChartBildschirm.display(primaryStage, configClient);
+                    }
+                    if (ToolType.EYETRACKING == configClient.getConfig().getToolType()) {
+                        EyeTrackingBildschirm.display(primaryStage, configClient);
+                    }
+                }
             }
         });
 
