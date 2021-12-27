@@ -30,8 +30,14 @@ public class CodeChartBildschirm {
         Button startButton = new Button("Start");
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                Endbildschirm.display(primaryStage, configClient);
+            public void handle(ActionEvent event) 
+                TrialData td = new TrialData();
+                if ('zoommaps') {
+                    ZoomMapsBildschirm.display(primaryStage, configClient, td);
+                } else if ('codecharts) {
+                    CodeChartsBildschirm.display(primaryStage, configClient, td);
+                }
+                Endbildschirm.display(primaryStage, configClient, td);
             }
         });
 
