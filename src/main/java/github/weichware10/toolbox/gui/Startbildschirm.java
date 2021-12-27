@@ -23,12 +23,14 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -157,8 +159,10 @@ public class Startbildschirm {
                 label.setStyle("-fx-font-weight: bold");
                 Label warning = new Label();
                 warning.setTextFill(Color.web("#da3633"));
-                Label errorMessage = new Label();
+                // text benutzt um wrappingWidthProperty zu benutzen
+                ScrollPane errorMessage = new ScrollPane();
                 errorMessage.setStyle("-fx-font-family: 'monospaced';");
+                errorMessage.setVisible(false);
 
                 gridPane.add(label, 0, 0, 2, 1);
                 gridPane.add(new Label("URL"), 0, 1);
@@ -190,7 +194,11 @@ public class Startbildschirm {
                     } catch (IllegalArgumentException e) {
                         Logger.info("Error while changing database connection");
                         warning.setText("Your input is not valid:");
-                        errorMessage.setText(e.getMessage());
+                        Text errorContent = new Text(e.getMessage());
+                        errorContent.wrappingWidthProperty().set(gridPane.getWidth() / 2);
+                        errorMessage.setContent(errorContent);
+                        errorMessage.setVisible(true);
+                        dialog.getDialogPane().setMinHeight(gridPane.getHeight());
                         okEvent.consume();
                     }
                     // erstellt den Config Client um die Informationen aus der Config zu handeln
