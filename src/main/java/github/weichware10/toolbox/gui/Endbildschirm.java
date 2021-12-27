@@ -1,6 +1,5 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.util.config.ConfigClient;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,7 +22,7 @@ public class Endbildschirm {
      *
      * @param primaryStage - Hauptfenster um Änderungen vorzunehmen
      */
-    public static void display(Stage primaryStage, ConfigClient configClient) {
+    public static void display(Stage primaryStage) {
         primaryStage.setTitle("Test beendet");
 
         Button endProgram = new Button("Beenden");
@@ -38,7 +37,7 @@ public class Endbildschirm {
         backToStart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Startbildschirm.display(primaryStage, configClient);
+                Startbildschirm.display(primaryStage);
             }
         });
 
