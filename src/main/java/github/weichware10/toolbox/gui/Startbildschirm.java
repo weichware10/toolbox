@@ -18,6 +18,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -35,6 +36,7 @@ public class Startbildschirm {
      * @param configClient - Informationen aus der Configfile holen
      */
     public static void display(Stage primaryStage, ConfigClient configClient) {
+        Label warningMessage = new Label();
         primaryStage.setTitle("ToolBox");
 
         TextField trialIdInput = new TextField();
@@ -46,15 +48,10 @@ public class Startbildschirm {
             public void handle(ActionEvent event) {
                 boolean success = configClient.loadFromDataBase(trialIdInput.getText());
                 if (success) {
-                    if (ToolType.ZOOMMAPS == configClient.getConfig().getToolType()) {
-                        ZoomMapsBildschirm.display(primaryStage, configClient);
-                    }
-                    if (ToolType.CODECHARTS == configClient.getConfig().getToolType()) {
-                        CodeChartBildschirm.display(primaryStage, configClient);
-                    }
-                    if (ToolType.EYETRACKING == configClient.getConfig().getToolType()) {
-                        EyeTrackingBildschirm.display(primaryStage, configClient);
-                    }
+                    TestVorbildschirm.display(primaryStage, configClient);
+                } else {
+                    warningMessage.setText("Bitte geben sie eine gültige ID ein.");
+                    warningMessage.setTextFill(Color.web("#da3633"));
                 }
             }
         });
@@ -64,6 +61,7 @@ public class Startbildschirm {
         VBox layoutTestIdCenterWindow = new VBox(10);
         layoutTestIdCenterWindow.setPadding(new Insets(10, 10, 10, 10));
         layoutTestIdCenterWindow.getChildren().addAll(trialIdExplenation, trialIdInput,
+                                                        warningMessage,
                                                         startTestButton);
         layoutTestIdCenterWindow.setAlignment(Pos.CENTER);
 
