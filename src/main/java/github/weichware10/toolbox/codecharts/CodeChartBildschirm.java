@@ -29,8 +29,8 @@ public class CodeChartBildschirm {
 
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 
-        Scene scene = new Scene(layout, screenBounds.getWidth(), screenBounds.getHeight());
+        Scene scene = new Scene(layout, screenBounds.getWidth() / 2, screenBounds.getHeight() / 2);
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(true);
     }
 }
