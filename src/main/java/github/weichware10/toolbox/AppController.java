@@ -48,10 +48,17 @@ public class AppController {
     }
 
     @FXML
+    void resetDb(){
+        Logger.info("app:content Trying to reset database");
+        Main.resetDataBaseConnection();
+    }
+
+    @FXML
     void initialize() {
         assert trialIdField != null
                 : "fx:id=\"trialIdField\" was not injected: check your FXML file 'App.fxml'.";
         assert warnText != null
                 : "fx:id=\"warnText\" was not injected: check your FXML file 'App.fxml'.";
     }
+
 }

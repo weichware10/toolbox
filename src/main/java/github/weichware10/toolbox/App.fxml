@@ -43,7 +43,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.AppController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -52,7 +51,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="open JSON config" />
                   <MenuItem mnemonicParsing="false" text="change database connection" />
-                  <MenuItem mnemonicParsing="false" text="reset database connection" />
+                  <MenuItem mnemonicParsing="false" onAction="#resetDb" text="reset database connection" />
                   <MenuItem mnemonicParsing="false" text="create zoommaps test" />
             </items>
           </Menu>

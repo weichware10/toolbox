@@ -170,7 +170,7 @@ public class Main extends Application {
      *
      * @return Erfolgsboolean
      */
-    private static boolean resetDataBaseConnection() {
+    protected static boolean resetDataBaseConnection() {
         // erstellt die Datenbankverbindung
         try {
             Dotenv dotenv = Dotenv.load();
