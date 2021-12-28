@@ -25,6 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        // Konsole zum Debuggen
         boolean debug = false;
         if (debug) {
             Stage logStage = new Stage();
