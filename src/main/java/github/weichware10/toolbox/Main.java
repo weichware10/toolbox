@@ -14,8 +14,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 /**
  * Toolbox GUI.
@@ -23,8 +23,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class Main extends Application {
     private Stage primaryStage;
-    static private ConfigClient configClient;
-    static private DataBaseClient dataBaseClient;
+    private static ConfigClient configClient;
+    private static DataBaseClient dataBaseClient;
 
     public static void main(String[] args) {
         launch(args);
@@ -71,10 +71,11 @@ public class Main extends Application {
      * }
      */
 
-     /**
-      * lädt Config aus JSON und versucht den Test zu starten.
-      * @param warnText
-      */
+    /**
+     * lädt Config aus JSON und versucht den Test zu starten.
+     *
+     * @param warnText - Fehlernachricht
+     */
     protected void loadJsonConfig(Text warnText) {
 
         warnText.setVisible(false);
@@ -138,12 +139,14 @@ public class Main extends Application {
 
     // TODO: Justin
     // Nachfrage ob Programm wirklich beendet werden soll
-    /* private void closeProgramm(Stage window) {
-        boolean answer = ConfirmBox.display();
-        if (answer) {
-            window.close();
-        }
-    } */
+    /*
+     * private void closeProgramm(Stage window) {
+     * boolean answer = ConfirmBox.display();
+     * if (answer) {
+     * window.close();
+     * }
+     * }
+     */
 
     /**
      * Loggen in Konsole.
