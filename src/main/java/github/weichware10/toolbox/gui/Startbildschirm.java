@@ -69,6 +69,7 @@ public class Startbildschirm {
             startTestButton.setDisable(true);
         }
 
+        // TEST STARTEN
         startTestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -109,6 +110,7 @@ public class Startbildschirm {
         MenuItem dataBaseReset = new MenuItem("reset database connection");
         adminMenu.getItems().addAll(jsonTest, dataBaseChange, dataBaseReset);
 
+        // JSON Datei laden
         jsonTest.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -193,6 +195,7 @@ public class Startbildschirm {
                 final Button ok = (Button) dialog.getDialogPane().lookupButton(okButtonType);
                 ok.addEventFilter(ActionEvent.ACTION, okEvent -> {
                     try {
+                        // Versuchen Datenbankclient zu erstellen
                         dataBaseClient = new DataBaseClient(
                                 url.getText(),
                                 username.getText(),
@@ -201,6 +204,7 @@ public class Startbildschirm {
                         warningMessage.setVisible(false);
                         startTestButton.setDisable(false);
                     } catch (IllegalArgumentException e) {
+                        // display error
                         Logger.info("Error while changing database connection");
                         warning.setText("Your input is not valid:");
                         // text benutzt um wrappingWidthProperty zu benutzen
@@ -249,36 +253,28 @@ public class Startbildschirm {
         primaryStage.setScene(toolBoxHome);
     }
 
+    /**
+     * Setzt die Datenbankverbindung auf die Werte in der env Datei
+     * @return Erfolgsboolean
+     */
     private static boolean resetDataBaseConnection() {
         // erstellt die Datenbankverbindung
-        // try {
-        //     Dotenv dotenv = Dotenv.load();
-        //     String url = dotenv.get("DB_URL");
-        //     if (url == null) {
-        //         url = System.getenv("DB_URL");
-        //     }
-        //     String username = dotenv.get("DB_USERNAME");
-        //     if (username == null) {
-        //         username = System.getenv("DB_USERNAME");
-        //     }
-        //     String password = dotenv.get("DB_PASSWORD");
-        //     if (password == null) {
-        //         password = System.getenv("DB_PASSWORD");
-        //     }
-        //     String schema = dotenv.get("DB_SCHEMA");
-        //     if (schema == null) {
-        //         schema = System.getenv("DB_SCHEMA");
-        //     }
-        //     dataBaseClient = new DataBaseClient(
-        //             url,
-        //             username,
-        //             password,
-        //             schema);
-        // } catch (IllegalArgumentException e) {
-        //     return false;
-        // }
-        // // erstellt den Config Client um die Informationen aus der Config zu handeln
-        // configClient = new ConfigClient(dataBaseClient);
-        return false; // TODO: zu true ändern
+        try {
+            Dotenv dotenv = Dotenv.load();
+            String url = dotenv.get("DB_URL");
+            String username = dotenv.get("DB_USERNAME");
+            String password = dotenv.get("DB_PASSWORD");
+            String schema = dotenv.get("DB_SCHEMA");
+            dataBaseClient = new DataBaseClient(
+                    url,
+                    username,
+                    password,
+                    schema);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        // erstellt den Config Client um die Informationen aus der Config zu handeln
+        configClient = new ConfigClient(dataBaseClient);
+        return true;
     }
 }

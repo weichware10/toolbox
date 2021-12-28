@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -24,15 +25,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Stage logStage = new Stage();
-        TextArea textArea = new TextArea();
-        Console console = new Console(textArea);
-        PrintStream ps = new PrintStream(console, true);
-        System.setOut(ps);
-        System.setErr(ps);
-        Scene terminal = new Scene(textArea);
-        logStage.setScene(terminal);
-        logStage.show();
+        boolean debug = false;
+        if (debug) {
+            Stage logStage = new Stage();
+            TextArea textArea = new TextArea();
+            Console console = new Console(textArea);
+            PrintStream ps = new PrintStream(console, true);
+            System.setOut(ps);
+            System.setErr(ps);
+            Scene terminal = new Scene(textArea);
+            logStage.setScene(terminal);
+            logStage.show();
+        }
+
 
         //startet die erste Szene
         Startbildschirm.display(primaryStage);
@@ -49,6 +54,7 @@ public class Main extends Application {
         });
 
         //Zeigt das Fenster
+        primaryStage.getIcons().add(new Image("app-icon.png"));
         primaryStage.show();
     }
 
