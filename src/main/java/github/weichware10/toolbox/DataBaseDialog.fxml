@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.DataBaseDialogController">
+   <header>
+      <Label text="insert login data...">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </header>
+   <content>
+      <VBox prefHeight="200.0" prefWidth="300.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="URL">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="urlTextField" promptText="url" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="username">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="usernameTextField" promptText="username" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="password">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="passwordField" promptText="password" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="schema">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="schemaTextField" promptText="schema" />
+               </children>
+            </HBox>
+            <Text fx:id="warningText" fill="#da3633" strokeType="OUTSIDE" strokeWidth="0.0" text="warning" visible="false" />
+            <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="error message" visible="false" wrappingWidth="250.0">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </content>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</DialogPane>

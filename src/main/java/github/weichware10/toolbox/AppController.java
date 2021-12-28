@@ -1,8 +1,15 @@
 package github.weichware10.toolbox;
 
+import java.io.IOException;
+
 import github.weichware10.util.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
@@ -48,9 +55,27 @@ public class AppController {
     }
 
     @FXML
-    void resetDb(){
-        Logger.info("app:content Trying to reset database");
-        Main.resetDataBaseConnection();
+    void changeDb() {
+        Logger.info("app:menu Starting database conection change");
+        main.changeDb();
+    }
+
+    @FXML
+    void resetDb() {
+        Logger.info("app:menu Trying to reset database");
+        main.resetDataBaseConnection();
+    }
+
+    @FXML
+    void createZoomMapsTestTrial() {
+        Logger.info("app:menu Creating ZoomMaps Test Trial");
+        main.createZoomMapsTestTrial(trialIdField);
+    }
+
+    @FXML
+    void createCodeChartsTestTrial() {
+        Logger.info("app:menu Creating CodeCharts Test Trial");
+        main.createCodeChartsTestTrial(trialIdField);
     }
 
     @FXML

@@ -50,9 +50,10 @@
           <Menu mnemonicParsing="false" text="admin">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="open JSON config" />
-                  <MenuItem mnemonicParsing="false" text="change database connection" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeDb" text="change database connection" />
                   <MenuItem mnemonicParsing="false" onAction="#resetDb" text="reset database connection" />
-                  <MenuItem mnemonicParsing="false" text="create zoommaps test" />
+                  <MenuItem mnemonicParsing="false" onAction="#createZoomMapsTestTrial" text="create zoommaps test" />
+                  <MenuItem mnemonicParsing="false" onAction="#createCodeChartsTestTrial" text="create codecharts test" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="help">
