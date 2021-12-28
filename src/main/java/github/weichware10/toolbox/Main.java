@@ -1,5 +1,6 @@
 package github.weichware10.toolbox;
 
+import github.weichware10.toolbox.gui.ConfirmBox;
 import github.weichware10.toolbox.gui.ConfirmBoxController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.config.ConfigClient;
@@ -53,8 +54,6 @@ public class Main extends Application {
         AppController controller = loader.getController();
         controller.setMain(this);
 
-        Scene scene = new Scene(root, 300, 275);
-
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -62,27 +61,11 @@ public class Main extends Application {
                 // Wir kümmern uns selber um das schließen
                 event.consume();
                 // Fenster schließen, ja oder nein?
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/ConfirmBox.fxml"));
-
-                //TODO: Joshua Fragen was hier Sache ist
-                Parent root = null;
-                try {
-                    root = loader.load();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-                Stage window = new Stage();
-
-                ConfirmBoxController controller = loader.getController();
-                controller.setStage(primaryStage, window);
-                Scene scene = new Scene(root, 300, 150);
-
-                window.setScene(scene);
-                window.show();
+                ConfirmBox.display(primaryStage);
             }
         });
+
+        Scene scene = new Scene(root, 300, 275);
 
         primaryStage.getIcons().add(new Image("app-icon.png"));
         primaryStage.setTitle("Toolbox");
