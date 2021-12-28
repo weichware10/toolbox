@@ -50,9 +50,7 @@ public class Startbildschirm {
      */
     public static void display(Stage primaryStage) {
 
-        resetDataBaseConnection();
-
-        Label warningMessage = new Label("Bitte geben sie eine gültige ID ein.");
+        Label warningMessage = new Label();
         warningMessage.setTextFill(Color.web("#da3633"));
         warningMessage.setVisible(false);
         primaryStage.setTitle("ToolBox");
@@ -61,9 +59,20 @@ public class Startbildschirm {
         trialIdInput.setPromptText("insert TrialID");
 
         Button startTestButton = new Button("Start");
+
+        boolean databaseConnection = resetDataBaseConnection();
+        String dataBaseWarning = "Keine Verbindung zur Datenbank.";
+        String trialIdWarning = "Bitte geben sie eine gültige ID ein.";
+        if (!databaseConnection) {
+            warningMessage.setText(dataBaseWarning);
+            warningMessage.setVisible(true);
+            startTestButton.setDisable(true);
+        }
+
         startTestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                warningMessage.setText(trialIdWarning);
                 // Verfügbarkeit überprüfen
                 boolean available = dataBaseClient.trials.getAvailability(trialIdInput.getText());
                 if (!available) {
@@ -159,7 +168,6 @@ public class Startbildschirm {
                 label.setStyle("-fx-font-weight: bold");
                 Label warning = new Label();
                 warning.setTextFill(Color.web("#da3633"));
-                // text benutzt um wrappingWidthProperty zu benutzen
                 ScrollPane errorMessage = new ScrollPane();
                 errorMessage.setStyle("-fx-font-family: 'monospaced';");
                 errorMessage.setVisible(false);
@@ -190,10 +198,12 @@ public class Startbildschirm {
                                 username.getText(),
                                 password.getText(),
                                 schema.getText());
-                        dialog.close();
+                        warningMessage.setVisible(false);
+                        startTestButton.setDisable(false);
                     } catch (IllegalArgumentException e) {
                         Logger.info("Error while changing database connection");
                         warning.setText("Your input is not valid:");
+                        // text benutzt um wrappingWidthProperty zu benutzen
                         Text errorContent = new Text(e.getMessage());
                         errorContent.wrappingWidthProperty().set(gridPane.getWidth() / 2);
                         errorMessage.setContent(errorContent);
@@ -213,7 +223,15 @@ public class Startbildschirm {
         dataBaseReset.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                resetDataBaseConnection();
+                boolean databaseConnection = resetDataBaseConnection();
+                if (!databaseConnection) {
+                    warningMessage.setText(dataBaseWarning);
+                    warningMessage.setVisible(true);
+                    startTestButton.setDisable(true);
+                } else {
+                    warningMessage.setVisible(false);
+                    startTestButton.setDisable(false);
+                }
             }
         });
 
@@ -231,15 +249,36 @@ public class Startbildschirm {
         primaryStage.setScene(toolBoxHome);
     }
 
-    private static void resetDataBaseConnection() {
+    private static boolean resetDataBaseConnection() {
         // erstellt die Datenbankverbindung
-        Dotenv dotenv = Dotenv.load();
-        dataBaseClient = new DataBaseClient(
-                dotenv.get("DB_URL"),
-                dotenv.get("DB_USERNAME"),
-                dotenv.get("DB_PASSWORD"),
-                dotenv.get("DB_SCHEMA"));
-        // erstellt den Config Client um die Informationen aus der Config zu handeln
-        configClient = new ConfigClient(dataBaseClient);
+        // try {
+        //     Dotenv dotenv = Dotenv.load();
+        //     String url = dotenv.get("DB_URL");
+        //     if (url == null) {
+        //         url = System.getenv("DB_URL");
+        //     }
+        //     String username = dotenv.get("DB_USERNAME");
+        //     if (username == null) {
+        //         username = System.getenv("DB_USERNAME");
+        //     }
+        //     String password = dotenv.get("DB_PASSWORD");
+        //     if (password == null) {
+        //         password = System.getenv("DB_PASSWORD");
+        //     }
+        //     String schema = dotenv.get("DB_SCHEMA");
+        //     if (schema == null) {
+        //         schema = System.getenv("DB_SCHEMA");
+        //     }
+        //     dataBaseClient = new DataBaseClient(
+        //             url,
+        //             username,
+        //             password,
+        //             schema);
+        // } catch (IllegalArgumentException e) {
+        //     return false;
+        // }
+        // // erstellt den Config Client um die Informationen aus der Config zu handeln
+        // configClient = new ConfigClient(dataBaseClient);
+        return false; // TODO: zu true ändern
     }
 }
