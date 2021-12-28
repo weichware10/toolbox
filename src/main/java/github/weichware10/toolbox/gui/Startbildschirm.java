@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
@@ -32,6 +33,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Screen;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
@@ -248,7 +250,9 @@ public class Startbildschirm {
         layoutTestIdWindow.setTop(testMenuBar);
         layoutTestIdWindow.setCenter(layoutTestIdCenterWindow);
 
-        toolBoxHome = new Scene(layoutTestIdWindow, 400, 400);
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+        toolBoxHome = new Scene(layoutTestIdWindow,
+                                screenBounds.getWidth() / 2, screenBounds.getHeight() / 2);
 
         primaryStage.setScene(toolBoxHome);
     }
