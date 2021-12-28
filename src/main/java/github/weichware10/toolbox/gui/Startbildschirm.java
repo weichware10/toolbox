@@ -59,6 +59,7 @@ public class Startbildschirm {
 
         TextField trialIdInput = new TextField();
         trialIdInput.setPromptText("insert TrialID");
+        trialIdInput.setMaxSize(150, 20);
 
         Button startTestButton = new Button("Start");
 
