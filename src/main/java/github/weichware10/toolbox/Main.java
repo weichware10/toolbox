@@ -1,16 +1,12 @@
 package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.ConfirmBox;
-import github.weichware10.toolbox.gui.ConfirmBoxController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.io.IOException;
 import java.io.OutputStream;
-
-import com.fasterxml.jackson.databind.introspect.WithMember;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

@@ -1,11 +1,13 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
+/**
+ * Funktionen für die grafischen Elemente.
+ */
 public class ConfirmBoxController {
 
     private Stage primaryStage;
