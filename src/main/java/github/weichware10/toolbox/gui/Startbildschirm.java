@@ -254,7 +254,8 @@ public class Startbildschirm {
     }
 
     /**
-     * Setzt die Datenbankverbindung auf die Werte in der env Datei
+     * Setzt die Datenbankverbindung auf die Werte in der env Datei.
+     *
      * @return Erfolgsboolean
      */
     private static boolean resetDataBaseConnection() {
