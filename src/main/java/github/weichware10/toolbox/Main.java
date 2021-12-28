@@ -1,12 +1,17 @@
 package github.weichware10.toolbox;
 
+import github.weichware10.toolbox.gui.ConfirmBoxController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import com.fasterxml.jackson.databind.introspect.WithMember;
+
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Toolbox GUI.
@@ -48,6 +54,35 @@ public class Main extends Application {
         controller.setMain(this);
 
         Scene scene = new Scene(root, 300, 275);
+
+        // Event welches beim schließen eines Fensters aufgerufen wird
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                // Wir kümmern uns selber um das schließen
+                event.consume();
+                // Fenster schließen, ja oder nein?
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/ConfirmBox.fxml"));
+
+                //TODO: Joshua Fragen was hier Sache ist
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                Stage window = new Stage();
+
+                ConfirmBoxController controller = loader.getController();
+                controller.setStage(primaryStage, window);
+                Scene scene = new Scene(root, 300, 150);
+
+                window.setScene(scene);
+                window.show();
+            }
+        });
 
         primaryStage.getIcons().add(new Image("app-icon.png"));
         primaryStage.setTitle("Toolbox");
@@ -136,17 +171,6 @@ public class Main extends Application {
         // Tutorial noch hinzufügen an dieser Stelle
         TestVorbildschirm.display(primaryStage, configClient);
     }
-
-    // TODO: Justin
-    // Nachfrage ob Programm wirklich beendet werden soll
-    /*
-     * private void closeProgramm(Stage window) {
-     * boolean answer = ConfirmBox.display();
-     * if (answer) {
-     * window.close();
-     * }
-     * }
-     */
 
     /**
      * Loggen in Konsole.
