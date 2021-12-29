@@ -8,6 +8,7 @@ import org.junit.Test;
 /**
  * Testet die Raster-Klasse.
  */
+@SuppressWarnings("unused")
 public class CodeChartsRasterTest {
     /**
      * testet ob der Input richtig gesetzt wurde.

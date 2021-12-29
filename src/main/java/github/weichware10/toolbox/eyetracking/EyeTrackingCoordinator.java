@@ -5,6 +5,7 @@ import github.weichware10.util.data.TrialData;
 /**
  * Bestimmung der Blickkoordinaten und Abspeicherung der Versuchsdaten.
  */
+@SuppressWarnings("unused")
 public class EyeTrackingCoordinator {
     private float distance;
     private float position;

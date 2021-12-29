@@ -6,6 +6,7 @@ import github.weichware10.util.data.TrialData;
  * Bekommt Rohdaten des Systems (Mausklick), berechnet neue Position des Bildes
  * und meldet Speichererfolg.
  */
+@SuppressWarnings("unused")
 public class ZoomCalculator {
     private float speed;
     private float[] position;

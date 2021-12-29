@@ -9,6 +9,7 @@ import java.util.List;
  * Zeigt das Raster an und ist für die Berechnung.
  * von Rastergröße und Koordinate zuständig.
  */
+@SuppressWarnings("unused")
 public class CodeChartsRaster {
     private int[] dimensions;
     private String[] strings;

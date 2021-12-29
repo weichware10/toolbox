@@ -4,6 +4,7 @@ package github.weichware10.toolbox.codecharts;
  * Zeigt das Eingabefenster an und nimmt den Stringinput.
  * Überprüft den String auf Korrektheit.
  */
+@SuppressWarnings("unused")
 public class CodeChartsEingabefenster {
     private final CodeChartsCoordinator coordinator;
     private boolean button;
