@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.DataBaseDialogController">
+<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.DataBaseDialogController">
    <header>
       <Label text="insert login data...">
          <font>

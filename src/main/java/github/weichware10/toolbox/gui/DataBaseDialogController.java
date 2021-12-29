@@ -1,4 +1,4 @@
-package github.weichware10.toolbox;
+package github.weichware10.toolbox.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;

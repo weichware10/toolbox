@@ -1,4 +1,4 @@
-package github.weichware10.toolbox;
+package github.weichware10.toolbox.gui;
 
 import github.weichware10.util.Logger;
 import javafx.fxml.FXML;
@@ -12,15 +12,15 @@ import javafx.scene.text.Text;
  */
 public class AppController {
 
-    private Main main;
+    private App app;
 
     @FXML
     private TextField trialIdField;
     @FXML
     private Text warnText;
 
-    public void setMain(Main main) {
-        this.main = main;
+    public void setApp(App main) {
+        this.app = main;
     }
 
     @FXML
@@ -31,7 +31,7 @@ public class AppController {
     @FXML
     public void loadJsonConfig() {
         Logger.info("app:menu Loading JSON Config");
-        main.loadJsonConfig(warnText);
+        app.loadJsonConfig(warnText);
     }
 
     @FXML
@@ -44,31 +44,31 @@ public class AppController {
     @FXML
     void startTrial() {
         Logger.info("app:content Trying to start Trial");
-        main.startTrial(trialIdField.getText(), warnText);
+        app.startTrial(trialIdField.getText(), warnText);
     }
 
     @FXML
     void changeDb() {
         Logger.info("app:menu Starting database conection change");
-        main.changeDb();
+        app.changeDb();
     }
 
     @FXML
     void resetDb() {
         Logger.info("app:menu Trying to reset database");
-        main.resetDataBaseConnection();
+        app.resetDataBaseConnection();
     }
 
     @FXML
     void createZoomMapsTestTrial() {
         Logger.info("app:menu Creating ZoomMaps Test Trial");
-        main.createZoomMapsTestTrial(trialIdField);
+        app.createZoomMapsTestTrial(trialIdField);
     }
 
     @FXML
     void createCodeChartsTestTrial() {
         Logger.info("app:menu Creating CodeCharts Test Trial");
-        main.createCodeChartsTestTrial(trialIdField);
+        app.createCodeChartsTestTrial(trialIdField);
     }
 
     @FXML
