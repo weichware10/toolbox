@@ -34,12 +34,13 @@ public class Endbildschirm {
         });
 
         Button backToStart = new Button("Neuer Test");
-        backToStart.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Startbildschirm.display(primaryStage);
-            }
-        });
+        // TODO JUSTIN
+        // backToStart.setOnAction(new EventHandler<ActionEvent>() {
+        //     @Override
+        //     public void handle(ActionEvent event) {
+        //         Startbildschirm.display(primaryStage);
+        //     }
+        // });
 
         HBox layoutEndscreenButtons = new HBox(10);
         layoutEndscreenButtons.setPadding(new Insets(10, 10, 10, 10));
