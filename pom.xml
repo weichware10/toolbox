@@ -24,7 +24,9 @@
     <app.version>${maven.build.timestamp}</app.version>
 
     <!-- modules for custom JVM image -->
-    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging</jvm.modules>
+    <!-- JAVAFX: media, controls, fxml -->
+    <!-- UTIL: sql, management, security.sasl -->
+    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl</jvm.modules>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
@@ -185,6 +187,23 @@
             <version>9.1</version>
           </dependency>
         </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>write-project-properties</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.build.outputDirectory}/my.properties</outputFile>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -419,6 +438,7 @@
         </os>
       </activation>
       <properties>
+        <logs>C:/Program Files/Toolbox/logs</logs>
         <platform>win</platform>
       </properties>
       <build>

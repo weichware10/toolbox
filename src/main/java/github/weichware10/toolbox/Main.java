@@ -9,8 +9,10 @@ import github.weichware10.util.config.Configuration;
 import github.weichware10.util.config.ZoomMapsConfiguration;
 import github.weichware10.util.db.DataBaseClient;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import javafx.application.Application;
@@ -23,7 +25,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
@@ -31,6 +32,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.joda.time.DateTime;
 
 /**
  * Toolbox GUI.
@@ -41,12 +43,24 @@ public class Main extends Application {
     private static ConfigClient configClient;
     private static DataBaseClient dataBaseClient;
 
+    /**
+     * Einstiegspunkt der Toolbox - Einführungsbildschirm.
+     *
+     * @param args - args
+     */
     public static void main(String[] args) {
+
+        // in Datei und Konsole loggen
+        String location = Dotenv.configure().directory(".").load().get("LOGS");
+        PrintStream ps = new PrintStream(new Console(location, System.out), true);
+        System.setOut(ps);
+        System.setErr(ps);
+
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
         resetDataBaseConnection();
 
@@ -57,7 +71,13 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("App.fxml"));
 
-        Parent root = loader.load();
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (Exception e) {
+            Logger.error("Error when loading main scene", e, true);
+            System.exit(-1);
+        }
 
         AppController controller = loader.getController();
         controller.setMain(this);
@@ -80,22 +100,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    // Konsole zum Debuggen
-    /*
-     * boolean debug = false;
-     * if (debug) {
-     * Stage logStage = new Stage();
-     * TextArea textArea = new TextArea();
-     * Console console = new Console(textArea);
-     * PrintStream ps = new PrintStream(console, true);
-     * System.setOut(ps);
-     * System.setErr(ps);
-     * Scene terminal = new Scene(textArea);
-     * logStage.setScene(terminal);
-     * logStage.show();
-     * }
-     */
 
     /**
      * lädt Config aus JSON und versucht den Test zu starten.
@@ -250,23 +254,6 @@ public class Main extends Application {
     }
 
     /**
-     * Loggen in Konsole.
-     */
-    public static class Console extends OutputStream {
-
-        private TextArea output;
-
-        public Console(TextArea ta) {
-            this.output = ta;
-        }
-
-        @Override
-        public void write(int i) throws IOException {
-            output.appendText(String.valueOf((char) i));
-        }
-    }
-
-    /**
      * Setzt die Datenbankverbindung auf die Werte in der env Datei.
      *
      * @return Erfolgsboolean
@@ -275,6 +262,7 @@ public class Main extends Application {
         // erstellt die Datenbankverbindung
         try {
             Dotenv dotenv = Dotenv.load();
+            // Dotenv dotenv = Dotenv.configure().directory(".").load();
             String url = dotenv.get("DB_URL");
             String username = dotenv.get("DB_USERNAME");
             String password = dotenv.get("DB_PASSWORD");
@@ -290,5 +278,44 @@ public class Main extends Application {
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
         return true;
+    }
+
+    // TODO: in util verschieben
+    /**
+     * Loggen in Konsole.
+     */
+    public static class Console extends OutputStream {
+
+        private PrintStream log;
+        private PrintStream out;
+
+        /**
+         * Erstellt eine neue Konsole um in eine Datei und in die Konsole zu loggen.
+         *
+         * @param logfile - Speicherort des Logfiles.
+         */
+        public Console(String logfile, PrintStream out) {
+            this.out = out;
+            if (logfile == null) {
+                return;
+            }
+            logfile = String.format(logfile + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
+            try {
+                File file = new File(logfile);
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+                log = new PrintStream(file);
+            } catch (IOException e) {
+                log = null;
+            }
+        }
+
+        @Override
+        public void write(int i) throws IOException {
+            this.out.append((char) i);
+            if (log != null) {
+                log.append((char) i);
+            }
+        }
     }
 }
