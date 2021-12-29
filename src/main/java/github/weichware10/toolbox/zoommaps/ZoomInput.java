@@ -4,6 +4,7 @@ package github.weichware10.toolbox.zoommaps;
  * Nimmt Systeminput bzgl. der Koordinaten entgegen und verarbeitet sie
  * zu rawInput (int[2]).
  */
+@SuppressWarnings("unused")
 public class ZoomInput {
 
     /**
