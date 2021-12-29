@@ -1,5 +1,6 @@
 package github.weichware10.toolbox;
 
+import github.weichware10.toolbox.gui.ConfirmBox;
 import github.weichware10.toolbox.gui.ConfirmBoxController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.Logger;
@@ -86,10 +87,12 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                // Wir kümmern uns selber um das schließen
-                event.consume();
                 // Fenster schließen, ja oder nein?
-                ConfirmBoxController.display(primaryStage);
+                boolean confirmation = ConfirmBox.display("Do you want to close the window?");
+                // event consumieren -> nicht schließen
+                if (!confirmation) {
+                    event.consume();
+                }
             }
         });
 

@@ -1,54 +1,14 @@
 package github.weichware10.toolbox.gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 /**
- * Funktionen für die grafischen Elemente.
+ * Managed ConfirmBoxen.
  */
 public class ConfirmBoxController {
-
-    private Stage primaryStage;
-    private Stage window;
-
-    public void setStage(Stage primaryStage, Stage window) {
-        this.primaryStage = primaryStage;
-        this.window = window;
-    }
-
-    /**
-     * This function shows the window with a yes or no decission.
-     *
-     * @param primaryStage - primary Window to do changes on.
-     */
-    public static void display(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(
-            ConfirmBoxController.class.getResource("ConfirmBox.fxml"));
-        //TODO: Joshua Fragen was hier Sache ist
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        Stage window = new Stage();
-        window.setTitle("Really Quit?");
-
-        ConfirmBoxController controller = loader.getController();
-        controller.setStage(primaryStage, window);
-        Scene scene = new Scene(root, 300, 150);
-
-        window.setScene(scene);
-        window.show();
-    }
 
     @FXML
     private ResourceBundle resources;
@@ -57,19 +17,17 @@ public class ConfirmBoxController {
     private URL location;
 
     @FXML
+    private Label promptLabel;
+
+    protected void setPrompt(String prompt) {
+        promptLabel.setText(prompt);
+    }
+
+    @FXML
     void initialize() {
+        assert promptLabel != null
+                : "fx:id=\"promptLabel\" was not injected: check your FXML file 'Untitled'.";
 
-    }
-
-    @FXML
-    void closeProgramm() {
-        window.close();
-        primaryStage.close();
-    }
-
-    @FXML
-    void closeWindow() {
-        window.close();
     }
 
 }
