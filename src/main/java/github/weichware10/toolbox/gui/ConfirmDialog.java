@@ -11,23 +11,22 @@ import javafx.scene.control.Dialog;
 /**
  * Kümmert sich um das Design der Rückfrage.
  */
-public class ConfirmBox {
+public class ConfirmDialog {
     /**
      * Die eigentliche Funktion, die den Startbildschirm darstellt.
      *
      * @param prompt - Fragestellung
      */
     public static boolean display(String prompt) {
-        FXMLLoader loader = new FXMLLoader(ConfirmBox.class.getResource("ConfirmBox.fxml"));
+        FXMLLoader loader = new FXMLLoader(ConfirmDialog.class.getResource("ConfirmDialog.fxml"));
         Parent root = null;
         try {
             root = loader.load();
         } catch (IOException e) {
-            Logger.error("error when loading confirm box", e);
             return false;
         }
 
-        ConfirmBoxController controller = loader.getController();
+        ConfirmDialogController controller = loader.getController();
         controller.setPrompt(prompt);
 
         // ButtonType okButtonType = new ButtonType("OK", );

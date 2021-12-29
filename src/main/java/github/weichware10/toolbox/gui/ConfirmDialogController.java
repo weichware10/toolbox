@@ -6,9 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
- * Managed ConfirmBoxen.
+ * Managed ConfirmDialoge.
  */
-public class ConfirmBoxController {
+public class ConfirmDialogController {
 
     @FXML
     private ResourceBundle resources;

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 
 
-<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.ConfirmBoxController">
+<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.ConfirmDialogController">
    <content>
       <Label fx:id="promptLabel" text="prompt" />
    </content>

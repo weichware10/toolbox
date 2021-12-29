@@ -1,7 +1,7 @@
 package github.weichware10.toolbox;
 
-import github.weichware10.toolbox.gui.ConfirmBox;
-import github.weichware10.toolbox.gui.ConfirmBoxController;
+import github.weichware10.toolbox.gui.ConfirmDialog;
+import github.weichware10.toolbox.gui.ConfirmDialogController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
@@ -88,7 +88,7 @@ public class Main extends Application {
             @Override
             public void handle(WindowEvent event) {
                 // Fenster schließen, ja oder nein?
-                boolean confirmation = ConfirmBox.display("Do you want to close the window?");
+                boolean confirmation = ConfirmDialog.display("Do you want to close the window?");
                 // event consumieren -> nicht schließen
                 if (!confirmation) {
                     event.consume();
