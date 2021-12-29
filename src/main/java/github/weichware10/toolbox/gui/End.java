@@ -49,10 +49,16 @@ public class End {
         primaryStage.setScene(scene);
     }
 
+    /**
+     * schließt das Programm.
+     */
     protected void closeProgramm() {
         primaryStage.close();
     }
 
+    /**
+     * Kehrt zum Startbildschirm zurück.
+     */
     protected void newTest() {
         new App(primaryStage, dataBaseClient);
     }

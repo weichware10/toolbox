@@ -57,7 +57,9 @@ public class CodeCharts {
         primaryStage.setScene(scene);
     }
 
-
+    /**
+     * Beendet den Test und gibt die erhobenen Daten an den Endscreen weiter.
+     */
     public void endTest() {
         new End(primaryStage, dataBaseClient, trialData);
     }
