@@ -19,13 +19,14 @@ public class AppController {
     @FXML
     private Text warnText;
 
-    public void setApp(App main) {
-        this.app = main;
+    public void setApp(App app) {
+        this.app = app;
     }
 
     @FXML
     public void openDocumentation() {
         Logger.info("app:menu Opening Docs");
+        app.openDocs();
     }
 
     @FXML

@@ -8,6 +8,10 @@ import github.weichware10.util.config.Configuration;
 import github.weichware10.util.config.ZoomMapsConfiguration;
 import github.weichware10.util.db.DataBaseClient;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
@@ -30,8 +34,9 @@ public class App {
     /**
      * zeigt den Hauptbildschirm an.
      *
-     * @param primaryStage - Fenster
-     * @param dataBaseClient - der DataBaseClient, falls man ihn vom Ende wiederverwendet
+     * @param primaryStage   - Fenster
+     * @param dataBaseClient - der DataBaseClient, falls man ihn vom Ende
+     *                       wiederverwendet
      */
     public App(Stage primaryStage, DataBaseClient dataBaseClient) {
         if (dataBaseClient == null) {
@@ -184,6 +189,17 @@ public class App {
         dataBaseClient = newClient;
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
+    }
+
+    protected void openDocs() {
+        if (Desktop.isDesktopSupported()
+                && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://weichware10.github.io/dokumente/"));
+            } catch (IOException | URISyntaxException e) {
+                Logger.error("error occured while opening documentation", e);
+            }
+        }
     }
 
     /**
