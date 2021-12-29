@@ -19,7 +19,7 @@ public class AppController {
     @FXML
     private Text warnText;
 
-    public void setApp(App app) {
+    protected void setApp(App app) {
         this.app = app;
     }
 
@@ -63,13 +63,16 @@ public class AppController {
     @FXML
     void createZoomMapsTestTrial() {
         Logger.info("app:menu Creating ZoomMaps Test Trial");
-        app.createZoomMapsTestTrial(trialIdField);
+        app.createZoomMapsTestTrial(trialIdField, warnText);
     }
 
+    /**
+     * wird durch Menü aufgerufen.
+     */
     @FXML
     void createCodeChartsTestTrial() {
         Logger.info("app:menu Creating CodeCharts Test Trial");
-        app.createCodeChartsTestTrial(trialIdField);
+        app.createCodeChartsTestTrial(trialIdField, warnText);
     }
 
     @FXML

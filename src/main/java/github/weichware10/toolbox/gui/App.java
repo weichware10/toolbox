@@ -101,6 +101,12 @@ public class App {
         }
     }
 
+    /**
+     * Nimmt eine trialId entgegen und startet den Versuch. Bei Fehlern wird eine Warnung angezeigt.
+     *
+     * @param trialId - die ID des Versuches
+     * @param warnText - das warnText-Objekt
+     */
     protected void startTrial(String trialId, Text warnText) {
 
         warnText.setVisible(false);
@@ -134,10 +140,20 @@ public class App {
         new PreTest(primaryStage, configClient, dataBaseClient);
     }
 
-    protected void createZoomMapsTestTrial(TextField trialIdInput) {
+    /**
+     * Erstellt eine neue ZoomMaps Konfiguration,
+     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
+     *
+     * @param trialIdInput - das TextField zum Eintragen der generierten ID
+     * @param warnText - Text Objekt zum Ausgeben einer Warnung
+     */
+    protected void createZoomMapsTestTrial(TextField trialIdInput, Text warnText) {
         if (dataBaseClient == null) {
+            warnText.setText("no database connection");
+            warnText.setVisible(true);
             return;
         }
+
         ZoomMapsConfiguration zoomMapsConfiguration = new ZoomMapsConfiguration(
                 4.2f,
                 true,
@@ -152,10 +168,20 @@ public class App {
                 trialIdInput);
     }
 
-    protected void createCodeChartsTestTrial(TextField trialIdInput) {
+    /**
+     * Erstellt eine neue CodeCharts Konfiguration,
+     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
+     *
+     * @param trialIdInput - das TextField zum Eintragen der generierten ID
+     * @param warnText - Text Objekt zum Ausgeben einer Warnung
+     */
+    protected void createCodeChartsTestTrial(TextField trialIdInput, Text warnText) {
         if (dataBaseClient == null) {
+            warnText.setText("no database connection");
+            warnText.setVisible(true);
             return;
         }
+
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
                 Arrays.asList("string1", "string2"),
                 new int[] { 10, 10 },
@@ -172,7 +198,15 @@ public class App {
                 trialIdInput);
     }
 
-    protected void createTestTrial(Configuration configuration, TextField trialIdInput) {
+    /**
+     * Erstellt einen neuen Versuch
+     * und trägt die dazugehörige ID in das Textfeld ein.
+     *
+     * @param configuration - die zu benutzende configuration
+     * @param trialIdInput - das TextField zum Eintragen der generierten ID
+     */
+    protected void createTestTrial(Configuration configuration,
+            TextField trialIdInput) {
         String configId = dataBaseClient.configurations.set(configuration);
         List<String> trialIds = dataBaseClient.trials.add(configId, 1);
         if (trialIds.size() > 0) {
@@ -180,6 +214,10 @@ public class App {
         }
     }
 
+    /**
+     * ändert die Zugangsdaten zur Datenbank.
+     * dabei wird ein neuer Dialog eingeblendet
+     */
     protected void changeDb() {
         DataBaseClient newClient = new DataBaseDialog().getDataBaseClient();
         if (newClient == null) {
@@ -191,6 +229,9 @@ public class App {
         configClient = new ConfigClient(dataBaseClient);
     }
 
+    /**
+     * öffnet die Dokumentation im Browser.
+     */
     protected void openDocs() {
         if (Desktop.isDesktopSupported()
                 && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
@@ -203,11 +244,11 @@ public class App {
     }
 
     /**
-     * Setzt die Datenbankverbindung auf die Werte in der env Datei.
-     *
-     * @return Erfolgsboolean
+     * Setzt die Datenbankverbindung auf die Werte in der .env Datei.
+     * Der Erfolg kann daran abgelesen werden, ob {@link #dataBaseClient} {@code null} ist.
+     * Der ConfigClient wird im gleichen Zug angepasst.
      */
-    protected boolean resetDataBaseConnection() {
+    protected void resetDataBaseConnection() {
         // erstellt die Datenbankverbindung
         try {
             Dotenv dotenv = Dotenv.load();
@@ -222,10 +263,12 @@ public class App {
                     password,
                     schema);
         } catch (IllegalArgumentException e) {
-            return false;
+            Logger.error("error when loading env", e);
+            // auf null setzen, falls die Verbindung vorher angepasst wurde und dies gewünscht ist
+            dataBaseClient = null;
+            return;
         }
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
-        return true;
     }
 }
