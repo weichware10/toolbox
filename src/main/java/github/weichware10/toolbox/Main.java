@@ -37,6 +37,7 @@ public class Main extends Application {
 
     /**
      * setzt allgemeine Werte der primaryStage und startet die App.
+     *
      * @param primaryStage - das Hauptfenster
      */
     @Override
