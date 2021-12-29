@@ -1,6 +1,5 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.util.Logger;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +11,24 @@ import javafx.scene.control.Dialog;
  * Kümmert sich um das Design der Rückfrage.
  */
 public class ConfirmDialog {
+
+    private final String prompt;
+
     /**
-     * Die eigentliche Funktion, die den Startbildschirm darstellt.
+     * Erstellt einen neuen ja/nein Dialog.
      *
      * @param prompt - Fragestellung
      */
-    public static boolean display(String prompt) {
+    public ConfirmDialog(String prompt) {
+        this.prompt = prompt;
+    }
+
+    /**
+     * zeigt den Dialog an und gibt einen Boolean-wert zurück.
+     *
+     * @return Konfirmationsboolean
+     */
+    public boolean getConfirmation() {
         FXMLLoader loader = new FXMLLoader(ConfirmDialog.class.getResource("ConfirmDialog.fxml"));
         Parent root = null;
         try {
@@ -43,8 +54,6 @@ public class ConfirmDialog {
         });
 
         Optional<Boolean> returnvalue = dialog.showAndWait();
-        Logger.info(returnvalue.toString());
-
 
         if (returnvalue.isPresent()) {
             return returnvalue.get();

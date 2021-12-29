@@ -44,7 +44,7 @@ public class Main extends Application {
             @Override
             public void handle(WindowEvent event) {
                 // Fenster schließen, ja oder nein?
-                boolean confirmation = ConfirmDialog.display("Do you want to close the window?");
+                boolean confirmation = new ConfirmDialog("Do you want to close the window?").getConfirmation();
                 // event consumieren -> nicht schließen
                 if (!confirmation) {
                     event.consume();
