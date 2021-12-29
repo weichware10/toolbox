@@ -1,49 +1,13 @@
 package github.weichware10.toolbox.gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  * Takes care over the functionality and Design of the EndWindow.
  */
 public class EndWindowController {
-    private Stage primaryStage;
-
-    public void setStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
-    /**
-     * This function shows the window with a yes or no decission.
-     *
-     * @param primaryStage - primary Window to do changes on.
-     */
-    public static void display(Stage primaryStage) {
-        primaryStage.setTitle("Test finished");
-
-        FXMLLoader loader = new FXMLLoader(
-            EndWindowController.class.getResource("EndWindow.fxml"));
-        //TODO: Joshua Fragen was hier Sache ist
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        EndWindowController controller = loader.getController();
-        controller.setStage(primaryStage);
-        Scene scene = new Scene(root);
-
-        primaryStage.setScene(scene);
-    }
 
     @FXML
     private ResourceBundle resources;
@@ -57,8 +21,8 @@ public class EndWindowController {
     }
 
     @FXML
-    void closeProgramm() {
-        primaryStage.close();
+    void close() {
+        EndWindow.closeProgramm();
     }
 
     @FXML
