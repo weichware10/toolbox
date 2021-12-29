@@ -82,7 +82,7 @@ public class App {
         // Tutorial noch hinzufügen an dieser Stelle
 
         try {
-            TestVorbildschirm.display(primaryStage, configClient);
+            new PreTest(primaryStage, configClient, dataBaseClient);
         } catch (Exception e) {
             warnText.setVisible(true);
             return;
@@ -119,7 +119,7 @@ public class App {
         }
 
         // Tutorial noch hinzufügen an dieser Stelle
-        TestVorbildschirm.display(primaryStage, configClient);
+        new PreTest(primaryStage, configClient, dataBaseClient);
     }
 
     protected void createZoomMapsTestTrial(TextField trialIdInput) {
