@@ -1,8 +1,10 @@
 package github.weichware10.toolbox.eyetracking;
 
-import github.weichware10.toolbox.gui.EndWindow;
+import github.weichware10.toolbox.gui.End;
+import github.weichware10.util.Enums.ToolType;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
+import github.weichware10.util.data.TrialData;
 import github.weichware10.util.db.DataBaseClient;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +20,8 @@ public class EyeTracking {
 
     @SuppressWarnings("unused")
     private final ConfigClient configClient;
-    @SuppressWarnings("unused")
     private final DataBaseClient dataBaseClient;
+    private final TrialData trialData;
 
 
     /**
@@ -34,6 +36,10 @@ public class EyeTracking {
         this.primaryStage = primaryStage;
         this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
+        this.trialData = new TrialData(
+                ToolType.EYETRACKING,
+                configClient.getConfig().getTrialId(),
+                configClient.getConfig().getConfigId());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EyeTracking.fxml"));
 
@@ -54,6 +60,6 @@ public class EyeTracking {
 
 
     public void endTest() {
-        new EndWindow().display(primaryStage);
+        new End(primaryStage, dataBaseClient, trialData);
     }
 }

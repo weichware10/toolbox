@@ -37,14 +37,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        new App(primaryStage);
+        new App(primaryStage, null);
 
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 // Fenster schließen, ja oder nein?
-                boolean confirmation = new ConfirmDialog("Do you want to close the window?").getConfirmation();
+                boolean confirmation = new ConfirmDialog("Do you want to close the window?")
+                        .getConfirmation();
                 // event consumieren -> nicht schließen
                 if (!confirmation) {
                     event.consume();

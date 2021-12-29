@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.EndWindowController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.EndController">
    <children>
       <Label text="You have finished your test.">
          <font>
@@ -15,8 +15,8 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#closeProgramm" text="Close" />
-            <Button mnemonicParsing="false" text="New Test" />
+            <Button mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+            <Button mnemonicParsing="false" onAction="#newTest" text="New Test" />
          </children>
       </HBox>
    </children>

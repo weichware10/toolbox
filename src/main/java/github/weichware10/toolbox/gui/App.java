@@ -31,9 +31,15 @@ public class App {
      * zeigt den Hauptbildschirm an.
      *
      * @param primaryStage - Fenster
+     * @param dataBaseClient - der DataBaseClient, falls man ihn vom Ende wiederverwendet
      */
-    public App(Stage primaryStage) {
-        resetDataBaseConnection();
+    public App(Stage primaryStage, DataBaseClient dataBaseClient) {
+        if (dataBaseClient == null) {
+            resetDataBaseConnection();
+        } else {
+            this.dataBaseClient = dataBaseClient;
+            this.configClient = new ConfigClient(dataBaseClient);
+        }
 
         this.primaryStage = primaryStage;
 
