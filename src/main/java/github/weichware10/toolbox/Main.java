@@ -1,7 +1,7 @@
 package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.App;
-import github.weichware10.toolbox.gui.ConfirmDialog;
+import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package github.weichware10.toolbox.gui;
+package github.weichware10.toolbox.gui.dialogs;
 
 import github.weichware10.util.Logger;
 import github.weichware10.util.db.DataBaseClient;

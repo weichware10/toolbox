@@ -1,7 +1,8 @@
-package github.weichware10.toolbox.gui;
+package github.weichware10.toolbox.gui.dialogs;
 
 import java.io.IOException;
 import java.util.Optional;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
