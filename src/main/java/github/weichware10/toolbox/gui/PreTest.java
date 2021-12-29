@@ -1,7 +1,7 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.codecharts.CodeChartBildschirm;
-import github.weichware10.toolbox.zoommaps.ZoomMapsBildschirm;
+import github.weichware10.toolbox.codecharts.CodeCharts;
+import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
 import java.io.IOException;
@@ -68,10 +68,10 @@ public class PreTest {
     protected void startTest() {
         switch (configClient.getConfig().getToolType()) {
             case ZOOMMAPS:
-                ZoomMapsBildschirm.display(primaryStage, configClient);
+                new ZoomMaps(primaryStage, configClient, dataBaseClient);
                 break;
             case CODECHARTS:
-                CodeChartBildschirm.display(primaryStage, configClient);
+                new CodeCharts(primaryStage, configClient, dataBaseClient);
                 break;
             default: // never
                 break;
