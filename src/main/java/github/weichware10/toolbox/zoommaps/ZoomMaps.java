@@ -39,6 +39,8 @@ public class ZoomMaps {
                 configClient.getConfig().getTrialId(),
                 configClient.getConfig().getConfigId());
 
+        primaryStage.setTitle("Toolbox - ZoomMaps Test");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ZoomMaps.fxml"));
 
         Parent root = null;

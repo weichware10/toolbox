@@ -39,6 +39,9 @@ public class App {
      *                       wiederverwendet
      */
     public App(Stage primaryStage, DataBaseClient dataBaseClient) {
+
+        primaryStage.setTitle("Toolbox - Start");
+
         if (dataBaseClient == null) {
             resetDataBaseConnection();
         } else {
@@ -47,9 +50,6 @@ public class App {
         }
 
         this.primaryStage = primaryStage;
-
-        primaryStage.setMinWidth(300);
-        primaryStage.setMinHeight(300);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("App.fxml"));
 
@@ -64,7 +64,7 @@ public class App {
         AppController controller = loader.getController();
         controller.setApp(this);
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
     }
 

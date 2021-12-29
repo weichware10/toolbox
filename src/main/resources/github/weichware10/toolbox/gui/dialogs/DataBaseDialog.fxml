@@ -10,17 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.dialogs.DataBaseDialogController">
-   <header>
-      <Label text="insert login data...">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-   </header>
    <content>
-      <VBox prefHeight="200.0" prefWidth="300.0">
+      <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="300.0">
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -74,4 +66,11 @@
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
+   <header>
+      <Label text="insert login data:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </header>
 </DialogPane>

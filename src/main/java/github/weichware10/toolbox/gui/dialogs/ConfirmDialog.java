@@ -1,11 +1,14 @@
 package github.weichware10.toolbox.gui.dialogs;
 
+import github.weichware10.util.Logger;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * Kümmert sich um das Design der Rückfrage.
@@ -13,14 +16,17 @@ import javafx.scene.control.Dialog;
 public class ConfirmDialog {
 
     private final String prompt;
+    private final String icon;
 
     /**
      * Erstellt einen neuen ja/nein Dialog.
      *
      * @param prompt - Fragestellung
+     * @param icon - Zu verwendendes Icon, kann null sein
      */
-    public ConfirmDialog(String prompt) {
+    public ConfirmDialog(String prompt, String icon) {
         this.prompt = prompt;
+        this.icon = icon;
     }
 
     /**
@@ -40,9 +46,22 @@ public class ConfirmDialog {
         ConfirmDialogController controller = loader.getController();
         controller.setPrompt(prompt);
 
-        // ButtonType okButtonType = new ButtonType("OK", );
         Dialog<Boolean> dialog = new Dialog<>();
+        // set icon + graphic
+        if (icon != null) {
+            Image image = null;
+            try {
+                image = new Image(icon);
+                controller.setImage(image);
+                Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(image);
+            } catch (Exception e) {
+                Logger.error("error when loading ConfirmDialog Image", e);
+            }
+        }
+        // set title
         dialog.setTitle(prompt);
+
         dialog.getDialogPane().setContent(root);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
 

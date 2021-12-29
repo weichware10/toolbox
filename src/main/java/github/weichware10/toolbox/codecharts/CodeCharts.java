@@ -40,6 +40,8 @@ public class CodeCharts {
                 configClient.getConfig().getTrialId(),
                 configClient.getConfig().getConfigId());
 
+        primaryStage.setTitle("Toolbox - CodeCharts Test");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CodeCharts.fxml"));
 
         Parent root = null;

@@ -78,9 +78,9 @@ public class AppController {
     @FXML
     void initialize() {
         assert trialIdField != null
-                : "fx:id=\"trialIdField\" was not injected: check your FXML file 'App.fxml'.";
+                : "fx:id=\"trialIdField\" not injected: check 'App.fxml'.";
         assert warnText != null
-                : "fx:id=\"warnText\" was not injected: check your FXML file 'App.fxml'.";
+                : "fx:id=\"warnText\" not injected: check 'App.fxml'.";
     }
 
 }

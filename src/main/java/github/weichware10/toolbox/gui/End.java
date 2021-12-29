@@ -18,7 +18,6 @@ public class End {
     @SuppressWarnings("unused")
     private final TrialData trialData;
 
-
     /**
      * Erstellt den Abschluss Bildschirm.
      *
@@ -31,7 +30,7 @@ public class End {
         this.dataBaseClient = dataBaseClient;
         this.trialData = trialData;
 
-        primaryStage.setTitle("Test finished");
+        primaryStage.setTitle("Toolbox - Test finished");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("End.fxml"));
         Parent root = null;

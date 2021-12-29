@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * Dialog zum Ändern des Datenbankzugriffs.
@@ -25,8 +27,19 @@ public class DataBaseDialog {
      */
     public DataBaseClient getDataBaseClient() {
         Dialog<Void> dialog = new Dialog<>();
+
+        // add buttons
         ButtonType okButtonType = new ButtonType("OK", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
+
+        // set icon
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResource("postgresql.png").toString()));
+
+        // set title
+        dialog.setTitle("change database connection");
+
+        // load FXML
         FXMLLoader loader = new FXMLLoader(DataBaseDialog.class.getResource("DataBaseDialog.fxml"));
 
         Parent root = null;

@@ -41,6 +41,8 @@ public class EyeTracking {
                 configClient.getConfig().getTrialId(),
                 configClient.getConfig().getConfigId());
 
+        primaryStage.setTitle("Toolbox - EyeTracking Test");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EyeTracking.fxml"));
 
         Parent root = null;

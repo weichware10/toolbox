@@ -30,17 +30,6 @@ public class PreTest {
         this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
 
-        primaryStage.setTitle("Test starting");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PreTest.fxml"));
-
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            return;
-        }
-
         String toolType = "";
         switch (configClient.getConfig().getToolType()) {
             case ZOOMMAPS:
@@ -51,6 +40,17 @@ public class PreTest {
                 break;
             default: // never
                 break;
+        }
+
+        primaryStage.setTitle(String.format("Toolbox - %s Test starting", toolType));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PreTest.fxml"));
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            return;
         }
 
         PreTestController controller = loader.getController();

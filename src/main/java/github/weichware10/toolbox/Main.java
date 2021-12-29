@@ -9,7 +9,9 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.joda.time.DateTime;
@@ -37,14 +39,24 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        new App(primaryStage, null);
+        // ICON und TITLE
+        primaryStage.getIcons().add(new Image("app-icon.png"));
+
+        // FENSTERGRÖẞE
+        primaryStage.setMinHeight(300);
+        primaryStage.setMinWidth(300);
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+        primaryStage.setHeight(screenBounds.getHeight() / 2);
+        primaryStage.setWidth(screenBounds.getWidth() / 2);
+
 
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
+                String icon = getClass().getResource("thonkang.png").toString();
                 // Fenster schließen, ja oder nein?
-                boolean confirmation = new ConfirmDialog("Do you want to close the window?")
+                boolean confirmation = new ConfirmDialog("Do you want to close the window?", icon)
                         .getConfirmation();
                 // event consumieren -> nicht schließen
                 if (!confirmation) {
@@ -53,8 +65,9 @@ public class Main extends Application {
             }
         });
 
-        primaryStage.getIcons().add(new Image("app-icon.png"));
-        primaryStage.setTitle("Toolbox");
+        // ersten Bildschirm starten
+        new App(primaryStage, null);
+        // ANZEIGEN
         primaryStage.show();
     }
 

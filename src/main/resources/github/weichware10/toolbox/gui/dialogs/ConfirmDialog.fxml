@@ -4,10 +4,12 @@
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 
-
-<DialogPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.dialogs.ConfirmDialogController">
+<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.dialogs.ConfirmDialogController">
    <content>
-      <Label fx:id="promptLabel" text="prompt" />
+      <Label fx:id="promptLabel" alignment="CENTER" text="prompt">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding></Label>
    </content>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
