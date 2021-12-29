@@ -40,6 +40,7 @@ public class ConfirmBoxController {
         }
 
         Stage window = new Stage();
+        window.setTitle("Really Quit?");
 
         ConfirmBoxController controller = loader.getController();
         controller.setStage(primaryStage, window);
