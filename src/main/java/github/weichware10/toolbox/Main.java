@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
@@ -36,6 +35,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * setzt allgemeine Werte der primaryStage und startet die App.
+     * @param primaryStage - das Hauptfenster
+     */
     @Override
     public void start(Stage primaryStage) {
 
@@ -49,26 +52,30 @@ public class Main extends Application {
         primaryStage.setHeight(screenBounds.getHeight() / 2);
         primaryStage.setWidth(screenBounds.getWidth() / 2);
 
-
         // Event welches beim schließen eines Fensters aufgerufen wird
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                String icon = getClass().getResource("thonkang.png").toString();
-                // Fenster schließen, ja oder nein?
-                boolean confirmation = new ConfirmDialog("Do you want to close the window?", icon)
-                        .getConfirmation();
-                // event consumieren -> nicht schließen
-                if (!confirmation) {
-                    event.consume();
-                }
-            }
-        });
+        primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeRequestFilter);
 
         // ersten Bildschirm starten
         new App(primaryStage, null);
         // ANZEIGEN
         primaryStage.show();
+    }
+
+    /**
+     * Filtert Anfragen das Fenster zu schließen
+     * - wird das Event consumed, wird das Fenster nicht geschlossen.
+     *
+     * @param event - das WindowEvent mit der Anfrage
+     */
+    private void closeRequestFilter(WindowEvent event) {
+        String icon = getClass().getResource("thonkang.png").toString();
+        // Fenster schließen, ja oder nein?
+        boolean confirmation = new ConfirmDialog("Do you want to close the window?", icon)
+                .getConfirmation();
+        // event consumieren -> nicht schließen
+        if (!confirmation) {
+            event.consume();
+        }
     }
 
     // TODO: in util verschieben
