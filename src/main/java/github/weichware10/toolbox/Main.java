@@ -1,6 +1,6 @@
 package github.weichware10.toolbox;
 
-import github.weichware10.toolbox.gui.ConfirmBox;
+import github.weichware10.toolbox.gui.ConfirmBoxController;
 import github.weichware10.toolbox.gui.TestVorbildschirm;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
@@ -89,7 +89,7 @@ public class Main extends Application {
                 // Wir kümmern uns selber um das schließen
                 event.consume();
                 // Fenster schließen, ja oder nein?
-                ConfirmBox.display(primaryStage);
+                ConfirmBoxController.display(primaryStage);
             }
         });
 
