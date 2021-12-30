@@ -37,6 +37,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -49,16 +50,21 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="admin">
-            <items>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
               <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="open JSON config" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#changeDb" text="change database connection" />
                   <MenuItem mnemonicParsing="false" onAction="#resetDb" text="reset database connection" />
+              </items>
+            </Menu>
+          <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin">
+            <items>
                   <MenuItem mnemonicParsing="false" onAction="#createZoomMapsTestTrial" text="create zoommaps test" />
                   <MenuItem mnemonicParsing="false" onAction="#createCodeChartsTestTrial" text="create codecharts test" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="help">
+            <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#openDocumentation" text="read documentation" />
                </items>
@@ -84,7 +90,7 @@
                </children>
             </GridPane>
             <Text fx:id="warnText" fill="#da3633" strokeType="OUTSIDE" strokeWidth="0.0" text="error" visible="false" />
-            <Button mnemonicParsing="false" onAction="#startTrial" text="Start" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startTrial" text="Start" />
          </children>
       </VBox>
    </center>

@@ -1,7 +1,7 @@
 package github.weichware10.toolbox.eyetracking;
 
 import github.weichware10.toolbox.gui.End;
-import github.weichware10.util.Enums.ToolType;
+import github.weichware10.util.ToolType;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;

@@ -18,7 +18,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -30,6 +29,7 @@ public class App {
     private Stage primaryStage;
     private ConfigClient configClient;
     private DataBaseClient dataBaseClient;
+    private AppController controller;
 
     /**
      * zeigt den Hauptbildschirm an.
@@ -41,13 +41,6 @@ public class App {
     public App(Stage primaryStage, DataBaseClient dataBaseClient) {
 
         primaryStage.setTitle("Toolbox - Start");
-
-        if (dataBaseClient == null) {
-            resetDataBaseConnection();
-        } else {
-            this.dataBaseClient = dataBaseClient;
-            this.configClient = new ConfigClient(dataBaseClient);
-        }
 
         this.primaryStage = primaryStage;
 
@@ -61,11 +54,19 @@ public class App {
             System.exit(-1);
         }
 
-        AppController controller = loader.getController();
+        controller = loader.getController();
         controller.setApp(this);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+
+        if (dataBaseClient == null) {
+            resetDataBaseConnection();
+        } else {
+            this.dataBaseClient = dataBaseClient;
+            this.configClient = new ConfigClient(dataBaseClient);
+        }
+        setAdminMenuVisible();
     }
 
     /**
@@ -73,9 +74,9 @@ public class App {
      *
      * @param warnText - Fehlernachricht
      */
-    protected void loadJsonConfig(Text warnText) {
+    protected void loadJsonConfig() {
 
-        warnText.setVisible(false);
+        controller.setWarnText(null);
 
         // Datei auswählen setup
         FileChooser fileChooser = new FileChooser();
@@ -83,20 +84,17 @@ public class App {
         fileChooser.getExtensionFilters().add(
                 new ExtensionFilter("JSON Dateien", "*.json"));
 
-        warnText.setText("JSON Config not valid");
         // Dateipfad als String speichern und json laden
         String location = fileChooser.showOpenDialog(primaryStage).getAbsolutePath();
         if (!configClient.loadFromJson(location)) {
-            warnText.setVisible(true);
+            controller.setWarnText("JSON Config not valid");
             return;
         }
-
-        // Tutorial noch hinzufügen an dieser Stelle
 
         try {
             new PreTest(primaryStage, configClient, dataBaseClient);
         } catch (Exception e) {
-            warnText.setVisible(true);
+            controller.setWarnText("JSON Config not valid");
             return;
         }
     }
@@ -105,34 +103,31 @@ public class App {
      * Nimmt eine trialId entgegen und startet den Versuch. Bei Fehlern wird eine Warnung angezeigt.
      *
      * @param trialId - die ID des Versuches
-     * @param warnText - das warnText-Objekt
      */
-    protected void startTrial(String trialId, Text warnText) {
+    protected void startTrial(String trialId) {
 
-        warnText.setVisible(false);
+        controller.setWarnText(null);
 
         if (dataBaseClient == null) {
-            warnText.setText("no database connection");
-            warnText.setVisible(true);
+            controller.setWarnText("no database connection");
             return;
         }
-        warnText.setText("Bitte geben sie eine gültige ID ein.");
         if (trialId.length() == 0) {
-            warnText.setVisible(true);
+            controller.setWarnText("Bitte geben sie eine gültige ID ein.");
             return;
         }
 
         // Verfügbarkeit überprüfen
         boolean available = dataBaseClient.trials.getAvailability(trialId);
         if (!available) {
-            warnText.setVisible(true);
+            controller.setWarnText("Bitte geben sie eine gültige ID ein.");
             return;
         }
 
         // Config laden
         boolean success = configClient.loadFromDataBase(trialId);
         if (!success) {
-            warnText.setVisible(true);
+            controller.setWarnText("Bitte geben sie eine gültige ID ein.");
             return;
         }
 
@@ -145,12 +140,10 @@ public class App {
      * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
      *
      * @param trialIdInput - das TextField zum Eintragen der generierten ID
-     * @param warnText - Text Objekt zum Ausgeben einer Warnung
      */
-    protected void createZoomMapsTestTrial(TextField trialIdInput, Text warnText) {
+    protected void createZoomMapsTestTrial(TextField trialIdInput) {
         if (dataBaseClient == null) {
-            warnText.setText("no database connection");
-            warnText.setVisible(true);
+            controller.setWarnText("no database connection");
             return;
         }
 
@@ -165,7 +158,7 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 zoomMapsConfiguration),
-                trialIdInput, warnText);
+                trialIdInput);
     }
 
     /**
@@ -173,12 +166,10 @@ public class App {
      * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
      *
      * @param trialIdInput - das TextField zum Eintragen der generierten ID
-     * @param warnText - Text Objekt zum Ausgeben einer Warnung
      */
-    protected void createCodeChartsTestTrial(TextField trialIdInput, Text warnText) {
+    protected void createCodeChartsTestTrial(TextField trialIdInput) {
         if (dataBaseClient == null) {
-            warnText.setText("no database connection");
-            warnText.setVisible(true);
+            controller.setWarnText("no database connection");
             return;
         }
 
@@ -195,7 +186,7 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 codeChartsConfiguration),
-                trialIdInput, warnText);
+                trialIdInput);
     }
 
     /**
@@ -203,17 +194,15 @@ public class App {
      * und trägt die dazugehörige ID in das Textfeld ein.
      *
      * @param configuration - die zu benutzende configuration
-     * @param trialIdInput - das TextField zum Eintragen der generierten ID
      */
     protected void createTestTrial(Configuration configuration,
-            TextField trialIdInput, Text warnText) {
+            TextField trialIdInput) {
         String configId = dataBaseClient.configurations.set(configuration);
         List<String> trialIds = dataBaseClient.trials.add(configId, 1);
         if (trialIds != null && trialIds.size() > 0) {
             trialIdInput.setText(trialIds.get(0));
         } else {
-            warnText.setText("Error when creating test trial");
-            warnText.setVisible(true);
+            controller.setWarnText("Error when creating test trial");
         }
     }
 
@@ -230,6 +219,7 @@ public class App {
         dataBaseClient = newClient;
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
+        setAdminMenuVisible();
     }
 
     /**
@@ -255,7 +245,6 @@ public class App {
         // erstellt die Datenbankverbindung
         try {
             Dotenv dotenv = Dotenv.load();
-            // Dotenv dotenv = Dotenv.configure().directory(".").load();
             String url = dotenv.get("DB_URL");
             String username = dotenv.get("DB_USERNAME");
             String password = dotenv.get("DB_PASSWORD");
@@ -269,9 +258,22 @@ public class App {
             Logger.error("error when loading env", e);
             // auf null setzen, falls die Verbindung vorher angepasst wurde und dies gewünscht ist
             dataBaseClient = null;
-            return;
         }
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
+        setAdminMenuVisible();
     }
+
+    private void setAdminMenuVisible() {
+        if (dataBaseClient != null) {
+            controller.setAdminMenuVisibile(dataBaseClient.permissions.isAdmin);
+            controller.setTrialInputDisable(
+                    !(dataBaseClient.permissions.isAdmin
+                            || dataBaseClient.permissions.isAuthor
+                            || dataBaseClient.permissions.isSubject));
+            return;
+        }
+        controller.setAdminMenuVisibile(false);
+    }
+
 }

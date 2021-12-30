@@ -2,6 +2,8 @@ package github.weichware10.toolbox.gui;
 
 import github.weichware10.util.Logger;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -15,6 +17,10 @@ public class AppController {
     private App app;
 
     @FXML
+    private Menu adminMenu;
+    @FXML
+    private Button startButton;
+    @FXML
     private TextField trialIdField;
     @FXML
     private Text warnText;
@@ -23,16 +29,35 @@ public class AppController {
         this.app = app;
     }
 
+    protected void setAdminMenuVisibile(boolean value) {
+        adminMenu.setVisible(value);
+    }
+
+    protected void setWarnText(String value) {
+        if (value == null) {
+            warnText.setVisible(false);
+            return;
+        }
+        warnText.setText(value);
+        warnText.setVisible(true);
+    }
+
+    protected void setTrialInputDisable(boolean value) {
+        setWarnText(value ? "starting tests is disabled - check database user" : null);
+        startButton.setDisable(value);
+        trialIdField.setDisable(value);
+    }
+
     @FXML
-    public void openDocumentation() {
+    void openDocumentation() {
         Logger.info("app:menu Opening Docs");
         app.openDocs();
     }
 
     @FXML
-    public void loadJsonConfig() {
+    void loadJsonConfig() {
         Logger.info("app:menu Loading JSON Config");
-        app.loadJsonConfig(warnText);
+        app.loadJsonConfig();
     }
 
     @FXML
@@ -45,7 +70,7 @@ public class AppController {
     @FXML
     void startTrial() {
         Logger.info("app:content Trying to start Trial");
-        app.startTrial(trialIdField.getText(), warnText);
+        app.startTrial(trialIdField.getText());
     }
 
     @FXML
@@ -63,16 +88,13 @@ public class AppController {
     @FXML
     void createZoomMapsTestTrial() {
         Logger.info("app:menu Creating ZoomMaps Test Trial");
-        app.createZoomMapsTestTrial(trialIdField, warnText);
+        app.createZoomMapsTestTrial(trialIdField);
     }
 
-    /**
-     * wird durch Menü aufgerufen.
-     */
     @FXML
     void createCodeChartsTestTrial() {
         Logger.info("app:menu Creating CodeCharts Test Trial");
-        app.createCodeChartsTestTrial(trialIdField, warnText);
+        app.createCodeChartsTestTrial(trialIdField);
     }
 
     @FXML
@@ -81,6 +103,10 @@ public class AppController {
                 : "fx:id=\"trialIdField\" not injected: check 'App.fxml'.";
         assert warnText != null
                 : "fx:id=\"warnText\" not injected: check 'App.fxml'.";
+        assert adminMenu != null
+                : "fx:id=\"adminMenu\" not injected: check 'App.fxml'.";
+        assert startButton != null
+                : "fx:id=\"startButton\" not injected: check 'App.fxml'.";
     }
 
 }
