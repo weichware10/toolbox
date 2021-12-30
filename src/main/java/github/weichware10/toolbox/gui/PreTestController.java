@@ -21,16 +21,16 @@ public class PreTestController {
     @FXML
     private Label promptLabel;
 
-    private PreTest preTestWindow;
+    private PreTest preTest;
 
-    public void setPreTestWindow(PreTest preTestWindow) {
-        this.preTestWindow = preTestWindow;
+    public void setPreTest(PreTest preTest) {
+        this.preTest = preTest;
     }
 
     @FXML
     void startTest(ActionEvent event) {
         Logger.info("pretest:content Starting test");
-        preTestWindow.startTest();
+        preTest.startTest();
     }
 
     void setPrompt(String prompt) {

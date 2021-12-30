@@ -165,7 +165,7 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 zoomMapsConfiguration),
-                trialIdInput);
+                trialIdInput, warnText);
     }
 
     /**
@@ -195,7 +195,7 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 codeChartsConfiguration),
-                trialIdInput);
+                trialIdInput, warnText);
     }
 
     /**
@@ -206,11 +206,14 @@ public class App {
      * @param trialIdInput - das TextField zum Eintragen der generierten ID
      */
     protected void createTestTrial(Configuration configuration,
-            TextField trialIdInput) {
+            TextField trialIdInput, Text warnText) {
         String configId = dataBaseClient.configurations.set(configuration);
         List<String> trialIds = dataBaseClient.trials.add(configId, 1);
-        if (trialIds.size() > 0) {
+        if (trialIds != null && trialIds.size() > 0) {
             trialIdInput.setText(trialIds.get(0));
+        } else {
+            warnText.setText("Error when creating test trial");
+            warnText.setVisible(true);
         }
     }
 

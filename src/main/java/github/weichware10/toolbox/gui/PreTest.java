@@ -54,7 +54,7 @@ public class PreTest {
         }
 
         PreTestController controller = loader.getController();
-        controller.setPreTestWindow(this);
+        controller.setPreTest(this);
         controller.setPrompt(String.format("Sie können den %s Test jetzt starten.", toolType));
 
         Scene scene = new Scene(root);

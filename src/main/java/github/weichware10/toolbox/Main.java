@@ -101,7 +101,6 @@ public class Main extends Application {
             logfile = String.format(logfile + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
             try {
                 File file = new File(logfile);
-                file.getParentFile().mkdirs();
                 file.createNewFile();
                 log = new PrintStream(file);
             } catch (IOException e) {
