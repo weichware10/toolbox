@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.util.Enums.ToolType;
+import github.weichware10.util.ToolType;
 import github.weichware10.util.Tutorial;
 import github.weichware10.util.config.ConfigClient;
 
