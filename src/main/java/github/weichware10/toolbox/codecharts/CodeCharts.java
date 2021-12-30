@@ -26,7 +26,7 @@ public class CodeCharts {
     /**
      * Startet den CodeCharts-Versuch.
      *
-     * @param primaryStage - hauptfenster
+     * @param primaryStage - Hauptfenster
      * @param configClient - configClient für Einstellungen
      * @param dataBaseClient - Verbindung zur Datenbank
      */

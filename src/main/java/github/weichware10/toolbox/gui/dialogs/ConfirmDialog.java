@@ -22,7 +22,7 @@ public class ConfirmDialog {
      * Erstellt einen neuen ja/nein Dialog.
      *
      * @param prompt - Fragestellung
-     * @param icon - Zu verwendendes Icon, kann null sein
+     * @param icon - zu verwendendes Icon, kann null sein
      */
     public ConfirmDialog(String prompt, String icon) {
         this.prompt = prompt;
@@ -30,7 +30,7 @@ public class ConfirmDialog {
     }
 
     /**
-     * zeigt den Dialog an und gibt einen Boolean-wert zurück.
+     * zeigt den Dialog an und gibt einen Boolean-Wert zurück.
      *
      * @return Konfirmationsboolean
      */
