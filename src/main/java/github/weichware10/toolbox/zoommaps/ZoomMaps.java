@@ -26,7 +26,7 @@ public class ZoomMaps {
     /**
      * Startet den ZoomMaps-Versuch.
      *
-     * @param primaryStage - hauptfenster
+     * @param primaryStage - Hauptfenster
      * @param configClient - configClient für Einstellungen
      * @param dataBaseClient - Verbindung zur Datenbank
      */
