@@ -27,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         // in Datei und Konsole loggen
-        String location = Dotenv.configure().directory(".").load().get("LOGS");
+        String location = Dotenv.load().get("LOGS");
         PrintStream ps = new PrintStream(new Console(location, System.out), true);
         System.setOut(ps);
         System.setErr(ps);

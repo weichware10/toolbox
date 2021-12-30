@@ -66,7 +66,7 @@ public class App {
             this.dataBaseClient = dataBaseClient;
             this.configClient = new ConfigClient(dataBaseClient);
         }
-        setAdminMenuVisible();
+        setPermissionAccess();
     }
 
     /**
@@ -219,7 +219,7 @@ public class App {
         dataBaseClient = newClient;
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
-        setAdminMenuVisible();
+        setPermissionAccess();
     }
 
     /**
@@ -257,23 +257,25 @@ public class App {
         } catch (IllegalArgumentException e) {
             Logger.error("error when loading env", e);
             // auf null setzen, falls die Verbindung vorher angepasst wurde und dies gewünscht ist
+            // zurücksetzen auf dataBaseClient-freien Zustand
             dataBaseClient = null;
         }
         // erstellt den Config Client um die Informationen aus der Config zu handeln
         configClient = new ConfigClient(dataBaseClient);
-        setAdminMenuVisible();
+        setPermissionAccess();
     }
 
-    private void setAdminMenuVisible() {
+    /**
+     * (de)aktiviert Elemente, basierend auf den Permissions des Datenbank-Nutzers.
+     */
+    private void setPermissionAccess() {
         if (dataBaseClient != null) {
             controller.setAdminMenuVisibile(dataBaseClient.permissions.isAdmin);
-            controller.setTrialInputDisable(
-                    !(dataBaseClient.permissions.isAdmin
-                            || dataBaseClient.permissions.isAuthor
-                            || dataBaseClient.permissions.isSubject));
+            controller.setTrialInputDisable(!dataBaseClient.permissions.isSubject);
             return;
         }
         controller.setAdminMenuVisibile(false);
+        controller.setTrialInputDisable(false);
     }
 
 }

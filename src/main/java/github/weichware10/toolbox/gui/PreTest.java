@@ -2,9 +2,9 @@ package github.weichware10.toolbox.gui;
 
 import github.weichware10.toolbox.codecharts.CodeCharts;
 import github.weichware10.toolbox.zoommaps.ZoomMaps;
+import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
-import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,7 +49,8 @@ public class PreTest {
         Parent root = null;
         try {
             root = loader.load();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            Logger.error("Error when loading pretest scene", e, true);
             return;
         }
 

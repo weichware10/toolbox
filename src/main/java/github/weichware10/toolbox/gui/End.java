@@ -3,7 +3,6 @@ package github.weichware10.toolbox.gui;
 import github.weichware10.util.Logger;
 import github.weichware10.util.data.TrialData;
 import github.weichware10.util.db.DataBaseClient;
-import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,7 +35,7 @@ public class End {
         Parent root = null;
         try {
             root = loader.load();
-        } catch (IOException e) {
+        } catch (Exception e) {
             Logger.error("Exception when loading end screen", e);
             return;
         }
