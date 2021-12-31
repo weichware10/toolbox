@@ -24,7 +24,9 @@
     <app.version>${maven.build.timestamp}</app.version>
 
     <!-- modules for custom JVM image -->
-    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging</jvm.modules>
+    <!-- JAVAFX: media, controls, fxml -->
+    <!-- UTIL: sql, management, security.sasl -->
+    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl</jvm.modules>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
@@ -57,12 +59,6 @@
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>42.3.1</version>
     </dependency>
 
     <!-- GUI -->

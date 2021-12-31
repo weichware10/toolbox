@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" spacing="25.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.PreTestController">
+   <children>
+      <Label fx:id="promptLabel" text="Sie können den Test jetzt starten.">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button mnemonicParsing="false" onAction="#startTest" text="Start" />
+   </children>
+</VBox>

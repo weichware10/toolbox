@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<DialogPane minHeight="300.0" minWidth="300.0" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.dialogs.LogDialogController">
+   <header>
+      <Label text="LOGS">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </header>
+   <content>
+      <ScrollPane fx:id="logScrollPane" prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <Text fx:id="logText" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at rhoncus turpis, sollicitudin congue arcu. Pellentesque id auctor sapien, at tempor dui. Sed hendrerit vitae est vitae ultricies. Morbi eu dui pellentesque, commodo arcu vel, luctus massa. Donec faucibus, mauris et mattis tristique, magna elit sagittis tortor, vitae faucibus tellus enim vel nulla. Donec ultricies a tortor nec feugiat. Phasellus tempus turpis in sollicitudin cursus. Sed non egestas justo. Suspendisse non cursus erat, eget tincidunt magna. Donec ultricies lectus eget massa volutpat, non pulvinar mauris pellentesque.Vestibulum felis metus, volutpat elementum nisl ut, convallis laoreet libero. Cras et orci eu mauris luctus gravida sollicitudin quis eros. Aliquam sit amet auctor elit. Donec aliquet ultrices justo sed volutpat. Pellentesque tincidunt risus vel ultricies pretium. In sapien augue, luctus sed diam at, scelerisque sollicitudin arcu. Ut placerat lorem vitae risus posuere, vel auctor libero finibus. Phasellus ut tincidunt tellus. Sed justo erat, condimentum in consequat sit amet, posuere id nunc. Nam sollicitudin tortor eget maximus tristique. Pellentesque pretium ut felis vel sodales. Praesent scelerisque maximus ante, non elementum justo congue non. Vestibulum id vestibulum lacus. In dapibus mi non quam tempus gravida.Nullam orci erat, pretium eu aliquam et, pharetra nec felis. Pellentesque mollis dolor elementum erat finibus, quis accumsan sem condimentum. Donec egestas lorem quis mi ullamcorper, eu semper metus facilisis. Morbi fringilla tempus blandit. Maecenas aliquet arcu a laoreet congue. Aenean gravida enim neque, eget iaculis turpis tincidunt sit amet. Duis pulvinar a lorem sed aliquet. Phasellus nec nunc bibendum felis pretium maximus. Praesent pharetra est eu augue blandit, sit amet venenatis ligula gravida.Fusce lorem nulla, egestas id ligula ullamcorper, laoreet pulvinar tellus. Nulla eu ligula aliquet, scelerisque urna vitae, pellentesque sapien. Praesent a ante eu justo suscipit egestas vel sed erat. In sagittis ornare nisl. Suspendisse aliquam ex ac leo tincidunt, eu hendrerit ipsum consequat. Donec eu nibh consectetur, sodales quam id, fermentum nisl. Nullam facilisis diam quis justo cursus, congue congue felis porttitor. Donec efficitur malesuada rutrum.Nullam venenatis ex in nibh maximus feugiat. In sodales nec est id porta. Mauris ipsum nibh, placerat quis efficitur quis, placerat et enim. Nunc et nibh tempus, feugiat nulla et, maximus magna. Morbi sed scelerisque purus. Nulla quis iaculis lorem, ut lobortis odio. Cras luctus a risus vitae pulvinar. Donec a arcu suscipit, rutrum tortor in, tempus leo. Praesent quis lobortis ex, eu faucibus ipsum. Aliquam eget diam vel tortor fringilla consectetur a vel risus. Integer consequat est vel tempor hendrerit. Vivamus interdum velit ut dolor dignissim, quis commodo sapien elementum. Aenean quis erat tortor. Quisque eget consectetur dolor." />
+         </content>
+      </ScrollPane>
+   </content>
+</DialogPane>

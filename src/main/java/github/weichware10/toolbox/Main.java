@@ -1,86 +1,81 @@
 package github.weichware10.toolbox;
 
-import github.weichware10.toolbox.gui.ConfirmBox;
-import github.weichware10.toolbox.gui.Startbildschirm;
-import java.io.IOException;
-import java.io.OutputStream;
+import github.weichware10.toolbox.gui.App;
+import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
+import io.github.cdimascio.dotenv.Dotenv;
 import java.io.PrintStream;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.joda.time.DateTime;
 
 /**
  * Toolbox GUI.
- *
  */
 public class Main extends Application {
+    /**
+     * Einstiegspunkt der Toolbox - Einführungsbildschirm.
+     *
+     * @param args - args
+     */
     public static void main(String[] args) {
+
+        // in Datei und Konsole loggen
+        String logfile = String.format(
+                Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
+        Console.setLogfile(logfile);
+        Console.setOut(System.out);
+        PrintStream ps = new PrintStream(new Console(), true);
+        System.setOut(ps);
+        System.setErr(ps);
+
         launch(args);
     }
 
+    /**
+     * setzt allgemeine Werte der primaryStage und startet die App.
+     *
+     * @param primaryStage - das Hauptfenster
+     */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
-        // Konsole zum Debuggen
-        boolean debug = false;
-        if (debug) {
-            Stage logStage = new Stage();
-            TextArea textArea = new TextArea();
-            Console console = new Console(textArea);
-            PrintStream ps = new PrintStream(console, true);
-            System.setOut(ps);
-            System.setErr(ps);
-            Scene terminal = new Scene(textArea);
-            logStage.setScene(terminal);
-            logStage.show();
-        }
+        // ICON und TITLE
+        primaryStage.getIcons().add(new Image("app-icon.png"));
 
-
-        //startet die erste Szene
-        Startbildschirm.display(primaryStage);
+        // FENSTERGRÖẞE
+        primaryStage.setMinHeight(300);
+        primaryStage.setMinWidth(300);
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+        primaryStage.setHeight(screenBounds.getHeight() / 2);
+        primaryStage.setWidth(screenBounds.getWidth() / 2);
 
         // Event welches beim schließen eines Fensters aufgerufen wird
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                // Wir kümmern uns selber um das schließen
-                event.consume();
-                // Fenster schließen, ja oder nein?
-                closeProgramm(primaryStage);
-            }
-        });
+        primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeRequestFilter);
 
-        //Zeigt das Fenster
-        primaryStage.getIcons().add(new Image("app-icon.png"));
+        // ersten Bildschirm starten
+        new App(primaryStage, null);
+        // ANZEIGEN
         primaryStage.show();
     }
 
-    //Nachfrage ob Programm wirklich beendet werden soll
-    private void closeProgramm(Stage window) {
-        boolean answer = ConfirmBox.display();
-        if (answer) {
-            window.close();
-        }
-    }
-
     /**
-     * Loggen in Konsole.
+     * Filtert Anfragen das Fenster zu schließen
+     * - wird das Event consumed, wird das Fenster nicht geschlossen.
+     *
+     * @param event - das WindowEvent mit der Anfrage
      */
-    public static class Console extends OutputStream {
-
-        private TextArea output;
-
-        public Console(TextArea ta) {
-            this.output = ta;
-        }
-
-        @Override
-        public void write(int i) throws IOException {
-            output.appendText(String.valueOf((char) i));
+    private void closeRequestFilter(WindowEvent event) {
+        String icon = getClass().getResource("thonkang.png").toString();
+        // Fenster schließen, ja oder nein?
+        boolean confirmation = new ConfirmDialog("Do you want to close the window?", icon)
+                .getConfirmation();
+        // event consumieren -> nicht schließen
+        if (!confirmation) {
+            event.consume();
         }
     }
 }
