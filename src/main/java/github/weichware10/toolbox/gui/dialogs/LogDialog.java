@@ -4,11 +4,16 @@ import github.weichware10.toolbox.Console;
 import github.weichware10.util.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 
+/**
+ * Dialog zum Darstellen der Log Infos.
+ */
 public class LogDialog {
+    /**
+     * Startet den Dialog.
+     */
     public LogDialog() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogDialog.fxml"));
 
@@ -22,8 +27,6 @@ public class LogDialog {
 
         LogDialogController controller = loader.getController();
         controller.setLog(Console.getLog());
-
-        Scene scene = new Scene(root);
 
         Dialog<Void> dialog = new Dialog<>();
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);

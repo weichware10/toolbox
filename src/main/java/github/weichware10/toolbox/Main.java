@@ -4,15 +4,13 @@ import github.weichware10.toolbox.gui.App;
 import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.io.PrintStream;
-
-import org.joda.time.DateTime;
-
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.joda.time.DateTime;
 
 /**
  * Toolbox GUI.
