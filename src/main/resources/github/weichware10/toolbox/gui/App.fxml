@@ -56,6 +56,8 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#changeDb" text="change database connection" />
                   <MenuItem mnemonicParsing="false" onAction="#resetDb" text="reset database connection" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#showLogs" text="show logs" />
               </items>
             </Menu>
           <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin">

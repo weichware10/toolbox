@@ -98,6 +98,12 @@ public class AppController {
     }
 
     @FXML
+    void showLogs() {
+        Logger.info("app:menu Showing logs");
+        app.showLogs();
+    }
+
+    @FXML
     void initialize() {
         assert trialIdField != null
                 : "fx:id=\"trialIdField\" not injected: check 'App.fxml'.";
