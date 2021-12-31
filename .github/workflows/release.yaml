@@ -64,7 +64,6 @@ jobs:
       - run: mvn clean install
         if: "startsWith(github.event.inputs.installer_version, '0')"
       - uses: actions/upload-artifact@v2
-      - uses: actions/upload-artifact@v2
         with:
           name: linux-installer
           path: target/*.deb
@@ -126,7 +125,6 @@ jobs:
       # prerelease
       - run: mvn clean install
         if: "startsWith(github.event.inputs.installer_version, '0')"
-      - uses: actions/upload-artifact@v2
       - uses: actions/upload-artifact@v2
         with:
           name: macos-installer
