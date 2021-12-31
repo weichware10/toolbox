@@ -57,8 +57,13 @@ jobs:
         shell: bash
         env:
           ENV: ${{secrets.ENV}}
-      # generate installer
+       # generate installer
       - run: mvn '-Dapp.version="${{ github.event.inputs.installer_version }}"' clean install
+        if: "!startsWith(github.event.inputs.installer_version, '0')"
+      # prerelease
+      - run: mvn clean install
+        if: "startsWith(github.event.inputs.installer_version, '0')"
+      - uses: actions/upload-artifact@v2
       - uses: actions/upload-artifact@v2
         with:
           name: linux-installer
@@ -86,6 +91,10 @@ jobs:
           ENV: ${{secrets.ENV}}
       # generate installer
       - run: mvn '-Dapp.version="${{ github.event.inputs.installer_version }}"' clean install
+        if: "!startsWith(github.event.inputs.installer_version, '0')"
+      # prerelease
+      - run: mvn clean install
+        if: "startsWith(github.event.inputs.installer_version, '0')"
       - uses: actions/upload-artifact@v2
         with:
           name: windows-installer
@@ -111,8 +120,13 @@ jobs:
         shell: bash
         env:
           ENV: ${{secrets.ENV}}
-      # generate installer
+       # generate installer
       - run: mvn '-Dapp.version="${{ github.event.inputs.installer_version }}"' clean install
+        if: "!startsWith(github.event.inputs.installer_version, '0')"
+      # prerelease
+      - run: mvn clean install
+        if: "startsWith(github.event.inputs.installer_version, '0')"
+      - uses: actions/upload-artifact@v2
       - uses: actions/upload-artifact@v2
         with:
           name: macos-installer
