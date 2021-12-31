@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 // TODO: in util verschieben
+// TEMPORÄR - wird in util besser
 /**
  * Loggen in Konsole.
  */
