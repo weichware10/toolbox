@@ -1,5 +1,6 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Logger;
 import github.weichware10.util.data.TrialData;
 import github.weichware10.util.db.DataBaseClient;
@@ -52,6 +53,7 @@ public class End {
      */
     protected void closeProgramm() {
         primaryStage.close();
+        Log.close();
     }
 
     /**

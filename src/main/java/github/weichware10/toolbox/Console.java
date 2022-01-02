@@ -4,18 +4,19 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import javafx.scene.control.TextArea;
 
 // TODO: in util verschieben
 // TEMPORÄR - wird in util besser
 /**
  * Loggen in Konsole.
  */
-public class Console extends OutputStream {
+public class Console {
 
     private static PrintStream logfile;
-    private static PrintStream out;
-
-    private static String log;
+    private static PrintStream sysOut;
+    private static TextArea logArea;
+    public final static PrintStream logStream = new PrintStream(new LogStream(), true);
 
     /**
      * sets logfile.
@@ -35,20 +36,26 @@ public class Console extends OutputStream {
         }
     }
 
-    public static void setOut(PrintStream out) {
-        Console.out = out;
+    public static void setLogArea(TextArea logArea) {
+        Console.logArea = logArea;
     }
 
-    public static String getLog() {
-        return log;
+    public static void setSysOut(PrintStream out) {
+        Console.sysOut = out;
     }
 
-    @Override
-    public void write(int i) throws IOException {
-        log += (char) i;
-        out.append((char) i);
-        if (logfile != null) {
-            logfile.append((char) i);
+    private static class LogStream extends OutputStream {
+        @Override
+        public void write(int i) {
+            if (logArea != null) {
+                logArea.appendText(String.valueOf((char) i));
+            }
+            if (sysOut != null) {
+                sysOut.append((char) i);
+            }
+            if (logfile != null) {
+                logfile.append((char) i);
+            }
         }
     }
 }
