@@ -9,7 +9,6 @@ import github.weichware10.util.db.DataBaseClient;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -18,7 +17,6 @@ import javafx.stage.Stage;
 public class ZoomMaps {
 
     private final Stage primaryStage;
-    private final ConfigClient configClient;
     private final DataBaseClient dataBaseClient;
     private final TrialData trialData;
     ZoomMapsController controller;
@@ -33,7 +31,6 @@ public class ZoomMaps {
      */
     public ZoomMaps(Stage primaryStage, ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
-        this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
         this.trialData = new TrialData(
                 ToolType.ZOOMMAPS,

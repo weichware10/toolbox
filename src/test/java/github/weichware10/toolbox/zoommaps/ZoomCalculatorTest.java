@@ -1,7 +1,6 @@
 package github.weichware10.toolbox.zoommaps;
 
-import static org.junit.Assert.assertEquals;
-
+import javafx.geometry.Point2D;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -9,11 +8,6 @@ import org.junit.Test;
  * Überprüft die Funktionen processInput() und save().
  */
 public class ZoomCalculatorTest {
-    @Test
-    public void doesNotThrowErrors() {
-        ZoomCalculator testcalculator = new ZoomCalculator(null, null, null);
-        assertEquals(false, testcalculator.save());
-    }
 
     /**
      * Überprüfen, ob Input richtig umgesetzt wird -> damit wird auch ZoomInput getestet.
@@ -22,7 +16,7 @@ public class ZoomCalculatorTest {
     @Ignore
     public void processInputCorrectly() {
         ZoomCalculator testcalculator = new ZoomCalculator(null, null, null);
-        testcalculator.processInputIn(new double[]{0, 0});
+        testcalculator.processInput(new Point2D(0, 0), 1);
         // Überprüfen, ob Input richtig gesetzt wurde
     }
 }

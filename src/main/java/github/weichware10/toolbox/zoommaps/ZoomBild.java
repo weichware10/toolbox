@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.zoommaps;
 
-import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
+import javafx.geometry.Point3D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,7 +14,7 @@ import javafx.scene.input.ScrollEvent;
  */
 public class ZoomBild {
 
-    private double[] size;
+    public final double[] imageSize;
     private ImageView imageView;
 
     /**
@@ -26,14 +27,46 @@ public class ZoomBild {
         this.imageView = imageView;
         // TODO auf errors reagiern
         Image image = new Image(location);
-        size = new double[] { image.getWidth(), image.getHeight() };
+        imageSize = new double[] { image.getWidth(), image.getHeight() };
         imageView.setImage(image);
-        // double[] imageViewSize = new double[] { imageView.getFitWidth(), imageView.getFitHeight() };
-        Rectangle2D viewport = new Rectangle2D(0, 0, size[0], size[1]);
+        Rectangle2D viewport = new Rectangle2D(0, 0, imageSize[0], imageSize[1]);
         imageView.setViewport(viewport);
-        imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new ZoomInputClick(zoomCalculator));
-        imageView.addEventFilter(ScrollEvent.SCROLL, new ZoomInputScroll(zoomCalculator));
+        imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new ZoomInput(zoomCalculator));
+        imageView.addEventFilter(ScrollEvent.SCROLL, new ZoomInput(zoomCalculator));
+        imageView.getImage();
         // imageView.addEventFilter(MouseEvent., eventFilter);
+    }
+
+    /**
+     * Berechnet die Bildkoordinaten von ImageView Koordinaten.
+     *
+     * @param imageViewCoordinates -
+     * @return Bildkoordinaten
+     */
+    public Point2D getImageCoordinates(Point2D imageViewCoordinates) {
+        Rectangle2D viewport = imageView.getViewport();
+        double widthFactor = imageViewCoordinates.getX()
+                / imageView.getBoundsInLocal().getWidth();
+        double heightFactor = imageViewCoordinates.getY()
+                / imageView.getBoundsInLocal().getHeight();
+        return new Point2D(viewport.getMinX() + viewport.getWidth() * widthFactor,
+                viewport.getMinY() + viewport.getHeight() * heightFactor);
+    }
+
+    /**
+     * Mittelpunkt des Bildes.
+     *
+     * @return Mittelpunkt des Bildes
+     */
+    public Point3D getImagePosition() {
+        Rectangle2D viewport = imageView.getViewport();
+        return new Point3D(viewport.getMinX() + viewport.getWidth() / 2,
+                viewport.getMinY() + viewport.getHeight() / 2,
+                viewport.getWidth() / imageSize[0]);
+    }
+
+    private double getZoomLevel() {
+        return 2;
     }
 
     /**
@@ -43,7 +76,40 @@ public class ZoomBild {
      * @param position - gegebene Koordinaten (float[3])
      * @return neue Koordinaten
      */
-    protected float[] move(float[] position) {
-        return new float[]{0, 0, 0};
+    protected Point3D move(Point2D position, double speed) {
+        int minPixels = 25;
+        Rectangle2D viewport = imageView.getViewport();
+
+        double scale = clamp(Math.pow(1.01, speed),
+
+                Math.min(minPixels / viewport.getWidth(), minPixels / viewport.getHeight()),
+
+                Math.max(imageSize[0] / viewport.getWidth(), imageSize[1] / viewport.getHeight())
+
+        );
+
+        Point2D mouse = new Point2D(position.getX(), position.getY());
+
+        double newWidth = viewport.getWidth() * scale;
+        double newHeight = viewport.getHeight() * scale;
+
+        double newMinX = clamp(mouse.getX() - (mouse.getX() - viewport.getMinX()) * scale,
+                0, imageSize[0] - newWidth);
+        double newMinY = clamp(mouse.getY() - (mouse.getY() - viewport.getMinY()) * scale,
+                0, imageSize[1] - newHeight);
+
+        imageView.setViewport(new Rectangle2D(newMinX, newMinY, newWidth, newHeight));
+        return getImagePosition();
+    }
+
+    private double clamp(double value, double min, double max) {
+
+        if (value < min) {
+            return min;
+        }
+        if (value > max) {
+            return max;
+        }
+        return value;
     }
 }
