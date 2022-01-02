@@ -1,12 +1,20 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.util.Bild;
+import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 
 /**
  * Ändert den aktuellen Bildausschnitt mit Hilfe gegebener Koordianten
  * und gibt die neuen Koordinaten an ZoomCalculator zurück.
  */
-public class ZoomBild extends Bild {
+public class ZoomBild {
+
+    private double[] size;
+    private ImageView imageView;
 
     /**
      * Instanziiert ein neues ZoomBild.
@@ -14,8 +22,18 @@ public class ZoomBild extends Bild {
      * @param location - die Quelle der zu benutzenden Bilddatei
      * @throws IllegalArgumentException falls die Location falsch ist
      */
-    public ZoomBild(String location) throws IllegalArgumentException {
-        super(location);
+    public ZoomBild(String location, ImageView imageView, ZoomCalculator zoomCalculator) {
+        this.imageView = imageView;
+        // TODO auf errors reagiern
+        Image image = new Image(location);
+        size = new double[] { image.getWidth(), image.getHeight() };
+        imageView.setImage(image);
+        // double[] imageViewSize = new double[] { imageView.getFitWidth(), imageView.getFitHeight() };
+        Rectangle2D viewport = new Rectangle2D(0, 0, size[0], size[1]);
+        imageView.setViewport(viewport);
+        imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new ZoomInputClick(zoomCalculator));
+        imageView.addEventFilter(ScrollEvent.SCROLL, new ZoomInputScroll(zoomCalculator));
+        // imageView.addEventFilter(MouseEvent., eventFilter);
     }
 
     /**

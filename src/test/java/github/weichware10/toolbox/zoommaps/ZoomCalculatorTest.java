@@ -11,7 +11,7 @@ import org.junit.Test;
 public class ZoomCalculatorTest {
     @Test
     public void doesNotThrowErrors() {
-        ZoomCalculator testcalculator = new ZoomCalculator();
+        ZoomCalculator testcalculator = new ZoomCalculator(null, null, null);
         assertEquals(false, testcalculator.save());
     }
 
@@ -21,8 +21,8 @@ public class ZoomCalculatorTest {
     @Test
     @Ignore
     public void processInputCorrectly() {
-        ZoomCalculator testcalculator = new ZoomCalculator();
-        testcalculator.processInput(new int[]{0, 0});
+        ZoomCalculator testcalculator = new ZoomCalculator(null, null, null);
+        testcalculator.processInputIn(new double[]{0, 0});
         // Überprüfen, ob Input richtig gesetzt wurde
     }
 }

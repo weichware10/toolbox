@@ -152,7 +152,7 @@ public class App {
                 4.2f,
                 true,
                 Arrays.asList(
-                        "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
+                        "https://media.discordapp.net/attachments/707505654218358818/927171394691825674/unknown.png",
                         "url2", "url3"));
 
         createTestTrial(new Configuration(
