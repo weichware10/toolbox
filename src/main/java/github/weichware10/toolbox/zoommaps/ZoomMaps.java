@@ -32,7 +32,6 @@ public class ZoomMaps {
     public ZoomMaps(Stage primaryStage, ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
         this.dataBaseClient = dataBaseClient;
-        Logger.debug(configClient.getConfig().getTrialId());
         this.trialData = new TrialData(
                 ToolType.ZOOMMAPS,
                 configClient.getConfig().getTrialId(),
@@ -53,7 +52,6 @@ public class ZoomMaps {
         controller = loader.getController();
         controller.setZoomMaps(this);
 
-        Logger.debug(configClient.getConfig().toString());
         controller.setImageViewSize(
                 configClient.getConfig().getZoomMapsConfiguration().getImageViewWidth(),
                 configClient.getConfig().getZoomMapsConfiguration().getImageViewHeight());

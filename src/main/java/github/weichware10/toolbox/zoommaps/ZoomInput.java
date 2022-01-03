@@ -38,7 +38,6 @@ public class ZoomInput implements EventHandler<InputEvent> {
      * @param mouseEvent -
      */
     private void handleClick(MouseEvent mouseEvent) {
-        Logger.debug("click");
         int direction = -1;
         if (mouseEvent.getButton() == MouseButton.SECONDARY) {
             direction = 1;
