@@ -14,24 +14,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.EndController">
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
          <children>
-            <Label text="You have finished your test.">
+            <Label fx:id="outroLabel" text="You have finished your test.">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER">
+            <HBox fx:id="statusBox" alignment="CENTER">
                <children>
                   <Text fx:id="statusTextLeft" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
                   <Hyperlink fx:id="fileLink" onAction="#openFile" visible="false" />
                   <Text fx:id="statusTextRight" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
                </children>
             </HBox>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+            <ButtonBar fx:id="buttonBar" prefHeight="40.0" prefWidth="200.0">
               <buttons>
                   <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#closeProgram" text="Close" ButtonBar.buttonData="LEFT" />
                   <Button mnemonicParsing="false" onAction="#newTest" text="New Test" ButtonBar.buttonData="LEFT" />
@@ -54,9 +53,9 @@
               <MenuItem mnemonicParsing="false" onAction="#saveToJson" text="Save To JSON" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Admin">
+          <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save To DataBase" />
+              <MenuItem mnemonicParsing="false" onAction="#saveToDataBase" text="Save To DataBase" />
             </items>
           </Menu>
         </menus>

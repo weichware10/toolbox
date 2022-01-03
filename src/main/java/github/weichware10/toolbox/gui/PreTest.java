@@ -56,10 +56,12 @@ public class PreTest {
 
         PreTestController controller = loader.getController();
         controller.setPreTest(this);
-        controller.setPrompt(String.format("Sie können den %s Test jetzt starten.", toolType));
+        controller.setPrompt(configClient.getConfig().getIntro());
 
         Scene scene = new Scene(root);
 
+        // Event welches beim schließen eines Fensters aufgerufen wird
+        primaryStage.setOnCloseRequest(e -> Util.closeRequestFilter(e));
         primaryStage.setScene(scene);
     }
 

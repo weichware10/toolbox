@@ -1,6 +1,5 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.util.Logger;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.InputEvent;

@@ -19,6 +19,7 @@ public class ZoomMaps {
     private final Stage primaryStage;
     private final DataBaseClient dataBaseClient;
     private final TrialData trialData;
+    private final ConfigClient configClient;
     ZoomMapsController controller;
 
 
@@ -32,6 +33,7 @@ public class ZoomMaps {
     public ZoomMaps(Stage primaryStage, ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
         this.dataBaseClient = dataBaseClient;
+        this.configClient = configClient;
         this.trialData = new TrialData(
                 ToolType.ZOOMMAPS,
                 configClient.getConfig().getTrialId(),
@@ -75,6 +77,6 @@ public class ZoomMaps {
         }
         controller.setWarn(null);
         trialData.setAnswer(answer);
-        new End(primaryStage, dataBaseClient, trialData);
+        new End(primaryStage, configClient, dataBaseClient, trialData);
     }
 }

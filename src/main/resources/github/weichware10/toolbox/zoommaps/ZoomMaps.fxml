@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -29,13 +29,19 @@
          </BorderPane.margin>
          <children>
             <Label fx:id="questionLabel" text="Question?" />
-            <TilePane>
+            <FlowPane alignment="CENTER" hgap="10.0">
                <children>
-                  <Text fx:id="warnText" strokeType="OUTSIDE" strokeWidth="0.0" text="oh nein warnung" visible="false" TilePane.alignment="CENTER" />
-                  <TextField fx:id="answerField" onKeyPressed="#endTestOnEnter" TilePane.alignment="CENTER" />
-                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#endTest" text="Abgeben" TilePane.alignment="CENTER" />
+                  <Text fx:id="warnText" fill="#da3633" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <TextField fx:id="answerField" onKeyPressed="#endTestOnEnter" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#endTest" text="Abgeben" />
                </children>
-            </TilePane>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </padding>
+            </FlowPane>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

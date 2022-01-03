@@ -158,6 +158,8 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
+                "I wish you a warm welcome to a wonderful ZoomMaps Trial",
+                "Thank you for partaking in this Trial!",
                 zoomMapsConfiguration),
                 trialIdInput);
     }
@@ -184,6 +186,8 @@ public class App {
                 "dunno yet",
                 "Test Question?",
                 "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
+                "Welcome to this magnificent CodeCharts Trial",
+                "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
                 trialIdInput);
     }
