@@ -1,7 +1,6 @@
 package github.weichware10.toolbox.zoommaps;
 
 import javafx.geometry.Point2D;
-import javafx.geometry.Point3D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,29 +53,13 @@ public class ZoomBild {
     }
 
     /**
-     * Mittelpunkt des Bildes.
-     *
-     * @return Mittelpunkt des Bildes
-     */
-    public Point3D getImagePosition() {
-        Rectangle2D viewport = imageView.getViewport();
-        return new Point3D(viewport.getMinX() + viewport.getWidth() / 2,
-                viewport.getMinY() + viewport.getHeight() / 2,
-                viewport.getWidth() / imageSize[0]);
-    }
-
-    private double getZoomLevel() {
-        return 2;
-    }
-
-    /**
      * Bewegt das Bild an die gegebenen Koordinaten, neue
      * Koordinaten werden zurückgegeben.
      *
      * @param position - gegebene Koordinaten (float[3])
      * @return neue Koordinaten
      */
-    protected Point3D move(Point2D position, double speed) {
+    protected Rectangle2D move(Point2D position, double speed) {
         int minPixels = 25;
         Rectangle2D viewport = imageView.getViewport();
 
@@ -98,8 +81,9 @@ public class ZoomBild {
         double newMinY = clamp(mouse.getY() - (mouse.getY() - viewport.getMinY()) * scale,
                 0, imageSize[1] - newHeight);
 
+        Rectangle2D newViewport = new Rectangle2D(newMinX, newMinY, newWidth, newHeight);
         imageView.setViewport(new Rectangle2D(newMinX, newMinY, newWidth, newHeight));
-        return getImagePosition();
+        return newViewport;
     }
 
     private double clamp(double value, double min, double max) {

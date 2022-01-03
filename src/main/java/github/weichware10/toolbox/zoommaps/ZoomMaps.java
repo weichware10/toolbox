@@ -52,6 +52,11 @@ public class ZoomMaps {
         controller = loader.getController();
         controller.setZoomMaps(this);
 
+        Logger.debug(configClient.getConfig().toString());
+        controller.setImageViewSize(
+                configClient.getConfig().getZoomMapsConfiguration().getImageViewWidth(),
+                configClient.getConfig().getZoomMapsConfiguration().getImageViewHeight());
+
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
 
@@ -61,8 +66,15 @@ public class ZoomMaps {
 
     /**
      * Beendet den Test und gibt die erhobenen Daten an den Endscreen weiter.
+     *
+     * @param answer - Antwort auf die Frage
      */
-    public void endTest() {
+    public void endTest(String answer) {
+        if (answer.length() == 0) {
+            controller.setWarn("Please provide an answer.");
+            return;
+        }
+        controller.setWarn(null);
         new End(primaryStage, dataBaseClient, trialData);
     }
 }

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import javafx.geometry.Point2D;
 import javafx.geometry.Point3D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 
 /**
@@ -16,14 +17,14 @@ import javafx.scene.image.ImageView;
  */
 @SuppressWarnings("unused")
 public class ZoomCalculator {
-    private float speed;
+    private double speed;
     private Point3D position;
     private TrialData data;
     ConfigClient configClient;
     ZoomMapsController controller;
     ZoomBild zoomBild;
-    final List<String> questions;
-    final List<String> imageUrls;
+    final String question;
+    final String imageUrl;
 
     /**
      * Erstelt einen neues ZoomCalculator.
@@ -37,16 +38,9 @@ public class ZoomCalculator {
         this.data = data;
         this.configClient = configClient;
         this.controller = controller;
-        imageUrls = configClient.getConfig().getZoomMapsConfiguration().getImageUrls();
-        questions = new ArrayList<String>();
+        imageUrl = configClient.getConfig().getImageUrl();
+        question = configClient.getConfig().getQuestion();
         speed = configClient.getConfig().getZoomMapsConfiguration().getSpeed();
-        for (int i = 0; i < imageUrls.size(); i++) {
-            questions.add(configClient.getConfig().getQuestion());
-        }
-        loadState(questions.get(0), imageUrls.get(0));
-    }
-
-    private void loadState(String question, String imageUrl) {
         controller.setQuestion(question);
         zoomBild = new ZoomBild(imageUrl, controller.getImageView(), this);
         position = new Point3D(zoomBild.imageSize[0] / 2, zoomBild.imageSize[1] / 2, 0);
@@ -63,7 +57,7 @@ public class ZoomCalculator {
         }
         Point2D img = zoomBild.getImageCoordinates(raw);
         Logger.debug(raw.toString() + " -> " + img.toString());
-        position = zoomBild.move(img, direction * speed);
-        data.addDataPoint(new int[]{ (int) position.getX(), (int) position.getY() }, (int) position.getZ());
+        Rectangle2D viewport = zoomBild.move(img, direction * speed);
+        data.addDataPoint(viewport);
     }
 }

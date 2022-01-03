@@ -16,6 +16,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
          <children>
             <Button mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+            <Button fx:id="jsonButton" mnemonicParsing="false" onAction="#saveToJson" text="Save to JSON" />
             <Button mnemonicParsing="false" onAction="#newTest" text="New Test" />
          </children>
       </HBox>

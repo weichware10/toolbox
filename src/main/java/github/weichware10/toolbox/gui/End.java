@@ -6,6 +6,10 @@ import github.weichware10.util.db.DataBaseClient;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
@@ -45,6 +49,28 @@ public class End {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+    }
+
+    protected void saveTestToJson() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("JSON Config auswählen");
+        fileChooser.getExtensionFilters().add(
+                new ExtensionFilter("JSON Dateien", "*.json"));
+
+        // Dateipfad als String speichern und json laden
+        // String location = directoryChooser.showDialog(primaryStage).getAbsolutePath();
+        String location = fileChooser.showSaveDialog(primaryStage).getAbsolutePath();
+        if (location != null) {
+            TrialData.toJson(location, trialData);
+        }
+    }
+
+    protected void saveTestToDataBase() {
+        // from JSON
+        // from DATABASE
+        // neu erstellt in DATABASE
+        // überprüfen ob trial verfügbar ist
+        // -> wenn ja -> speichern
     }
 
     /**

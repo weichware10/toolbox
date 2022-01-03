@@ -149,15 +149,15 @@ public class App {
         }
 
         ZoomMapsConfiguration zoomMapsConfiguration = new ZoomMapsConfiguration(
-                4.2f,
-                true,
-                Arrays.asList(
-                        "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
-                        "url2", "url3"));
+                4.2,
+                600,
+                600,
+                true);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
+                "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
                 zoomMapsConfiguration),
                 trialIdInput);
     }
@@ -178,14 +178,12 @@ public class App {
                 Arrays.asList("string1", "string2"),
                 new int[] { 10, 10 },
                 new long[] { 100, 100 },
-                true,
-                Arrays.asList(
-                        "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
-                        "url2", "url3"));
+                true);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
+                "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
                 codeChartsConfiguration),
                 trialIdInput);
     }

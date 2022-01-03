@@ -5,21 +5,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane minHeight="300.0" minWidth="300.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.zoommaps.ZoomMapsController">
    <center>
-      <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
-         <image>
-            <Image url="@testbild.png" />
-         </image>
          <viewport>
             <Rectangle2D height="300.0" width="300.0" />
          </viewport>
@@ -32,15 +29,13 @@
          </BorderPane.margin>
          <children>
             <Label fx:id="questionLabel" text="Question?" />
-            <HBox alignment="CENTER" spacing="10.0">
+            <TilePane>
                <children>
-                  <TextField fx:id="answerField" />
-                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#endTest" text="Abgeben" />
+                  <Text fx:id="warnText" strokeType="OUTSIDE" strokeWidth="0.0" text="oh nein warnung" visible="false" TilePane.alignment="CENTER" />
+                  <TextField fx:id="answerField" onKeyPressed="#endTestOnEnter" TilePane.alignment="CENTER" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#endTest" text="Abgeben" TilePane.alignment="CENTER" />
                </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
+            </TilePane>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -1,0 +1,14 @@
+{
+  "toolType" : "ZOOMMAPS",
+  "trialId" : "trialId",
+  "configId" : "configId",
+  "question" : "Is this a question?",
+  "codeChartsConfiguration" : null,
+  "imageUrl" : "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
+  "tutorial" : true,
+  "zoomMapsConfiguration" : {
+    "speed" : 3.0,
+    "imageViewWidth": 300,
+    "imageViewHeight": 300
+  }
+}
