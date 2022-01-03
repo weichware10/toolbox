@@ -56,7 +56,6 @@ public class ZoomCalculator {
             throw new IllegalArgumentException("direction has not be of magnitude 1");
         }
         Point2D img = zoomBild.getImageCoordinates(raw);
-        Logger.debug(raw.toString() + " -> " + img.toString());
         Rectangle2D viewport = zoomBild.move(img, direction * speed);
         data.addDataPoint(viewport);
     }

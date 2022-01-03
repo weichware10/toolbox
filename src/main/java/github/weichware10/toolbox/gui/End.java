@@ -6,8 +6,6 @@ import github.weichware10.util.db.DataBaseClient;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Dialog;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -18,8 +16,8 @@ import javafx.stage.Stage;
 public class End {
     private final Stage primaryStage;
     private final DataBaseClient dataBaseClient;
-    @SuppressWarnings("unused")
     private final TrialData trialData;
+    EndController controller;
 
     /**
      * Erstellt den Abschluss Bildschirm.
@@ -44,7 +42,7 @@ public class End {
             return;
         }
 
-        EndController controller = loader.getController();
+        controller = loader.getController();
         controller.setEnd(this);
 
         Scene scene = new Scene(root);
@@ -58,10 +56,13 @@ public class End {
                 new ExtensionFilter("JSON Dateien", "*.json"));
 
         // Dateipfad als String speichern und json laden
-        // String location = directoryChooser.showDialog(primaryStage).getAbsolutePath();
         String location = fileChooser.showSaveDialog(primaryStage).getAbsolutePath();
         if (location != null) {
-            TrialData.toJson(location, trialData);
+            boolean success = TrialData.toJson(location, trialData);
+            if (!success) {
+                controller.setStatus(null, null, null);
+            }
+            controller.setStatus("TrialData unter", location, "gespeichert.");
         }
     }
 
@@ -71,6 +72,11 @@ public class End {
         // neu erstellt in DATABASE
         // überprüfen ob trial verfügbar ist
         // -> wenn ja -> speichern
+        if (dataBaseClient.trials.set(trialData)) {
+            controller.setStatus("successfully saved TrialData to DataBase.", null, null);
+        } else {
+            controller.setStatus("Could not save TrialData to DataBase.", null, null);
+        }
     }
 
     /**
