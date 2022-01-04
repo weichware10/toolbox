@@ -1,6 +1,5 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.Util;
 import github.weichware10.toolbox.gui.dialogs.DataBaseDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
