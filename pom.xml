@@ -86,7 +86,7 @@
     <dependency>
       <groupId>com.github.weichware10</groupId>
       <artifactId>util</artifactId>
-      <version>38aea11df7171d15bb82de7f4e676e0527d24b8e</version>
+      <version>c2f1b79a0068fc1b06d0a3b2af35949bef3e3441</version>
     </dependency>
   </dependencies>
 
