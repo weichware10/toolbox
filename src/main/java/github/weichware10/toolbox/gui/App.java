@@ -159,7 +159,8 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
+                /*Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),*/
+                App.class.getClassLoader().getResource("test-image.jpg").toString(),
                 "I wish you a warm welcome to a wonderful ZoomMaps Trial",
                 "Thank you for partaking in this Trial!",
                 zoomMapsConfiguration),
@@ -188,7 +189,8 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
+                /*Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),*/
+                App.class.getClassLoader().getResource("test-image.jpg").toString(),
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
