@@ -2,8 +2,9 @@ package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.App;
 import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
+import github.weichware10.toolbox.gui.util.Log;
+import github.weichware10.util.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
-import java.io.PrintStream;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -26,12 +27,7 @@ public class Main extends Application {
         // in Datei und Konsole loggen
         String logfile = String.format(
                 Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
-        Console.setLogfile(logfile);
-        Console.setOut(System.out);
-        PrintStream ps = new PrintStream(new Console(), true);
-        System.setOut(ps);
-        System.setErr(ps);
-
+        Logger.setLogfile(logfile);
         launch(args);
     }
 
@@ -42,6 +38,8 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+
+        Log.start();
 
         // ICON und TITLE
         primaryStage.getIcons().add(new Image("app-icon.png"));
@@ -77,5 +75,6 @@ public class Main extends Application {
         if (!confirmation) {
             event.consume();
         }
+        Log.close();
     }
 }

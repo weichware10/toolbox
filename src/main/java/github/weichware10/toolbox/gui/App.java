@@ -1,7 +1,6 @@
 package github.weichware10.toolbox.gui;
 
 import github.weichware10.toolbox.gui.dialogs.DataBaseDialog;
-import github.weichware10.toolbox.gui.dialogs.LogDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
 import github.weichware10.util.config.ConfigClient;
@@ -149,15 +148,17 @@ public class App {
         }
 
         ZoomMapsConfiguration zoomMapsConfiguration = new ZoomMapsConfiguration(
-                4.2f,
-                true,
-                Arrays.asList(
-                        "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
-                        "url2", "url3"));
+                4.2,
+                600,
+                600,
+                true);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
+                "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
+                "I wish you a warm welcome to a wonderful ZoomMaps Trial",
+                "Thank you for partaking in this Trial!",
                 zoomMapsConfiguration),
                 trialIdInput);
     }
@@ -178,14 +179,14 @@ public class App {
                 Arrays.asList("string1", "string2"),
                 new int[] { 10, 10 },
                 new long[] { 100, 100 },
-                true,
-                Arrays.asList(
-                        "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
-                        "url2", "url3"));
+                true);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
+                "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
+                "Welcome to this magnificent CodeCharts Trial",
+                "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
                 trialIdInput);
     }
@@ -278,9 +279,4 @@ public class App {
         controller.setAdminMenuVisibile(false);
         controller.setTrialInputDisable(false);
     }
-
-    protected void showLogs() {
-        new LogDialog();
-    }
-
 }

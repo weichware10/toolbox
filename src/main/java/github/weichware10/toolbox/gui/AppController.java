@@ -1,9 +1,12 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Logger;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -24,6 +27,8 @@ public class AppController {
     private TextField trialIdField;
     @FXML
     private Text warnText;
+    @FXML
+    private MenuItem logsMenu;
 
     protected void setApp(App app) {
         this.app = app;
@@ -98,9 +103,21 @@ public class AppController {
     }
 
     @FXML
-    void showLogs() {
-        Logger.info("app:menu Showing logs");
-        app.showLogs();
+    void toggleLogs() {
+        Logger.info("app:menu Toggling logs");
+        if (Log.visible.get()) {
+            Log.hide();
+        } else {
+            Log.show();
+        }
+    }
+
+    void setLogText(ObservableBooleanValue visible) {
+        if (visible.get()) {
+            logsMenu.setText("hide logs");
+        } else {
+            logsMenu.setText("show logs");
+        }
     }
 
     @FXML
@@ -113,6 +130,10 @@ public class AppController {
                 : "fx:id=\"adminMenu\" not injected: check 'App.fxml'.";
         assert startButton != null
                 : "fx:id=\"startButton\" not injected: check 'App.fxml'.";
+        assert logsMenu != null
+                : "fx:id=\"logsMenu\" not injected: check 'App.fxml'.";
+
+        Log.visible.addListener(obs -> setLogText((ObservableBooleanValue) obs));
     }
 
 }
