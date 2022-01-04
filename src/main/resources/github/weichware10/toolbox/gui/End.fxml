@@ -18,7 +18,7 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
          <children>
-            <Label fx:id="outroLabel" text="You have finished your test.">
+            <Label fx:id="outroLabel" text="You have finished your test." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

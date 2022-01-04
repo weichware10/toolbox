@@ -60,6 +60,7 @@ public class ZoomMaps {
 
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
 
         new ZoomCalculator(trialData, configClient, controller);
 
