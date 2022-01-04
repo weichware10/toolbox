@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 public class EyeTracking {
 
     private final Stage primaryStage;
-
-    @SuppressWarnings("unused")
     private final ConfigClient configClient;
     private final DataBaseClient dataBaseClient;
     private final TrialData trialData;
@@ -64,6 +62,6 @@ public class EyeTracking {
      * Beendet den Test und gibt die erhobenen Daten an den Endscreen weiter.
      */
     public void endTest() {
-        new End(primaryStage, dataBaseClient, trialData);
+        new End(primaryStage, configClient, dataBaseClient, trialData);
     }
 }

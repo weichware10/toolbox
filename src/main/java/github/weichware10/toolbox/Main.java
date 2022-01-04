@@ -1,7 +1,6 @@
 package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.App;
-import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
 import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -10,7 +9,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.joda.time.DateTime;
 
 /**
@@ -51,30 +49,9 @@ public class Main extends Application {
         primaryStage.setHeight(screenBounds.getHeight() / 2);
         primaryStage.setWidth(screenBounds.getWidth() / 2);
 
-        // Event welches beim schließen eines Fensters aufgerufen wird
-        primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeRequestFilter);
-
         // ersten Bildschirm starten
         new App(primaryStage, null);
         // ANZEIGEN
         primaryStage.show();
-    }
-
-    /**
-     * Filtert Anfragen das Fenster zu schließen
-     * - wird das Event consumed, wird das Fenster nicht geschlossen.
-     *
-     * @param event - das WindowEvent mit der Anfrage
-     */
-    private void closeRequestFilter(WindowEvent event) {
-        String icon = getClass().getResource("thonkang.png").toString();
-        // Fenster schließen, ja oder nein?
-        boolean confirmation = new ConfirmDialog("Do you want to close the window?", icon)
-                .getConfirmation();
-        // event consumieren -> nicht schließen
-        if (!confirmation) {
-            event.consume();
-        }
-        Log.close();
     }
 }

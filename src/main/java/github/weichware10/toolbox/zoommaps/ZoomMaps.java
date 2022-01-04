@@ -17,10 +17,10 @@ import javafx.stage.Stage;
 public class ZoomMaps {
 
     private final Stage primaryStage;
-    @SuppressWarnings("unused")
-    private final ConfigClient configClient;
     private final DataBaseClient dataBaseClient;
     private final TrialData trialData;
+    private final ConfigClient configClient;
+    ZoomMapsController controller;
 
 
     /**
@@ -32,8 +32,8 @@ public class ZoomMaps {
      */
     public ZoomMaps(Stage primaryStage, ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
-        this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
+        this.configClient = configClient;
         this.trialData = new TrialData(
                 ToolType.ZOOMMAPS,
                 configClient.getConfig().getTrialId(),
@@ -51,17 +51,33 @@ public class ZoomMaps {
             System.exit(-1);
         }
 
-        ZoomMapsController controller = loader.getController();
+        controller = loader.getController();
         controller.setZoomMaps(this);
+
+        controller.setImageViewSize(
+                configClient.getConfig().getZoomMapsConfiguration().getImageViewWidth(),
+                configClient.getConfig().getZoomMapsConfiguration().getImageViewHeight());
 
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
+
+        new ZoomCalculator(trialData, configClient, controller);
+
     }
 
     /**
      * Beendet den Test und gibt die erhobenen Daten an den Endscreen weiter.
+     *
+     * @param answer - Antwort auf die Frage
      */
-    public void endTest() {
-        new End(primaryStage, dataBaseClient, trialData);
+    public void endTest(String answer) {
+        if (answer.length() == 0) {
+            controller.setWarn("Please provide an answer.");
+            return;
+        }
+        controller.setWarn(null);
+        trialData.setAnswer(answer);
+        new End(primaryStage, configClient, dataBaseClient, trialData);
     }
 }
