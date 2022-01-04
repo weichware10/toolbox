@@ -156,7 +156,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                "https://media.discordapp.net/attachments/707505654218358818/927231793348894822/iu.png",
+                App.class.getClassLoader().getResource("test-image.jpg").toString(),
                 "I wish you a warm welcome to a wonderful ZoomMaps Trial",
                 "Thank you for partaking in this Trial!",
                 zoomMapsConfiguration),
@@ -184,7 +184,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                "https://media.discordapp.net/attachments/707505654218358818/836645130417078282/TBY5IslL.png",
+                App.class.getClassLoader().getResource("test-image.jpg").toString(),
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
