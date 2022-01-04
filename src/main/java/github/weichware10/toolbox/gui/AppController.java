@@ -2,6 +2,7 @@ package github.weichware10.toolbox.gui;
 
 import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Logger;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -104,12 +105,18 @@ public class AppController {
     @FXML
     void toggleLogs() {
         Logger.info("app:menu Toggling logs");
-        if (Log.isVisible()) {
+        if (Log.visible.get()) {
             Log.hide();
-            logsMenu.setText("show logs");
         } else {
             Log.show();
+        }
+    }
+
+    void setLogText(ObservableBooleanValue visible) {
+        if (visible.get()) {
             logsMenu.setText("hide logs");
+        } else {
+            logsMenu.setText("show logs");
         }
     }
 
@@ -125,6 +132,8 @@ public class AppController {
                 : "fx:id=\"startButton\" not injected: check 'App.fxml'.";
         assert logsMenu != null
                 : "fx:id=\"logsMenu\" not injected: check 'App.fxml'.";
+
+        Log.visible.addListener(obs -> setLogText((ObservableBooleanValue) obs));
     }
 
 }

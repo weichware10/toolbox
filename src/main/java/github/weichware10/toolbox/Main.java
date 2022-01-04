@@ -3,6 +3,7 @@ package github.weichware10.toolbox;
 import github.weichware10.toolbox.gui.App;
 import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
 import github.weichware10.toolbox.gui.util.Log;
+import github.weichware10.util.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -26,11 +27,7 @@ public class Main extends Application {
         // in Datei und Konsole loggen
         String logfile = String.format(
                 Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
-        Console.setLogfile(logfile);
-        Console.setSysOut(System.out);
-        System.setOut(Console.logStream);
-        System.setErr(Console.logStream);
-
+        Logger.setLogfile(logfile);
         launch(args);
     }
 
