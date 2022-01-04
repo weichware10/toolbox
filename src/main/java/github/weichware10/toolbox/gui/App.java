@@ -1,5 +1,6 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.Util;
 import github.weichware10.toolbox.gui.dialogs.DataBaseDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
@@ -100,7 +101,8 @@ public class App {
     }
 
     /**
-     * Nimmt eine trialId entgegen und startet den Versuch. Bei Fehlern wird eine Warnung angezeigt.
+     * Nimmt eine trialId entgegen und startet den Versuch. Bei Fehlern wird eine
+     * Warnung angezeigt.
      *
      * @param trialId - die ID des Versuches
      */
@@ -137,7 +139,8 @@ public class App {
 
     /**
      * Erstellt eine neue ZoomMaps Konfiguration,
-     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
+     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)}
+     * weiterzugeben.
      *
      * @param trialIdInput - das TextField zum Eintragen der generierten ID
      */
@@ -156,7 +159,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                App.class.getClassLoader().getResource("test-image.jpg").toString(),
+                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
                 "I wish you a warm welcome to a wonderful ZoomMaps Trial",
                 "Thank you for partaking in this Trial!",
                 zoomMapsConfiguration),
@@ -165,7 +168,8 @@ public class App {
 
     /**
      * Erstellt eine neue CodeCharts Konfiguration,
-     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)} weiterzugeben.
+     * um die Konfiguration an {@link #createTestTrial(Configuration, TextField)}
+     * weiterzugeben.
      *
      * @param trialIdInput - das TextField zum Eintragen der generierten ID
      */
@@ -184,7 +188,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                App.class.getClassLoader().getResource("test-image.jpg").toString(),
+                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
@@ -240,7 +244,8 @@ public class App {
 
     /**
      * Setzt die Datenbankverbindung auf die Werte in der .env Datei.
-     * Der Erfolg kann daran abgelesen werden, ob {@link #dataBaseClient} {@code null} ist.
+     * Der Erfolg kann daran abgelesen werden, ob {@link #dataBaseClient}
+     * {@code null} ist.
      * Der ConfigClient wird im gleichen Zug angepasst.
      */
     protected void resetDataBaseConnection() {
@@ -258,7 +263,8 @@ public class App {
                     schema);
         } catch (IllegalArgumentException e) {
             Logger.error("error when loading env", e);
-            // auf null setzen, falls die Verbindung vorher angepasst wurde und dies gewünscht ist
+            // auf null setzen, falls die Verbindung vorher angepasst wurde und dies
+            // gewünscht ist
             // zurücksetzen auf dataBaseClient-freien Zustand
             dataBaseClient = null;
         }
