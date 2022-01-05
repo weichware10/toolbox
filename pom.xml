@@ -26,7 +26,7 @@
     <!-- modules for custom JVM image -->
     <!-- JAVAFX: media, controls, fxml -->
     <!-- UTIL: sql, management, security.sasl -->
-    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl</jvm.modules>
+    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl,jdk.crypto.ec</jvm.modules>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
