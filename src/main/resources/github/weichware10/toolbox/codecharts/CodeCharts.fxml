@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
-
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
-   <center>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER">
-               <children>
-                  <Label text="CODECHARTS TEST" />
-                  <Button mnemonicParsing="false" onAction="#endTest" text="BEENDEN" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </center>
-</BorderPane>
+<Pane fx:id="codeChartsPane" prefHeight="151.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
+   <children>
+      <ImageView fx:id="codeChartsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@200284672_3734891630069253_8964934590893921849_n.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
