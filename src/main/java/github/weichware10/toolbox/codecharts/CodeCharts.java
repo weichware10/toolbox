@@ -56,6 +56,10 @@ public class CodeCharts {
 
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
+
+        CodeChartsCoordinator coordinator = new CodeChartsCoordinator(configClient);
+        int[] layoutGrid = coordinator.getDimensions();
+        controller.setGridPane(layoutGrid[1], layoutGrid[0]);
     }
 
     /**

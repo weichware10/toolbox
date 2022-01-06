@@ -1,5 +1,6 @@
 package github.weichware10.toolbox.codecharts;
 
+import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
 
 /**
@@ -7,12 +8,27 @@ import github.weichware10.util.data.TrialData;
  * von Bild Raster und Eingabefenster.
  */
 public class CodeChartsCoordinator {
+    ConfigClient configClient;
     protected TrialData data;
     // private long[] speed = new long[2];
     private static boolean isRelative;
-    private static int[] dimensions = new int[2];
+    private int[] dimensions = new int[2];
     private static String[] strings;
     private boolean configData;
+
+    /**
+     * Konstruktor für den CodeChartsCoordinator.
+     *
+     * @param configClient - aus dem die Configuration geladen wird
+     */
+    public CodeChartsCoordinator(ConfigClient configClient) {
+        this.configClient = configClient;
+        this.dimensions = configClient.getConfig().getCodeChartsConfiguration().getInitialSize();
+    }
+
+    public CodeChartsCoordinator() {
+
+    }
 
     public int[] getDimensions() {
         return dimensions;
@@ -37,7 +53,7 @@ public class CodeChartsCoordinator {
         }
         // CodeChartsBild bild = new CodeChartsBild("location");
         // Speichert location in Data für Berechnung in Raster
-        // CodeChartsRaster raster = new CodeChartsRaster();
+        // CodeChartsRaste´´r raster = new CodeChartsRaster();
         // CodeChartsEingabefenster fenster = new CodeChartsEingabefenster();
         // bild.show();
         // wait(speed[0]);
