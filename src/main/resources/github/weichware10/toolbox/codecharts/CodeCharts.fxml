@@ -2,14 +2,15 @@
 
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<Pane fx:id="codeChartsPane" prefHeight="151.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
-   <children>
-      <ImageView fx:id="codeChartsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+
+<BorderPane fx:id="codeChartsPane" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
+   <center>
+      <ImageView fx:id="codeChartsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@200284672_3734891630069253_8964934590893921849_n.jpg" />
          </image>
       </ImageView>
-   </children>
-</Pane>
+   </center>
+</BorderPane>
