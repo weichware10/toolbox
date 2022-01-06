@@ -1,5 +1,6 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.gui.util.WindowCloser;
 import github.weichware10.util.Logger;
 import java.awt.Desktop;
 import java.io.File;
@@ -105,14 +106,14 @@ public class EndController {
         } else {
             statusBox.getChildren().remove(pi);
             buttonBar.setDisable(false);
-            primaryStage.setOnCloseRequest(e -> closeProgram());
+            primaryStage.setOnCloseRequest(e -> WindowCloser.closeEverything());
         }
     }
 
     @FXML
     void closeProgram() {
         Logger.info("end:content Closing Program");
-        end.closeProgramm();
+        WindowCloser.closeEverything();
     }
 
     @FXML

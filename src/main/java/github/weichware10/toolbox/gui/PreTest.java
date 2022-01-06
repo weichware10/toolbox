@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.gui;
 
 import github.weichware10.toolbox.codecharts.CodeCharts;
+import github.weichware10.toolbox.gui.util.WindowCloser;
 import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
@@ -61,7 +62,7 @@ public class PreTest {
         Scene scene = new Scene(root);
 
         // Event welches beim schließen eines Fensters aufgerufen wird
-        primaryStage.setOnCloseRequest(e -> Util.closeRequestFilter(e));
+        primaryStage.setOnCloseRequest(e -> WindowCloser.closeRequestFilter(e));
         primaryStage.setScene(scene);
     }
 

@@ -2,6 +2,7 @@ package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.App;
 import github.weichware10.toolbox.gui.util.Log;
+import github.weichware10.toolbox.gui.util.WindowCloser;
 import github.weichware10.util.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
@@ -48,6 +49,7 @@ public class Main extends Application {
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         primaryStage.setHeight(screenBounds.getHeight() / 2);
         primaryStage.setWidth(screenBounds.getWidth() / 2);
+        primaryStage.setOnCloseRequest(e -> WindowCloser.closeEverything());
 
         // ersten Bildschirm starten
         new App(primaryStage, null);
