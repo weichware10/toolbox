@@ -26,6 +26,7 @@ public class Main extends Application {
         String logfile = String.format(
                 Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
         Logger.setLogfile(logfile);
+        Util.deleteTempDirHooker();
         launch(args);
     }
 

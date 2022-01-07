@@ -1,6 +1,7 @@
 package github.weichware10.toolbox;
 
 import github.weichware10.util.Logger;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import org.apache.commons.io.FileUtils;
 
 /**
  * util.
@@ -73,5 +75,22 @@ public final class Util {
         }
 
         return destName;
+    }
+
+    /**
+     * Löscht angelegten temporären Ordner beim Beenden der App.
+     */
+    public static void deleteTempDirHooker() {
+        Thread deleterHook = new Thread(() -> {
+            try {
+                Logger.info("delete tmp folder");
+                FileUtils.deleteDirectory(new File(tmpdir));
+            } catch (IOException e) {
+                Logger.error("IOException while deleting tmpdir", e, true);
+            } catch (IllegalArgumentException e) {
+                Logger.error("IllegalArgumentException while deleting tmpdir", e, true);
+            }
+        });
+        Runtime.getRuntime().addShutdownHook(deleterHook);
     }
 }
