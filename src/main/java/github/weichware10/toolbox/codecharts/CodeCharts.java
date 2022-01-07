@@ -59,7 +59,7 @@ public class CodeCharts {
 
         CodeChartsCoordinator coordinator = new CodeChartsCoordinator(configClient);
         int[] layoutGrid = coordinator.getDimensions();
-        controller.setGridPane(layoutGrid[1], layoutGrid[0]);
+        // controller.setGridPane(layoutGrid[1], layoutGrid[0]);
     }
 
     /**

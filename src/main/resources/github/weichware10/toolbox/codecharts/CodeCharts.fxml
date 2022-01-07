@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
 
-<StackPane fx:id="codeChartsStackPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
-   <children>
-      <ImageView fx:id="codeChartsImageView" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@200284672_3734891630069253_8964934590893921849_n.jpg" />
-         </image>
-      </ImageView>
-      <GridPane fx:id="codeChartsGridPane" alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="143.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="144.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-      </GridPane>
-   </children>
-</StackPane>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
+   <center>
+      <StackPane fx:id="codeChartsStackPane" prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <ImageView fx:id="codeChartsImageView" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@geralt.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
