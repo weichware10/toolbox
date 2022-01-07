@@ -40,6 +40,7 @@ public class CodeCharts {
                 configClient.getConfig().getConfigId());
 
         primaryStage.setTitle("Toolbox - CodeCharts Test");
+        primaryStage.setMaximized(true);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CodeCharts.fxml"));
 

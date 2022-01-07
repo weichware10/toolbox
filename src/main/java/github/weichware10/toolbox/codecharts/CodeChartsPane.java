@@ -169,13 +169,11 @@ public class CodeChartsPane extends Pane {
         setOnMouseEntered(leaf
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color.brighter(), null, null)))
-                : e -> {
-                });
+                : e -> {});
         setOnMouseExited(leaf
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color, null, null)))
-                : e -> {
-                });
+                : e -> {});
     }
 
     @SuppressWarnings("unused")
