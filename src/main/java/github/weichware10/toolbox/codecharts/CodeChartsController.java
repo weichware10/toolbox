@@ -2,6 +2,8 @@ package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.util.Logger;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -40,5 +42,11 @@ public class CodeChartsController {
                 : "fx:id=\"codeChartsImageView\" not injected: check 'CodeCharts.fxml'.";
         assert stackPane != null
                 : "fx:id=\"codeChartsStackPane\" not injected: check 'CodeCharts.fxml'.";
+        double ratio = imageView.getImage().getWidth() / imageView.getImage().getHeight();
+        double width = Math.min(imageView.getFitWidth(), imageView.getFitHeight() * ratio);
+        double height = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / ratio);
+        CodeChartsPane ccPane = new CodeChartsPane(new ArrayList<>(), -1, -1, width, height);
+        stackPane.getChildren().add(ccPane);
+        ccPane.subdivide(3, 3);
     }
 }
