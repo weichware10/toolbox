@@ -20,7 +20,7 @@ public class ImageNotFoundDialog {
      * @param error - Errornachicht
      */
     public void showImageNotFoundDialog(Exception error) {
-        Logger.info("showImageNotFoundDialog");
+        Logger.info("showing ImageNotFoundDialog...");
 
         Dialog<Void> dialog = new Dialog<>();
 

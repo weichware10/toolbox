@@ -27,8 +27,8 @@ public final class Util {
     public static String createTempDir() {
         String tmpdir = null;
         try {
-            tmpdir = Files.createTempDirectory("tmpDirPrefix").toFile().getAbsolutePath();
-            Logger.info("created tempdir: " + tmpdir);
+            tmpdir = Files.createTempDirectory("weichware").toFile().getAbsolutePath();
+            Logger.info("created tempdir: " + tmpdir + "...");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -86,7 +86,7 @@ public final class Util {
     public static void deleteTempDir() {
         Thread deleterHook = new Thread(() -> {
             try {
-                Logger.info("delete tmp folder");
+                Logger.info("deleting tmp folder...");
                 FileUtils.deleteDirectory(new File(tmpdir));
             } catch (IOException e) {
                 Logger.error("IOException while deleting tmpdir", e, true);
