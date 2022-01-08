@@ -40,10 +40,13 @@ public final class Util {
      *
      * @param imageUrl - URL vom Bild
      * @return Pfad zum Bild
+     * @throws MalformedURLException
+     * @throws IllegalArgumentException
+     * @throws FileNotFoundException
+     * @throws IOException
      */
-    public static String saveImage(String imageUrl)
-            throws MalformedURLException, IllegalArgumentException,
-            FileNotFoundException, IOException {
+    public static String saveImage(String imageUrl) throws MalformedURLException,
+            IllegalArgumentException, FileNotFoundException, IOException {
         if (tmpdir == null) {
             tmpdir = createTempDir();
         }

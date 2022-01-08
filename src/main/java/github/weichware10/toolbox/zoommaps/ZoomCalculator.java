@@ -32,18 +32,17 @@ public class ZoomCalculator {
     /**
      * Erstelt einen neues ZoomCalculator.
      *
-     * @param data -
-     * @param configClient -
-     * @param controller -
-     * @throws IOException -
-     * @throws FileNotFoundException -
-     * @throws IllegalArgumentException -
-     * @throws MalformedURLException -
+     * @param data - ein (leeres) {@link TrialData}-Objekt
+     * @param configClient - der ConfigClient der App
+     * @param controller - die ControllerKlasse der Szene
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws IllegalArgumentException
+     * @throws MalformedURLException
      */
-    public ZoomCalculator(TrialData data, ConfigClient configClient,
-            ZoomMapsController controller)
-            throws MalformedURLException, IllegalArgumentException,
-            FileNotFoundException, IOException {
+    public ZoomCalculator(TrialData data, ConfigClient configClient, ZoomMapsController controller)
+            throws MalformedURLException, IllegalArgumentException, FileNotFoundException,
+            IOException {
         this.data = data;
         this.configClient = configClient;
         this.controller = controller;

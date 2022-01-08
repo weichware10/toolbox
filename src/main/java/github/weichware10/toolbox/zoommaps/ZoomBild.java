@@ -24,11 +24,14 @@ public class ZoomBild {
      * Instanziiert ein neues ZoomBild.
      *
      * @param location - die Quelle der zu benutzenden Bilddatei
-     * @throws IllegalArgumentException falls die Location falsch ist
+     * @throws MalformedURLException
+     * @throws IllegalArgumentException
+     * @throws FileNotFoundException
+     * @throws IOException
      */
     public ZoomBild(String location, ImageView imageView, ZoomCalculator zoomCalculator)
-            throws MalformedURLException, IllegalArgumentException,
-            FileNotFoundException, IOException  {
+            throws MalformedURLException, IllegalArgumentException, FileNotFoundException,
+            IOException  {
         this.imageView = imageView;
         String imgLocation = Util.saveImage(location);
         Image image = new Image(imgLocation);
