@@ -1,5 +1,9 @@
 package github.weichware10.toolbox.zoommaps;
 
+import github.weichware10.toolbox.Util;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -22,10 +26,12 @@ public class ZoomBild {
      * @param location - die Quelle der zu benutzenden Bilddatei
      * @throws IllegalArgumentException falls die Location falsch ist
      */
-    public ZoomBild(String location, ImageView imageView, ZoomCalculator zoomCalculator) {
+    public ZoomBild(String location, ImageView imageView, ZoomCalculator zoomCalculator)
+            throws MalformedURLException, IllegalArgumentException,
+            FileNotFoundException, IOException  {
         this.imageView = imageView;
-        // TODO auf errors reagiern
-        Image image = new Image(location);
+        String imgLocation = Util.saveImage(location);
+        Image image = new Image(imgLocation);
         imageSize = new double[] { image.getWidth(), image.getHeight() };
         imageView.setImage(image);
         Rectangle2D viewport = new Rectangle2D(0, 0, imageSize[0], imageSize[1]);

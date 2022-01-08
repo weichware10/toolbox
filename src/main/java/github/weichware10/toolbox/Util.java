@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -39,40 +41,38 @@ public final class Util {
      * @param imageUrl - URL vom Bild
      * @return Pfad zum Bild
      */
-    public static String saveImage(String imageUrl) {
+    public static String saveImage(String imageUrl)
+            throws MalformedURLException, IllegalArgumentException,
+            FileNotFoundException, IOException {
         if (tmpdir == null) {
             tmpdir = createTempDir();
         }
         URL url = null;
-        try {
-            url = new URL(imageUrl);
-        } catch (MalformedURLException e) {
-            Logger.error("MalformedURLException while setting image URL", e, true);
-            return null;
-        }
+        url = new URL(imageUrl);
+
         String fileName = url.getFile();
         String destName = tmpdir + fileName.substring(fileName.lastIndexOf("/"));
         System.out.println(destName);
 
-        try {
-            InputStream is = url.openStream();
-            OutputStream os = new FileOutputStream(destName);
-            byte[] b = new byte[2048];
-            int length;
+        String fileType = fileName.substring(fileName.lastIndexOf("."));
 
-            while ((length = is.read(b)) != -1) {
-                os.write(b, 0, length);
-            }
+        List<String> supportedFileTypes = Arrays.asList(".jpg", ".png", ".jpeg");
 
-            is.close();
-            os.close();
-        } catch (FileNotFoundException e) {
-            Logger.error("FileNotFoundException while saving Image", e, true);
-            return null;
-        } catch (IOException e) {
-            Logger.error("IOException while saving Image", e, true);
-            return null;
+        if (!supportedFileTypes.contains(fileType)) {
+            throw new IllegalArgumentException("Filetype of given image is not supported");
         }
+
+        InputStream is = url.openStream();
+        OutputStream os = new FileOutputStream(destName);
+        byte[] b = new byte[2048];
+        int length;
+
+        while ((length = is.read(b)) != -1) {
+            os.write(b, 0, length);
+        }
+
+        is.close();
+        os.close();
 
         return destName;
     }
@@ -80,7 +80,7 @@ public final class Util {
     /**
      * Löscht angelegten temporären Ordner beim Beenden der App.
      */
-    public static void deleteTempDirHooker() {
+    public static void deleteTempDir() {
         Thread deleterHook = new Thread(() -> {
             try {
                 Logger.info("delete tmp folder");
