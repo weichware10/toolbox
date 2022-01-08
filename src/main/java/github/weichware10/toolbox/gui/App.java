@@ -158,7 +158,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Von wem werden Froot Loops hergestellt?",
-                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jp",
+                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
                 "Willkommen zu unserem ZoomMaps Versuch Illusion der Auswahl!",
                 "Vielen Dank für die Teilnahme. Sie sind jetzt ein Froot Loops Connoisseur!",
                 zoomMapsConfiguration),

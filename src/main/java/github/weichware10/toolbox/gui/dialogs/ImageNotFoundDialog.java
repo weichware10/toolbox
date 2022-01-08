@@ -25,7 +25,7 @@ public class ImageNotFoundDialog {
         Dialog<Void> dialog = new Dialog<>();
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.setTitle("Image can not be loaded");
+        dialog.setTitle("Image could not be loaded");
 
         FXMLLoader loader = new FXMLLoader(
                 ImageNotFoundDialog.class.getResource("ImageNotFoundDialog.fxml"));
@@ -42,7 +42,7 @@ public class ImageNotFoundDialog {
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(getClass().getResource("noimage.png").toString()));
 
-        controller.setErrorMessage(error.getMessage());
+        controller.setErrorMessage(error.toString());
 
         dialog.getDialogPane().setContent(root);
 
