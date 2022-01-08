@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * Dialogfenster, wenn Bild nicht geladen werden kann.
@@ -35,6 +37,11 @@ public class ImageNotFoundDialog {
         }
 
         ImageNotFoundDialogController controller = loader.getController();
+
+        // set icon
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResource("noimage.png").toString()));
+
         controller.setErrorMessage(error.getMessage());
 
         dialog.getDialogPane().setContent(root);
