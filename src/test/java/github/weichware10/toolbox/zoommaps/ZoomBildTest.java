@@ -39,7 +39,7 @@ public class ZoomBildTest {
      * @throws IllegalArgumentException -
      * @throws MalformedURLException -
      */
-    @Test(expected = IllegalArgumentException.class) // erwartet, dass Fehler auftritt
+    @Test(expected = MalformedURLException.class) // erwartet, dass Fehler auftritt
     public void shouldThrowAtWrongPicture() throws MalformedURLException, IllegalArgumentException,
             FileNotFoundException, IOException {
         new ZoomBild("www.thisisnotapicture.com/owl.html", new ImageView(), null);
