@@ -26,6 +26,8 @@ public class CodeChartsPane extends Pane {
     private List<int[]> globalId = new ArrayList<>();
     private int[] localId;
     private List<List<CodeChartsPane>> childPanes = new ArrayList<>();
+    public static int defaultHorizontal = -1;
+    public static int defaultVertical = -1;
 
     /**
      * Erstellt eine neue CodeChartsPane.
@@ -60,6 +62,10 @@ public class CodeChartsPane extends Pane {
         setDebugSplitting(true);
     }
 
+    public void subdivide() {
+        subdivide(defaultHorizontal, defaultVertical);
+    }
+
     /**
      * subdivides the pane.
      *
@@ -68,7 +74,18 @@ public class CodeChartsPane extends Pane {
      */
     public void subdivide(int horizontal, int vertical) {
 
+        if (horizontal < 0 || vertical < 0) {
+            if (getPrefWidth() < getPrefHeight()) {
+                horizontal = 1;
+                vertical = 2;
+            } else {
+                horizontal = 2;
+                vertical = 1;
+            }
+        }
+
         leaf = false;
+        disableDebugStyle();
 
         // Größe berechnen
         double paneWidth = getPrefWidth() / horizontal;
@@ -169,16 +186,26 @@ public class CodeChartsPane extends Pane {
         setOnMouseEntered(leaf
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color.brighter(), null, null)))
-                : e -> {});
+                : e -> {
+                });
         setOnMouseExited(leaf
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color, null, null)))
-                : e -> {});
+                : e -> {
+                });
+    }
+
+    @SuppressWarnings("unused")
+    private void disableDebugStyle() {
+        setBackground(null);
+        setOpacity(1);
+        setOnMouseEntered(e -> {});
+        setOnMouseExited(e -> {});
     }
 
     @SuppressWarnings("unused")
     private void setDebugSplitting(boolean value) {
-        setOnMouseClicked(value ? e -> subdivide(2, 2) : e -> {});
+        setOnMouseClicked(value ? e -> subdivide() : e -> {});
     }
 
     @Override

@@ -43,7 +43,7 @@ public class CodeChartsController {
         double height = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / ratio);
         CodeChartsPane ccPane = new CodeChartsPane(new ArrayList<>(), -1, -1, width, height);
         stackPane.getChildren().add(ccPane);
-        ccPane.subdivide(3, 3);
+        ccPane.subdivide(5, 3);
     }
 
     @FXML
@@ -54,9 +54,11 @@ public class CodeChartsController {
                 : "fx:id=\"codeChartsStackPane\" not injected: check 'CodeCharts.fxml'.";
 
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-
         imageView.setFitWidth(screenBounds.getWidth() / 2);
         imageView.setFitHeight(screenBounds.getHeight() / 2);
+
+        CodeChartsPane.defaultHorizontal = 2;
+        CodeChartsPane.defaultVertical = 2;
 
         setupTest();
     }
