@@ -1,6 +1,5 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.Util;
 import github.weichware10.toolbox.gui.dialogs.DataBaseDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
@@ -159,7 +158,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Von wem werden Froot Loops hergestellt?",
-                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
+                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
                 "Willkommen zu unserem ZoomMaps Versuch Illusion der Auswahl!",
                 "Vielen Dank für die Teilnahme. Sie sind jetzt ein Froot Loops Connoisseur!",
                 zoomMapsConfiguration),
@@ -188,7 +187,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),
+                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
                 codeChartsConfiguration),
