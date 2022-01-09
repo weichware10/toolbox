@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.gui.util;
 
 import github.weichware10.toolbox.gui.dialogs.ConfirmDialog;
+import javafx.application.Platform;
 import javafx.stage.WindowEvent;
 
 /**
@@ -21,15 +22,9 @@ public class WindowCloser {
         // event consumieren -> nicht schließen
         if (!confirmation) {
             event.consume();
+            return;
         }
-        Log.close();
-    }
-
-    /**
-     * schließt das Log bei WINDOW_CLOSE_REQUEST.
-     *
-     */
-    public static void closeEverything() {
-        Log.close();
+        // komplett schließen
+        Platform.exit();
     }
 }

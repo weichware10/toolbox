@@ -83,8 +83,11 @@ public final class Util {
     /**
      * Löscht angelegten temporären Ordner beim Beenden der App.
      */
-    public static void deleteTempDir() {
-        Thread deleterHook = new Thread(() -> {
+    public static Thread deleteTempDir() {
+        return new Thread(() -> {
+            if (tmpdir == null) {
+                return;
+            }
             try {
                 Logger.info("deleting tmp folder...");
                 FileUtils.deleteDirectory(new File(tmpdir));
@@ -94,6 +97,5 @@ public final class Util {
                 Logger.error("IllegalArgumentException while deleting tmpdir", e, true);
             }
         });
-        Runtime.getRuntime().addShutdownHook(deleterHook);
     }
 }
