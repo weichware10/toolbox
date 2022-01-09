@@ -3,6 +3,9 @@ package github.weichware10.toolbox.zoommaps;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,12 +32,17 @@ public class ZoomCalculator {
     /**
      * Erstelt einen neues ZoomCalculator.
      *
-     * @param data -
-     * @param configClient -
-     * @param controller -
+     * @param data - ein (leeres) {@link TrialData}-Objekt
+     * @param configClient - der ConfigClient der App
+     * @param controller - die ControllerKlasse der Szene
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws IllegalArgumentException
+     * @throws MalformedURLException
      */
-    public ZoomCalculator(TrialData data, ConfigClient configClient,
-            ZoomMapsController controller) {
+    public ZoomCalculator(TrialData data, ConfigClient configClient, ZoomMapsController controller)
+            throws MalformedURLException, IllegalArgumentException, FileNotFoundException,
+            IOException {
         this.data = data;
         this.configClient = configClient;
         this.controller = controller;
