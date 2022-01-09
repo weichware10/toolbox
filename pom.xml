@@ -26,7 +26,7 @@
     <!-- modules for custom JVM image -->
     <!-- JAVAFX: media, controls, fxml -->
     <!-- UTIL: sql, management, security.sasl -->
-    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl</jvm.modules>
+    <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging,java.sql,java.management,java.security.sasl,jdk.crypto.ec</jvm.modules>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
@@ -48,6 +48,13 @@
   </repositories>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+
     <!-- .env Datei -->
     <dependency>
       <groupId>io.github.cdimascio</groupId>
