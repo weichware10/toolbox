@@ -17,6 +17,7 @@
 
 <module name="Checker">
   <!-- added -->
+  <module name="SuppressWithPlainTextCommentFilter"/>
   <module name="NewlineAtEndOfFile">
     <property name="fileExtensions" value="java, xml, yml"/>
   </module>
@@ -55,6 +56,7 @@
 
   <module name="TreeWalker">
     <!-- addded -->
+    <module name="SuppressionCommentFilter"/>
     <module name="NonEmptyAtclauseDescription">
       <property name="javadocTokens" value="PARAM_LITERAL,RETURN_LITERAL,DEPRECATED_LITERAL"/>
     </module>
