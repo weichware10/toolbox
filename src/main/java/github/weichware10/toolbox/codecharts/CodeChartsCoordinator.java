@@ -9,7 +9,7 @@ import github.weichware10.util.data.TrialData;
  */
 public class CodeChartsCoordinator {
     ConfigClient configClient;
-    protected TrialData data;
+    protected TrialData trialData;
     // private long[] speed = new long[2];
     private static boolean isRelative;
     private int[] dimensions = new int[2];
@@ -21,8 +21,9 @@ public class CodeChartsCoordinator {
      *
      * @param configClient - aus dem die Configuration geladen wird
      */
-    public CodeChartsCoordinator(ConfigClient configClient) {
+    public CodeChartsCoordinator(ConfigClient configClient, TrialData trialData) {
         this.configClient = configClient;
+        this.trialData = trialData;
         this.dimensions = configClient.getConfig().getCodeChartsConfiguration().getInitialSize();
     }
 

@@ -5,13 +5,13 @@ package github.weichware10.toolbox.codecharts;
  * Überprüft den String auf Korrektheit.
  */
 @SuppressWarnings("unused")
-public class CodeChartsEingabefenster {
+public class CodeChartsInput {
     private final CodeChartsCoordinator coordinator;
     private boolean button;
     private String[] strings;
     private String string;
 
-    public CodeChartsEingabefenster(CodeChartsCoordinator coordinator) {
+    public CodeChartsInput(CodeChartsCoordinator coordinator) {
         this.coordinator = coordinator;
         strings = coordinator.getStrings();
     }

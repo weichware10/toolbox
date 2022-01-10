@@ -58,7 +58,7 @@ public class CodeCharts {
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
 
-        CodeChartsCoordinator coordinator = new CodeChartsCoordinator(configClient);
+        CodeChartsCoordinator coordinator = new CodeChartsCoordinator(configClient, trialData);
         int[] layoutGrid = coordinator.getDimensions();
     }
 
