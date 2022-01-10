@@ -13,7 +13,6 @@ public class CodeChartsInput {
 
     public CodeChartsInput(CodeChartsCoordinator coordinator) {
         this.coordinator = coordinator;
-        strings = coordinator.getStrings();
     }
 
     /**

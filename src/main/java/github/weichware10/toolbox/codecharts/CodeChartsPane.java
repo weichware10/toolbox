@@ -26,8 +26,9 @@ public class CodeChartsPane extends Pane {
     private List<int[]> globalId = new ArrayList<>();
     private int[] localId;
     private List<List<CodeChartsPane>> childPanes = new ArrayList<>();
-    public static int defaultHorizontal = -1;
-    public static int defaultVertical = -1;
+    public static Integer defaultHorizontal = -1;
+    public static Integer defaultVertical = -1;
+    public static boolean showGrid = false;
 
     /**
      * Erstellt eine neue CodeChartsPane.
@@ -58,7 +59,12 @@ public class CodeChartsPane extends Pane {
 
         // debug
         Logger.debug(String.format("created %s", toString()));
-        enableDebugStyle();
+
+        if (showGrid) {
+            setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        }
+        // enableDebugStyle();
         setDebugSplitting(true);
     }
 
@@ -181,8 +187,6 @@ public class CodeChartsPane extends Pane {
         Color color = Color.color(Math.random(), Math.random(), Math.random());
         setBackground(new Background(new BackgroundFill(color, null, null)));
         setOpacity(0.7);
-        setBorder(new Border(new BorderStroke(Color.BLACK,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         setOnMouseEntered(leaf
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color.brighter(), null, null)))

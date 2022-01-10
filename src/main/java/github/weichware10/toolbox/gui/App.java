@@ -183,14 +183,13 @@ public class App {
 
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
             "OBST", new int[]{ 3, 5 }, new long[]{ 300, 500 },
-            false, true, true, 5,
+            true, true, true, 5,
             15, -1, -1);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                /*Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),*/
-                App.class.getClassLoader().getResource("test-image.jpg").toString(),
+                "https://media.discordapp.net/attachments/707505654218358818/930115305852792932/geralt.jpg",
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
                 true,

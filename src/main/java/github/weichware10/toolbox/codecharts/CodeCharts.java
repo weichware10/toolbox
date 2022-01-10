@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.toolbox.gui.End;
+import github.weichware10.toolbox.gui.dialogs.ImageNotFoundDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.ToolType;
 import github.weichware10.util.config.ConfigClient;
@@ -58,8 +59,17 @@ public class CodeCharts {
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
 
-        CodeChartsCoordinator coordinator = new CodeChartsCoordinator(configClient, trialData);
-        int[] layoutGrid = coordinator.getDimensions();
+        CodeChartsCoordinator coordinator = null;
+        try {
+            coordinator = new CodeChartsCoordinator(configClient, dataBaseClient, trialData,
+                    controller.getImageView(), controller.getStackPane());
+        } catch (Exception e) {
+            Logger.error("Error while loading image", e, false);
+            primaryStage.close();
+            new ImageNotFoundDialog().showImageNotFoundDialog(e);
+        }
+        coordinator.startTest();
+        // endTest();
     }
 
     /**

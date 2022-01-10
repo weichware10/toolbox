@@ -1,98 +1,91 @@
 package github.weichware10.toolbox.codecharts;
 
+import github.weichware10.toolbox.Util;
+import github.weichware10.util.config.CodeChartsConfiguration;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
+import github.weichware10.util.db.DataBaseClient;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 /**
- * Steuert den Datenverkehr und gibt die BEfehle zum anzeigen.
+ * Steuert den Datenverkehr und gibt die Befehle zum anzeigen.
  * von Bild Raster und Eingabefenster.
  */
 public class CodeChartsCoordinator {
-    ConfigClient configClient;
-    protected TrialData trialData;
-    // private long[] speed = new long[2];
-    private static boolean isRelative;
-    private int[] dimensions = new int[2];
-    private static String[] strings;
-    private boolean configData;
+    private final TrialData trialData;
+    private final ImageView imageView;
+    private final CodeChartsPane rootPane;
+
+    private final List<String> usableStrings;
+    private final List<String> currentStrings;
+
+    private final long[] timings;
+    private final boolean relativeSize;
+    private final boolean randomized;
+    private final int maxDepth;
+    private final int iterations;
 
     /**
      * Konstruktor für den CodeChartsCoordinator.
      *
      * @param configClient - aus dem die Configuration geladen wird
+     * @param dataBaseClient -
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws IllegalArgumentException
+     * @throws MalformedURLException
      */
-    public CodeChartsCoordinator(ConfigClient configClient, TrialData trialData) {
-        this.configClient = configClient;
+    public CodeChartsCoordinator(ConfigClient configClient, DataBaseClient dataBaseClient,
+            TrialData trialData, ImageView imageView, StackPane stackPane)
+            throws MalformedURLException, IllegalArgumentException,
+            FileNotFoundException, IOException {
         this.trialData = trialData;
-        this.dimensions = configClient.getConfig().getCodeChartsConfiguration().getInitialSize();
+        this.imageView = imageView;
+
+        // BILD SETZEN
+        String imageUrl = Util.saveImage(configClient.getConfig().getImageUrl());
+        imageView.setImage(new Image(imageUrl));
+        imageView.setVisible(false);
+
+        // Konfiguration abspeichern
+        CodeChartsConfiguration ccConfig = configClient.getConfig().getCodeChartsConfiguration();
+        iterations = ccConfig.getInterations();
+        maxDepth = ccConfig.getMaxDepth();
+        randomized = ccConfig.getRandomized();
+        relativeSize = ccConfig.getRandomized();
+        timings = ccConfig.getTimings();
+        // String-Listen initialisieren
+        usableStrings = dataBaseClient.strings.get(ccConfig.getStringId());
+        currentStrings = new ArrayList<>();
+
+        // Zukünftige Unterteilungen setzen (könnte auch null sein)
+        CodeChartsPane.defaultHorizontal = ccConfig.getDefaultHorizontal();
+        CodeChartsPane.defaultVertical = ccConfig.getDefaultVertical();
+        CodeChartsPane.showGrid = ccConfig.getShowGrid();
+
+        int horizontal = ccConfig.getInitialSize()[0];
+        int vertical = ccConfig.getInitialSize()[1];
+
+        // größ herausfinden (gleich wie Bild)
+        double ratio = imageView.getImage().getWidth() / imageView.getImage().getHeight();
+        double width = Math.min(imageView.getFitWidth(), imageView.getFitHeight() * ratio);
+        double height = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / ratio);
+
+        // ROOT PANE
+        rootPane = new CodeChartsPane(new ArrayList<>(), -1, -1, width, height);
+        rootPane.subdivide(horizontal, vertical);
+        rootPane.setVisible(false);
+        stackPane.getChildren().add(rootPane);
     }
 
-    public CodeChartsCoordinator() {
-
-    }
-
-    public int[] getDimensions() {
-        return dimensions;
-    }
-
-    public String[] getStrings() {
-        return strings;
-    }
-
-    public boolean getIsRelative() {
-        return isRelative;
-    }
-
-    /**
-     * Ruft alle Klassen und Funktionen in Reihenfolge auf in der CodeCharts durchgeführt wird.
-     * Holt Daten aus der Config
-     */
-    public void startCodeCharts() {
-        loadConfigData();
-        if (configData == false) {
-            errorMessage();
-        }
-        // CodeChartsBild bild = new CodeChartsBild("location");
-        // Speichert location in Data für Berechnung in Raster
-        // CodeChartsRaste´´r raster = new CodeChartsRaster();
-        // CodeChartsEingabefenster fenster = new CodeChartsEingabefenster();
-        // bild.show();
-        // wait(speed[0]);
-        // bild.hide();
-        // raster.show();
-        // wait(speed[1]);
-        // String string = fenster.show();
-        // raster.setInput(string);
-        // ...
-        // raster.sendData();
-    }
-
-    /**
-     * Gibt Fehlermeldung bei falscher Config data.
-     */
-    private void errorMessage() {
+    public void startTest() {
         ;
-    }
-
-    /**
-     * Holt die Daten aus der Config.
-     * Speichert die Daten.
-     *
-     * @return gibt zurück ob fertig geladen.
-     */
-    protected boolean loadConfigData() {
-        // if (data != vollständig) {
-        //     configData = false;
-        //     return configData;
-        // } else {
-        //     configData = true;
-        // }
-        // speed => Umrechnung von float zu long
-        // speed[0] = aus Config;
-        // speed[1] = aus Config;
-        // dimensions[0] = aus Config;
-        // dimensions[1] = aus Config;
-        // isRelative = aus Cofig;
-        return configData;
     }
 }
