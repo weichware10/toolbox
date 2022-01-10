@@ -12,7 +12,6 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -179,7 +178,7 @@ public class App {
         }
 
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
-                Arrays.asList("string1", "string2"),
+                "OBST",
                 new int[] { 10, 10 },
                 new long[] { 100, 100 },
                 true);
