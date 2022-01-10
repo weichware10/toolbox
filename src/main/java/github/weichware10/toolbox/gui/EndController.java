@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Hyperlink;
@@ -105,14 +106,14 @@ public class EndController {
         } else {
             statusBox.getChildren().remove(pi);
             buttonBar.setDisable(false);
-            primaryStage.setOnCloseRequest(e -> closeProgram());
+            primaryStage.setOnCloseRequest(e -> Platform.exit());
         }
     }
 
     @FXML
     void closeProgram() {
         Logger.info("end:content Closing Program");
-        end.closeProgramm();
+        Platform.exit();
     }
 
     @FXML

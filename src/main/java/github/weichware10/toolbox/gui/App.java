@@ -12,7 +12,6 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -155,8 +154,7 @@ public class App {
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Von wem werden Froot Loops hergestellt?",
-                /*Util.saveImage("https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg"),*/
-                App.class.getClassLoader().getResource("test-image.jpg").toString(),
+                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
                 "Willkommen zu unserem ZoomMaps Versuch Illusion der Auswahl!",
                 "Vielen Dank für die Teilnahme. Sie sind jetzt ein Froot Loops Connoisseur!",
                 true,

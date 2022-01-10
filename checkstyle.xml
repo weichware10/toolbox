@@ -17,6 +17,7 @@
 
 <module name="Checker">
   <!-- added -->
+  <module name="SuppressWithPlainTextCommentFilter"/>
   <module name="NewlineAtEndOfFile">
     <property name="fileExtensions" value="java, xml, yml"/>
   </module>
@@ -55,6 +56,10 @@
 
   <module name="TreeWalker">
     <!-- addded -->
+    <module name="SuppressionCommentFilter"/>
+    <module name="NonEmptyAtclauseDescription">
+      <property name="javadocTokens" value="PARAM_LITERAL,RETURN_LITERAL,DEPRECATED_LITERAL"/>
+    </module>
     <module name="Regexp">
       <property name="format" value="(@param [a-z][a-zA-Z0-9]*)( ++-\S|\S- |\S-\S| ++[^-])"/>
       <property name="illegalPattern" value="true"/>
@@ -282,7 +287,6 @@
       <property name="tokens" value="VARIABLE_DEF" />
       <property name="allowSamelineMultipleAnnotations" value="true" />
     </module>
-    <module name="NonEmptyAtclauseDescription" />
     <module name="InvalidJavadocPosition" />
     <module name="JavadocTagContinuationIndentation" />
     <module name="SummaryJavadoc">

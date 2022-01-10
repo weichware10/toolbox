@@ -5,6 +5,7 @@ import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
@@ -26,6 +27,8 @@ public class Main extends Application {
         String logfile = String.format(
                 Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
         Logger.setLogfile(logfile);
+        // delete temp dir
+        Runtime.getRuntime().addShutdownHook(Util.deleteTempDir());
         launch(args);
     }
 
@@ -48,6 +51,8 @@ public class Main extends Application {
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         primaryStage.setHeight(screenBounds.getHeight() / 2);
         primaryStage.setWidth(screenBounds.getWidth() / 2);
+        // Hauptfenster schließt komplettes Programm
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
 
         // ersten Bildschirm starten
         new App(primaryStage, null);
