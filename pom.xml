@@ -6,7 +6,7 @@
 
   <groupId>com.github.weichware10</groupId>
   <artifactId>toolbox</artifactId>
-  <version>v0.3.3</version>
+  <version>v1.0-SNAPSHOT</version>
 
   <name>${app.name}</name>
   <url>https://github.com/weichware10/toolbox</url>
