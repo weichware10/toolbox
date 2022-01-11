@@ -23,7 +23,9 @@ jobs:
         env:
           ENV: ${{secrets.ENV}}
       - name: Run tests with Maven
-        run: mvn -B test --file pom.xml verify checkstyle:checkstyle
+        run: mvn jacoco:prepare-agent test install jacoco:report coveralls:report verify checkstyle:checkstyle -DrepoToken="$COVERALLS_TOKEN"
+        env:
+          COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       - name: publish test report
         if: ${{ always() }}
         uses: scacap/action-surefire-report@v1
