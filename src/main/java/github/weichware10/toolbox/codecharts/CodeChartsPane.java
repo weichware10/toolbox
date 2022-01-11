@@ -2,9 +2,11 @@ package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.util.Logger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -13,43 +15,50 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Container für das CodeChartsRaster.
  */
-public class CodeChartsPane extends Pane {
-    private boolean root = false;
-    private boolean leaf = true;
-    private List<int[]> globalId = new ArrayList<>();
-    private int[] localId;
-    private List<List<CodeChartsPane>> childPanes = new ArrayList<>();
+public class CodeChartsPane extends AnchorPane {
+    private final List<CodeChartsPane> childPanes = new ArrayList<>();
+    public final Rectangle2D viewport;
+    public final int depth;
+
+    private String content = null;
+
     public static Integer defaultHorizontal = -1;
     public static Integer defaultVertical = -1;
     public static boolean showGrid = false;
+    public static boolean DEBUG = false;
 
     /**
      * Erstellt eine neue CodeChartsPane.
      *
-     * @param parentIds -
-     * @param hoId -
-     * @param veId -
-     * @param width -
-     * @param height -
+     * @param parent    - das Elter
+     * @param hoId      - horizontale ID
+     * @param veId      - vertikale ID
+     * @param width     - Breite
+     * @param height    - Höhe
      */
-    public CodeChartsPane(List<int[]> parentIds,
-            int hoId, int veId,
-            double width, double height) {
+    public CodeChartsPane(CodeChartsPane parent, int hoId, int veId, double width, double height) {
+        // AnchorPane Constructor
         super();
-        if (hoId < 0 || veId < 0) {
-            localId = new int[] { -1, -1 };
-            root = true;
+
+        // root
+        if (parent == null) {
+            viewport = new Rectangle2D(0, 0, width, height);
+            depth = 0;
+            // kein root
         } else {
-            localId = new int[] { hoId, veId };
-            globalId.addAll(parentIds);
-            globalId.add(localId);
+            viewport = new Rectangle2D(
+                    parent.viewport.getMinX() + (hoId * width),
+                    parent.viewport.getMinY() + (veId * height),
+                    width,
+                    height);
+            depth = parent.depth + 1;
         }
 
         // sizing
@@ -58,25 +67,32 @@ public class CodeChartsPane extends Pane {
         setMaxSize(width, height);
 
         // debug
-        Logger.debug(String.format("created %s", toString()));
+        Logger.info(String.format("created %s", toString()));
 
         if (showGrid) {
             setBorder(new Border(new BorderStroke(Color.BLACK,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+                    BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         }
-        // enableDebugStyle();
-        setDebugSplitting(true);
+
+        if (DEBUG) {
+            enableDebugStyle();
+            setDebugSplitting(true);
+        }
     }
 
+    /**
+     * Unterteilt das CodeCharts-Pane mit den default-Maßen.
+     */
     public void subdivide() {
         subdivide(defaultHorizontal, defaultVertical);
     }
 
     /**
-     * subdivides the pane.
+     * Unterteilt das CodeCharts-Pane mit selbst gewählten Maßen.
+     * Wird mindestens 1 Wert <= 0 gewählt, wird eine dynamische Unterteilung durchgeführt.
      *
-     * @param horizontal -
-     * @param vertical -
+     * @param horizontal - Anzahl der Horizontalen Unterteilungen
+     * @param vertical   - Anzahl der Vertikalen Unterteilungen
      */
     public void subdivide(int horizontal, int vertical) {
 
@@ -90,20 +106,14 @@ public class CodeChartsPane extends Pane {
             }
         }
 
-        leaf = false;
-        disableDebugStyle();
-
         // Größe berechnen
         double paneWidth = getPrefWidth() / horizontal;
         double paneHeight = getPrefHeight() / vertical;
-        Logger.debug(String.format("subdividing {w:%f,h:%f}", paneWidth, paneHeight));
+        Logger.info(String.format("subdividing CodeChartsPane {w:%f,h:%f}", paneWidth, paneHeight));
 
         // sorgt für Spalten
         HBox horizontalBox = new HBox();
         for (int hoId = 0; hoId < horizontal; hoId++) {
-
-            // Liste für Spalteninhalt erstellen
-            childPanes.add(new ArrayList<>());
 
             // Spalte veId, beinhaltet Zellen
             VBox verticalBox = new VBox();
@@ -111,11 +121,11 @@ public class CodeChartsPane extends Pane {
 
                 // CodeChartsPane erstellen
                 CodeChartsPane ccPane = new CodeChartsPane(
-                        globalId, hoId, veId, paneWidth, paneHeight);
+                        this, hoId, veId, paneWidth, paneHeight);
                 // zu Spalte hinzufügen
                 verticalBox.getChildren().add(ccPane);
                 // zu Spaltenliste hinzufügen
-                childPanes.get(hoId).add(ccPane);
+                childPanes.add(ccPane);
             }
             // Spalte veId in HBox hinzufügen
             horizontalBox.getChildren().add(verticalBox);
@@ -124,99 +134,125 @@ public class CodeChartsPane extends Pane {
         // Gesamtkonstrukt hinzufügen
         getChildren().clear();
         getChildren().add(horizontalBox);
-        setDebugSplitting(false);
+
+        if (DEBUG) {
+            disableDebugStyle();
+            setDebugSplitting(false);
+        }
     }
 
     /**
-     * findet das Kind mit der globalId childId.
+     * initialisiert Felder mit Wörtern.
      *
-     * @param childId - globalId
-     * @return - Child, falls gefunden (sonst {@code null})
+     * @param usableStrings  - Liste mit Wörtern, die noch verwendet werden können
+     * @param currentStrings - Wörter, die in Benutzung sind
      */
-    public CodeChartsPane getChild(List<int[]> childId) {
-
-        if (childId.size() == 1) {
-            if (Arrays.equals(childId.get(0), localId)) {
-                return this;
-            } else {
-                return null;
+    public void philLeaves(List<String> usableStrings, List<String> currentStrings) {
+        if (isChild()) {
+            String current = usableStrings.remove(0);
+            currentStrings.add(current);
+            setContent(current);
+        } else {
+            // rekursiver Aufruf
+            for (CodeChartsPane childPane : childPanes) {
+                childPane.philLeaves(usableStrings, currentStrings);
             }
         }
+    }
 
-        // Falls leaf aber Such-ID-Listengröße noch zu groß
-        if (leaf) {
-            return null;
+    /**
+     * Setzt den Inhalt des CodeChartsPanes auf einen String.
+     *
+     * @param content - der gewünschte Inhalt
+     */
+    public void setContent(String content) {
+        this.content = content;
+        // Inhalt erstellen und Größe setzen
+        Label label = new Label(content);
+        label.setFont(new Font(Math.hypot(getPrefWidth(), getPrefHeight()) / 10));
+        // zentrieren
+        label.setMaxWidth(Double.MAX_VALUE);
+        AnchorPane.setLeftAnchor(label, 0.0);
+        AnchorPane.setRightAnchor(label, 0.0);
+        AnchorPane.setTopAnchor(label, 0.0);
+        AnchorPane.setBottomAnchor(label, 0.0);
+        label.setAlignment(Pos.CENTER);
+        // hinzufügen
+        childPanes.clear();
+        getChildren().clear();
+        getChildren().add(label);
+    }
+
+    /**
+     * findet das CodeChartsPane, welches den String enthält.
+     *
+     * @param searchContent - zu findender String
+     * @return das CodeChartsPane-Objekt, welches den String enthält.
+     */
+    public CodeChartsPane getLeaf(String searchContent) {
+        if (isChild()) {
+            return this.content.equals(searchContent) ? this : null;
         }
-
-        // zu durchsuchende Liste beinhaltet erste ID nicht mehr (außer bei root)
-        List<int[]> queryList = root ? childId : childId.subList(1, childId.size());
-
         // alle Kinder durchsuchen
         // Spalten
-        for (List<CodeChartsPane> column : childPanes) {
-
-            // Zeilen
-            for (CodeChartsPane ccPane : column) {
-
-                // rekursiver Aufruf
-                CodeChartsPane child = ccPane.getChild(queryList);
-
-                // falls gefunden: Suche beendet
-                if (child != null) {
-                    return child;
-                }
+        for (CodeChartsPane ccPane : childPanes) {
+            // rekursiver Aufruf
+            CodeChartsPane child = ccPane.getLeaf(searchContent);
+            // falls gefunden: Suche beendet
+            if (child != null) {
+                return child;
             }
         }
-
         // nichts gefunden
         return null;
     }
 
-    public int[] getLocalId() {
-        return localId;
-    }
-
-    public void setContent(String content) {
-        getChildren().clear();
-        getChildren().add(new Label("content"));
-    }
-
-
-    @SuppressWarnings("unused")
-    private void enableDebugStyle() {
+    /**
+     * Färbt das Pane zum Debuggen.
+     */
+    public void enableDebugStyle() {
         Color color = Color.color(Math.random(), Math.random(), Math.random());
         setBackground(new Background(new BackgroundFill(color, null, null)));
         setOpacity(0.7);
-        setOnMouseEntered(leaf
+        setOnMouseEntered(isChild()
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color.brighter(), null, null)))
                 : e -> {
                 });
-        setOnMouseExited(leaf
+        setOnMouseExited(isChild()
                 ? e -> setBackground(
                         new Background(new BackgroundFill(color, null, null)))
                 : e -> {
                 });
     }
 
-    @SuppressWarnings("unused")
-    private void disableDebugStyle() {
+    /**
+     * versteckt den DebugStyle.
+     */
+    public void disableDebugStyle() {
         setBackground(null);
         setOpacity(1);
-        setOnMouseEntered(e -> {});
-        setOnMouseExited(e -> {});
+        setOnMouseEntered(e -> {
+        });
+        setOnMouseExited(e -> {
+        });
     }
 
-    @SuppressWarnings("unused")
-    private void setDebugSplitting(boolean value) {
+    /**
+     * CodeChartsPanes teilen sich beim Klicken.
+     *
+     * @param value - ob das Feature aktiviert sein soll
+     */
+    public void setDebugSplitting(boolean value) {
         setOnMouseClicked(value ? e -> subdivide() : e -> {});
     }
 
     @Override
     public String toString() {
-        final StringBuilder idSb = new StringBuilder("[]");
-        globalId.forEach(i -> idSb.insert(idSb.length() - 1, Arrays.toString(i)));
-        return String.format("codeChartsPane%s {w:%d,h:%d}",
-                idSb.toString(), (int) getPrefWidth(), (int) getPrefHeight());
+        return String.format("codeChartsPane {%s}", viewport.toString());
+    }
+
+    private boolean isChild() {
+        return childPanes.size() == 0;
     }
 }

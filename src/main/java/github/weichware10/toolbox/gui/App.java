@@ -180,7 +180,7 @@ public class App {
         }
 
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
-            "OBST", new int[]{ 3, 5 }, new long[]{ 300, 500 },
+            "OBST", new int[]{ 3, 5 }, new long[]{ 2000, 1000 },
             true, true, true, 5,
             15, -1, -1);
 

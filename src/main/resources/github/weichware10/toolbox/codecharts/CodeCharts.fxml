@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
-<Pane fx:id="codeChartsPane" prefHeight="151.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
-   <children>
-      <ImageView fx:id="codeChartsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@geralt.jpg" />
-         </image>
-      </ImageView>
-   </children>
-</Pane>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.codecharts.CodeChartsController">
+   <center>
+      <StackPane fx:id="stackPane">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

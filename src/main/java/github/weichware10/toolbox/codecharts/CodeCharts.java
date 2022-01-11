@@ -62,14 +62,13 @@ public class CodeCharts {
         CodeChartsCoordinator coordinator = null;
         try {
             coordinator = new CodeChartsCoordinator(configClient, dataBaseClient, trialData,
-                    controller.getImageView(), controller.getStackPane());
+                    controller.getImageView(), controller.getStackPane(), primaryStage, this);
         } catch (Exception e) {
             Logger.error("Error while loading image", e, false);
             primaryStage.close();
             new ImageNotFoundDialog().showImageNotFoundDialog(e);
         }
-        coordinator.startTest();
-        // endTest();
+        coordinator.iterate();
     }
 
     /**
