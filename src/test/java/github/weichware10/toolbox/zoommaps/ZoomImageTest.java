@@ -9,9 +9,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Testet ZoomBild, bzw. die Größe des Outputs der Funktion move.
+ * Testet ZoomImage, bzw. die Größe des Outputs der Funktion move.
  */
-public class ZoomBildTest {
+public class ZoomImageTest {
     /**
      * Testet ob ein Array mit der richtigen Länge erstellt wird.
      *
@@ -25,8 +25,8 @@ public class ZoomBildTest {
     @Ignore
     public void testOutputSize() throws MalformedURLException, IllegalArgumentException,
             FileNotFoundException, IOException {
-        String location = ZoomBildTest.class.getResource("owl.jpeg").toString();
-        ZoomBild zoombild = new ZoomBild(location, new ImageView(), null);
+        String location = ZoomImageTest.class.getResource("owl.jpeg").toString();
+        ZoomImage zoombild = new ZoomImage(location, new ImageView(), null);
         Point3D position = new Point3D(0, 1, 2);
         // assertEquals("Array-length should be three", 3, zoombild.move(position));
     }
@@ -42,6 +42,6 @@ public class ZoomBildTest {
     @Test(expected = MalformedURLException.class) // erwartet, dass Fehler auftritt
     public void shouldThrowAtWrongPicture() throws MalformedURLException, IllegalArgumentException,
             FileNotFoundException, IOException {
-        new ZoomBild("www.thisisnotapicture.com/owl.html", new ImageView(), null);
+        new ZoomImage("www.thisisnotapicture.com/owl.html", new ImageView(), null);
     }
 }

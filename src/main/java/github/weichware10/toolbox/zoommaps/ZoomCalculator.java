@@ -25,7 +25,7 @@ public class ZoomCalculator {
     private TrialData data;
     ConfigClient configClient;
     ZoomMapsController controller;
-    ZoomBild zoomBild;
+    ZoomImage zoomImage;
     final String question;
     final String imageUrl;
 
@@ -50,8 +50,8 @@ public class ZoomCalculator {
         question = configClient.getConfig().getQuestion();
         speed = configClient.getConfig().getZoomMapsConfiguration().getSpeed();
         controller.setQuestion(question);
-        zoomBild = new ZoomBild(imageUrl, controller.getImageView(), this);
-        position = new Point3D(zoomBild.imageSize[0] / 2, zoomBild.imageSize[1] / 2, 0);
+        zoomImage = new ZoomImage(imageUrl, controller.getImageView(), this);
+        position = new Point3D(zoomImage.imageSize[0] / 2, zoomImage.imageSize[1] / 2, 0);
     }
 
     /**
@@ -63,8 +63,8 @@ public class ZoomCalculator {
         if (Math.abs(direction) != 1) {
             throw new IllegalArgumentException("direction has not be of magnitude 1");
         }
-        Point2D img = zoomBild.getImageCoordinates(raw);
-        Rectangle2D viewport = zoomBild.move(img, direction * speed);
+        Point2D img = zoomImage.getImageCoordinates(raw);
+        Rectangle2D viewport = zoomImage.move(img, direction * speed);
         data.addDataPoint(viewport);
     }
 }

@@ -15,13 +15,13 @@ import javafx.scene.input.ScrollEvent;
  * Ändert den aktuellen Bildausschnitt mit Hilfe gegebener Koordianten
  * und gibt die neuen Koordinaten an ZoomCalculator zurück.
  */
-public class ZoomBild {
+public class ZoomImage {
 
     public final double[] imageSize;
     private ImageView imageView;
 
     /**
-     * Instanziiert ein neues ZoomBild.
+     * Instanziiert ein neues ZoomImage.
      *
      * @param location - die Quelle der zu benutzenden Bilddatei
      * @throws MalformedURLException
@@ -29,7 +29,7 @@ public class ZoomBild {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public ZoomBild(String location, ImageView imageView, ZoomCalculator zoomCalculator)
+    public ZoomImage(String location, ImageView imageView, ZoomCalculator zoomCalculator)
             throws MalformedURLException, IllegalArgumentException, FileNotFoundException,
             IOException  {
         this.imageView = imageView;
