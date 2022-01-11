@@ -23,7 +23,7 @@ public class CodeChartsInput {
     private final CodeChartsInputController controller;
     private final BorderPane root;
 
-    private static final int LOWEST_ALLOWED_DISTANCE = 5;
+    private static final int LOWEST_ALLOWED_DISTANCE = 3;
 
     /**
      * Initialisiert ein neuen CodeChartsInput-Dialog.
