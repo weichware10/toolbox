@@ -99,7 +99,7 @@
     <dependency>
       <groupId>com.github.weichware10</groupId>
       <artifactId>util</artifactId>
-      <version>fd23e74</version>
+      <version>v3.0</version>
     </dependency>
   </dependencies>
 
