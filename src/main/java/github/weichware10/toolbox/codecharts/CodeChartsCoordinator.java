@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.toolbox.Util;
+import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
@@ -130,7 +131,7 @@ public class CodeChartsCoordinator {
                     Thread.sleep(timings[1]);
                     Platform.runLater(() -> rootPane.setVisible(false));
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Logger.error("Error while doing a CodeCharts iteration", e, true);
                 }
                 return null;
             }
