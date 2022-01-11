@@ -113,7 +113,7 @@ public class CodeChartsCoordinator {
     }
 
     /**
-     * blbla.
+     * Durchführen einer CodeCharts Iteration.
      */
     public void iterate() {
 
