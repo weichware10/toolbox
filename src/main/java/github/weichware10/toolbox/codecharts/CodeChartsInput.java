@@ -117,7 +117,7 @@ public class CodeChartsInput {
     /**
      * Vergleicht 2 Strings aufgrund ihrer Ähnlichkeit mit einem Dritten.
      */
-    public class LevenshteinComparator implements Comparator<String> {
+    private class LevenshteinComparator implements Comparator<String> {
 
         private final String base;
         private final Levenshtein levenshtein = new Levenshtein();
