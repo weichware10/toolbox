@@ -21,7 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * Steuert den Datenverkehr und gibt die Befehle zum anzeigen.
+ * Steuert den Datenverkehr und gibt die Befehle zum Anzeigen.
  * von Bild Raster und Eingabefenster.
  */
 public class CodeChartsCoordinator {
