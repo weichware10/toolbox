@@ -1,4 +1,5 @@
-![test status](.github/badges/tests.svg) ![code coverage](.github/badges/jacoco.svg)
+![test status](.github/badges/tests.svg)
+[![Coverage Status](https://coveralls.io/repos/github/weichware10/toolbox/badge.svg)](https://coveralls.io/github/weichware10/toolbox)
 # Weichware-10: Toolbox
 
 Beinhaltet Toolbox

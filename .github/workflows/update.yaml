@@ -18,7 +18,6 @@ jobs:
           token: ${{ secrets.WEICHBOT }}
       - name: download workflows
         run: |
-          curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/badges.yaml --output .github/workflows/badges.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/tests.yaml --output .github/workflows/tests.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/update.yaml --output .github/workflows/update.yaml --create-dirs
           curl https://raw.githubusercontent.com/weichware-10/repo-utils/main/workflows/checkstyle.yaml --output .github/workflows/checkstyle.yaml --create-dirs
