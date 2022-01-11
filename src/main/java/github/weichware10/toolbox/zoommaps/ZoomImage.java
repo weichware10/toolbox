@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.toolbox.Util;
+import github.weichware10.util.Files;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,7 +33,7 @@ public class ZoomImage {
             throws MalformedURLException, IllegalArgumentException, FileNotFoundException,
             IOException  {
         this.imageView = imageView;
-        String imgLocation = Util.saveImage(location);
+        String imgLocation = Files.saveImage(location);
         Image image = new Image(imgLocation);
         imageSize = new double[] { image.getWidth(), image.getHeight() };
         imageView.setImage(image);

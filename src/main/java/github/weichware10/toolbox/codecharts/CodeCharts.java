@@ -1,6 +1,7 @@
 package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.toolbox.gui.End;
+import github.weichware10.toolbox.gui.dialogs.ImageNotFoundDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.ToolType;
 import github.weichware10.util.config.ConfigClient;
@@ -40,6 +41,7 @@ public class CodeCharts {
                 configClient.getConfig().getConfigId());
 
         primaryStage.setTitle("Toolbox - CodeCharts Test");
+        primaryStage.setMaximized(true);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CodeCharts.fxml"));
 
@@ -56,6 +58,17 @@ public class CodeCharts {
 
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
+
+        CodeChartsCoordinator coordinator = null;
+        try {
+            coordinator = new CodeChartsCoordinator(configClient, dataBaseClient, trialData,
+                    controller.getImageView(), controller.getStackPane(), primaryStage, this);
+        } catch (Exception e) {
+            Logger.error("Error while loading image", e, false);
+            primaryStage.close();
+            new ImageNotFoundDialog().showImageNotFoundDialog(e);
+        }
+        coordinator.iterate();
     }
 
     /**

@@ -149,10 +149,7 @@ public class App {
         }
 
         ZoomMapsConfiguration zoomMapsConfiguration = new ZoomMapsConfiguration(
-                4.2,
-                600,
-                600,
-                true);
+                4.2, 600, 600);
 
         createTestTrial(new Configuration(
                 "dunno yet",
@@ -160,6 +157,7 @@ public class App {
                 "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
                 "Willkommen zu unserem ZoomMaps Versuch Illusion der Auswahl!",
                 "Vielen Dank für die Teilnahme. Sie sind jetzt ein Froot Loops Connoisseur!",
+                true,
                 zoomMapsConfiguration),
                 trialIdInput);
     }
@@ -177,18 +175,22 @@ public class App {
             return;
         }
 
+        if (dataBaseClient.strings.get("OBST") == null) {
+            dataBaseClient.strings.set("OBST", CodeChartsListe.obst);
+        }
+
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
-                "OBST",
-                new int[] { 10, 10 },
-                new long[] { 100, 100 },
-                true);
+            "OBST", new int[]{ 3, 5 }, new long[]{ 2000, 1000 },
+            true, true, true, 5,
+            15, -1, -1);
 
         createTestTrial(new Configuration(
                 "dunno yet",
                 "Test Question?",
-                "https://scotchaddict.com/wp-content/uploads/2014/01/illusion-of-choice.jpg",
+                "https://media.discordapp.net/attachments/707505654218358818/930115305852792932/geralt.jpg",
                 "Welcome to this magnificent CodeCharts Trial",
                 "Thanks for participating in this extraordinary CodeCharts Trial!",
+                true,
                 codeChartsConfiguration),
                 trialIdInput);
     }
