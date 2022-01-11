@@ -15,7 +15,6 @@ public class EyeTrackingCoordinator {
      * Startet den Versuch.
      */
     public void start() {
-        EyetrackingBild bild = new EyetrackingBild("location");
         Auge auge = new Auge();
         float[][] position = auge.getPosition();
         int[] coords = EyeTrackingCalculator.calculateScreenCoordinates(position);

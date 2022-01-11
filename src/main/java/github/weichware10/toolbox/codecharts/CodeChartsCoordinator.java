@@ -1,6 +1,6 @@
 package github.weichware10.toolbox.codecharts;
 
-import github.weichware10.toolbox.Util;
+import github.weichware10.util.Files;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.CodeChartsConfiguration;
 import github.weichware10.util.config.ConfigClient;
@@ -61,7 +61,7 @@ public class CodeChartsCoordinator {
         codeChartsInput = new CodeChartsInput();
 
         // BILD SETZEN
-        String imageUrl = Util.saveImage(configClient.getConfig().getImageUrl());
+        String imageUrl = Files.saveImage(configClient.getConfig().getImageUrl());
         Image image = new Image(imageUrl);
         imageViewPort = new Rectangle2D(0, 0, image.getWidth(), image.getHeight());
         imageView.setImage(image);
