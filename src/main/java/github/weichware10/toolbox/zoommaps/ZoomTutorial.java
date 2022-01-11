@@ -5,7 +5,7 @@ import github.weichware10.util.Tutorial;
 import github.weichware10.util.config.ConfigClient;
 
 /**
- * Zeigt das Tutorial ZoomBild in einem allgemeinen Tutorialfenster.
+ * Zeigt das Tutorial ZoomImage in einem allgemeinen Tutorialfenster.
  */
 public class ZoomTutorial extends Tutorial {
 
