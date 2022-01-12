@@ -80,7 +80,7 @@ jobs:
           name: windows-installer
           path: target/*.msi
   macos-installer:
-    runs-on: macos-11
+    runs-on: macos-10
     needs: run-tests
     if: "!contains(github.repository, 'util')" # do not try to build installer for non-gui-app
     steps:
