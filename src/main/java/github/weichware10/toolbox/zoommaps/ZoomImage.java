@@ -4,6 +4,7 @@ import github.weichware10.util.Files;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Paths;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -34,7 +35,7 @@ public class ZoomImage {
             IOException  {
         this.imageView = imageView;
         String imgLocation = Files.saveImage(location);
-        Image image = new Image(imgLocation);
+        Image image = new Image(Paths.get(imgLocation).toUri().toString());
         imageSize = new double[] { image.getWidth(), image.getHeight() };
         imageView.setImage(image);
         Rectangle2D viewport = new Rectangle2D(0, 0, imageSize[0], imageSize[1]);
