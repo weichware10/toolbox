@@ -175,12 +175,8 @@ public class App {
             return;
         }
 
-        if (dataBaseClient.strings.get("OBST") == null) {
-            dataBaseClient.strings.set("OBST", CodeChartsListe.obst);
-        }
-
         CodeChartsConfiguration codeChartsConfiguration = new CodeChartsConfiguration(
-            "OBST", new int[]{ 3, 5 }, new long[]{ 2000, 1000 },
+            "OBST", CodeChartsListe.obst, new int[]{ 3, 5 }, new long[]{ 2000, 1000 },
             true, true, true, 5,
             15, -1, -1);
 
