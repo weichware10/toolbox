@@ -60,7 +60,6 @@ public class CodeChartsCoordinator {
         this.imageView = imageView;
         this.codeCharts = codeCharts;
         codeChartsInput = new CodeChartsInput();
-        
         // BILD SETZEN
         String imageUrl = Files.saveImage(configClient.getConfig().getImageUrl());
         Image image = new Image(Paths.get(imageUrl).toUri().toString());
