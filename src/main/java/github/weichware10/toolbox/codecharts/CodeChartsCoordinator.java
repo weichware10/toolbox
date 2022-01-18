@@ -9,6 +9,7 @@ import github.weichware10.util.db.DataBaseClient;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,23 +60,22 @@ public class CodeChartsCoordinator {
         this.imageView = imageView;
         this.codeCharts = codeCharts;
         codeChartsInput = new CodeChartsInput();
-
         // BILD SETZEN
         String imageUrl = Files.saveImage(configClient.getConfig().getImageUrl());
-        Image image = new Image(imageUrl);
+        Image image = new Image(Paths.get(imageUrl).toUri().toString());
         imageViewPort = new Rectangle2D(0, 0, image.getWidth(), image.getHeight());
         imageView.setImage(image);
         imageView.setVisible(false);
 
         // Konfiguration abspeichern
         CodeChartsConfiguration ccConfig = configClient.getConfig().getCodeChartsConfiguration();
-        iterations = ccConfig.getInterations();
+        iterations = ccConfig.getIterations();
         maxDepth = ccConfig.getMaxDepth();
         relativeSize = ccConfig.getRandomized();
         timings = ccConfig.getTimings();
 
         // String-Listen initialisieren
-        usableStrings = dataBaseClient.strings.get(ccConfig.getStringId());
+        usableStrings = ccConfig.getStrings();
         if (usableStrings == null) {
             throw new IllegalArgumentException("no strings provided!");
         }
