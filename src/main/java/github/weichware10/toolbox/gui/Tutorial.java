@@ -2,12 +2,9 @@ package github.weichware10.toolbox.gui;
 
 import github.weichware10.toolbox.codecharts.CodeCharts;
 import github.weichware10.toolbox.zoommaps.ZoomMaps;
-import github.weichware10.util.Files;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +23,7 @@ public class Tutorial {
     private final ConfigClient configClient;
     private final DataBaseClient dataBaseClient;
     private TutorialController controller;
-    private static ArrayList<Image> imageList = new ArrayList<>();
+    private static ArrayList<Image> imageList;
     private final String toolType;
 
     /**
@@ -44,7 +41,11 @@ public class Tutorial {
         this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
 
+        //Neu initialisieren für verschiedene Tutorials
+        imageList = new ArrayList<>();
+
         primaryStage.setTitle("Tutorial");
+        primaryStage.setMaximized(true);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Tutorial.fxml"));
 
@@ -64,9 +65,11 @@ public class Tutorial {
         int index = 0;
         while (!finished) {
             try {
-                String imageLoc = Files.saveImage(String.format("https://raw.githubusercontent.com/weichware10/dokumente/main/tutorial/%s/%d.png", toolType, index));
-                imageList.add(new Image(Paths.get(imageLoc).toUri().toString()));
-            } catch (IllegalArgumentException | IOException e) {
+                imageList.add(
+                    new Image(Tutorial.class.getResource(
+                        String.format("%s/%d.png", toolType, index)).toString()));
+                Logger.debug(imageList.toString());
+            } catch (Exception e) {
                 finished = true;
             }
             index += 1;

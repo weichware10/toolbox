@@ -4,27 +4,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.TutorialController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+<BorderPane fx:id="borderPaneId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.TutorialController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="50.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="hboxId" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <ImageView fx:id="imageViewId" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="50.0" spacing="25.0">
-               <children>
-                  <Button fx:id="backButtonId" mnemonicParsing="false" onAction="#setPreviousImage" text="Zurück" />
-                  <Text fx:id="progressTextId" strokeType="OUTSIDE" strokeWidth="0.0" text="Progress" />
-                  <Button fx:id="nextButtonId" mnemonicParsing="false" onAction="#setNextImage" text="Weiter" />
-                  <Button fx:id="finishButtonId" mnemonicParsing="false" onAction="#endTutorial" text="Zum Test" />
-               </children>
-            </HBox>
+            <Button fx:id="backButtonId" mnemonicParsing="false" onAction="#setPreviousImage" text="Zurück" />
+            <Text fx:id="progressTextId" strokeType="OUTSIDE" strokeWidth="0.0" text="Progress" />
+            <Button fx:id="nextButtonId" mnemonicParsing="false" onAction="#setNextImage" text="Weiter" />
+            <Button fx:id="finishButtonId" mnemonicParsing="false" onAction="#endTutorial" text="Zum Test" />
          </children>
-      </VBox>
+      </HBox>
+   </bottom>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageViewId" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+         </children>
+      </StackPane>
    </center>
 </BorderPane>
