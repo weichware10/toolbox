@@ -1,7 +1,5 @@
 package github.weichware10.toolbox.gui;
 
-import github.weichware10.toolbox.codecharts.CodeCharts;
-import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
@@ -30,22 +28,28 @@ public class Tutorial {
      * Startet das Tutorial.
      *
      * @param primaryStage - Hauptfenster
-     * @param toolType - enthält den Funktions-Typ um das richtige Tutorial zu starten
      * @param configClient - configClient für Einstellungen
      * @param dataBaseClient - Verbindung zur Datenbank
      */
-    public Tutorial(Stage primaryStage, String toolType,
-                    ConfigClient configClient, DataBaseClient dataBaseClient) {
+    public Tutorial(Stage primaryStage, ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
-        this.toolType = toolType;
         this.configClient = configClient;
         this.dataBaseClient = dataBaseClient;
+
+
+        switch (configClient.getConfig().getToolType()) {
+            case CODECHARTS:
+                this.toolType = "codecharts";
+                break;
+            default:
+                this.toolType = "zoommaps";
+                break;
+        }
 
         //Neu initialisieren für verschiedene Tutorials
         imageList = new ArrayList<>();
 
         primaryStage.setTitle("Tutorial");
-        primaryStage.setMaximized(true);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Tutorial.fxml"));
 
@@ -60,6 +64,13 @@ public class Tutorial {
         controller = loader.getController();
         controller.setTutorial(this);
 
+        controller.getImageView().setFitWidth(primaryStage.getWidth() / 1.2);
+        controller.getImageView().setFitHeight(primaryStage.getHeight() / 1.2);
+        primaryStage.widthProperty().addListener(
+                o -> controller.getImageView().setFitWidth(primaryStage.getWidth() / 1.2));
+        primaryStage.heightProperty().addListener(
+                o -> controller.getImageView().setFitHeight(primaryStage.getHeight() / 1.2));
+
         //Kümmert sich um das Laden aller Bilder und setzt das erste Bild
         boolean finished = false;
         int index = 0;
@@ -67,8 +78,7 @@ public class Tutorial {
             try {
                 imageList.add(
                     new Image(Tutorial.class.getResource(
-                        String.format("%s/%d.png", toolType, index)).toString()));
-                Logger.debug(imageList.toString());
+                        String.format("%s-tutorial/%d.png", toolType, index)).toString()));
             } catch (Exception e) {
                 finished = true;
             }
@@ -118,10 +128,6 @@ public class Tutorial {
      * Startet den Test, wenn man auf Test starten drückt.
      */
     public void startTest() {
-        if (toolType.equals("zoommaps")) {
-            new ZoomMaps(primaryStage, configClient, dataBaseClient);
-        } else if (toolType.equals("codecharts")) {
-            new CodeCharts(primaryStage, configClient, dataBaseClient);
-        }
+        new PreTest(primaryStage, configClient, dataBaseClient);
     }
 }

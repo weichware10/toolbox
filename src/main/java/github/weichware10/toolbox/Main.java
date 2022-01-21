@@ -17,6 +17,10 @@ import org.joda.time.DateTime;
  * Toolbox GUI.
  */
 public class Main extends Application {
+
+    public static final double MINWIDTH = 900;
+    public static final double MINHEIGHT = 500;
+
     /**
      * Einstiegspunkt der Toolbox - Einführungsbildschirm.
      *
@@ -47,8 +51,8 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("app-icon.png"));
 
         // FENSTERGRÖẞE
-        primaryStage.setMinHeight(300);
-        primaryStage.setMinWidth(300);
+        primaryStage.setMinWidth(MINWIDTH);
+        primaryStage.setMinHeight(MINHEIGHT);
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         primaryStage.setHeight(screenBounds.getHeight() / 2);
         primaryStage.setWidth(screenBounds.getWidth() / 2);

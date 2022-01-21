@@ -91,7 +91,11 @@ public class App {
         }
 
         try {
-            new PreTest(primaryStage, configClient, dataBaseClient);
+            if (configClient.getConfig().getTutorial()) {
+                new Tutorial(primaryStage, configClient, dataBaseClient);
+            } else {
+                new PreTest(primaryStage, configClient, dataBaseClient);
+            }
         } catch (Exception e) {
             controller.setWarnText("JSON Config not valid");
             return;
@@ -131,8 +135,11 @@ public class App {
             return;
         }
 
-        // Tutorial noch hinzufügen an dieser Stelle
-        new PreTest(primaryStage, configClient, dataBaseClient);
+        if (configClient.getConfig().getTutorial()) {
+            new Tutorial(primaryStage, configClient, dataBaseClient);
+        } else {
+            new PreTest(primaryStage, configClient, dataBaseClient);
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="borderPaneId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="github.weichware10.toolbox.gui.TutorialController">
@@ -19,10 +19,14 @@
       </HBox>
    </bottom>
    <center>
-      <StackPane BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" fillHeight="false" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageViewId" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+            <VBox alignment="CENTER" fillWidth="false" style="-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" HBox.hgrow="NEVER">
+               <children>
+                  <ImageView fx:id="imageViewId" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
+               </children>
+            </VBox>
          </children>
-      </StackPane>
+      </HBox>
    </center>
 </BorderPane>

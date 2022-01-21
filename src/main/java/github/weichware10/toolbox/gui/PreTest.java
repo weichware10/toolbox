@@ -1,6 +1,8 @@
 package github.weichware10.toolbox.gui;
 
+import github.weichware10.toolbox.codecharts.CodeCharts;
 import github.weichware10.toolbox.gui.util.WindowCloser;
+import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
@@ -69,11 +71,11 @@ public class PreTest {
      */
     protected void startTest() {
         switch (configClient.getConfig().getToolType()) {
-            case ZOOMMAPS:
-                new Tutorial(primaryStage, "zoommaps", configClient, dataBaseClient);
-                break;
             case CODECHARTS:
-                new Tutorial(primaryStage, "codecharts", configClient, dataBaseClient);
+                new CodeCharts(primaryStage, configClient, dataBaseClient);
+                break;
+            case ZOOMMAPS:
+                new ZoomMaps(primaryStage, configClient, dataBaseClient);
                 break;
             default: // never
                 break;
