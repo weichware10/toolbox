@@ -1,15 +1,14 @@
 package github.weichware10.toolbox.gui;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-
 import github.weichware10.toolbox.codecharts.CodeCharts;
 import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.Files;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * GUI für Tutorial.
+ */
 public class Tutorial {
     private final Stage primaryStage;
     private final ConfigClient configClient;
@@ -26,7 +28,15 @@ public class Tutorial {
     private TutorialController controller;
     private static ArrayList<Image> imageList = new ArrayList<>();
     private final String toolType;
-    
+
+    /**
+     * Startet das Tutorial.
+     *
+     * @param primaryStage - Hauptfenster
+     * @param toolType - enthält den Funktions-Typ um das richtige Tutorial zu starten
+     * @param configClient - configClient für Einstellungen
+     * @param dataBaseClient - Verbindung zur Datenbank
+     */
     public Tutorial(Stage primaryStage, String toolType,
                     ConfigClient configClient, DataBaseClient dataBaseClient) {
         this.primaryStage = primaryStage;
@@ -59,9 +69,9 @@ public class Tutorial {
             } catch (IllegalArgumentException | IOException e) {
                 finished = true;
             }
-        index += 1;
+            index += 1;
         }
-        if(imageList.size() > 0) {
+        if (imageList.size() > 0) {
             controller.getImageView().setImage(imageList.get(0));
             controller.getProgressText().setText(String.format("1/%d", imageList.size()));
         }
@@ -70,34 +80,44 @@ public class Tutorial {
         primaryStage.setScene(scene);
     }
 
-    public static void setImage(int tutorialCount, Button nextButton, Button backButton, ImageView imageView, Text progressText){
+    /**
+     * Setzt das neue Bild vom Tutorial.
+     *
+     * @param tutorialCount - In welchem Schritt vom Tutorial man ist
+     * @param nextButton - Weiter Knopf um ihn zu deaktivieren
+     * @param backButton - Zurück Knopf um ihn zu deaktivieren
+     * @param imageView - Ausschnitt auf den das Bild geladen wird
+     * @param progressText - Fortschrittsanzeige
+     */
+    public static void setImage(int tutorialCount, Button nextButton,
+                                Button backButton, ImageView imageView, Text progressText) {
         //setzt die Sichtbarkeit des zurück Button
-        if(tutorialCount <= 0) {
+        if (tutorialCount <= 0) {
             backButton.setDisable(true);
-        }
-        else if(tutorialCount > 0) {
+        } else if (tutorialCount > 0) {
             backButton.setDisable(false);
         }
         //setzt die Sichtbarkeit des weiter Button
-        if(tutorialCount >= imageList.size()-1) {
+        if (tutorialCount >= imageList.size() - 1) {
             nextButton.setDisable(true);
-        }
-        else if(tutorialCount < imageList.size()-1) {
+        } else if (tutorialCount < imageList.size() - 1) {
             nextButton.setDisable(false);
         }
         //setzt die aktuelle Seite vom Tutorial
-        progressText.setText(String.format("%d/%d", tutorialCount+1, imageList.size()));
+        progressText.setText(String.format("%d/%d", tutorialCount + 1, imageList.size()));
         //setzt die nächste Szene vom Tutorial
         if (tutorialCount < imageList.size() && tutorialCount >= 0) {
             imageView.setImage(imageList.get(tutorialCount));
         }
     }
 
+    /**
+     * Startet den Test, wenn man auf Test starten drückt.
+     */
     public void startTest() {
-        if(toolType.equals("zoommaps")) {
+        if (toolType.equals("zoommaps")) {
             new ZoomMaps(primaryStage, configClient, dataBaseClient);
-        }
-        else if(toolType.equals("codecharts")) {
+        } else if (toolType.equals("codecharts")) {
             new CodeCharts(primaryStage, configClient, dataBaseClient);
         }
     }
