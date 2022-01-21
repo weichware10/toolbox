@@ -4,10 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+/**
+ * Kontrollierer für {@link Tutorial}.
+ */
 public class TutorialController {
     private Tutorial tutorial;
     private int tutorialCount = 0;
@@ -22,7 +25,7 @@ public class TutorialController {
     private ImageView imageViewId;
 
     @FXML
-    private HBox hBoxId;
+    private HBox hboxId;
 
     @FXML
     private Button nextButtonId;
@@ -49,7 +52,7 @@ public class TutorialController {
     }
 
     public HBox getHbox() {
-        return hBoxId;
+        return hboxId;
     }
 
     @FXML
@@ -71,14 +74,20 @@ public class TutorialController {
 
     @FXML
     void initialize() {
-        assert imageViewId != null : "fx:id=\"imageViewID\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        assert hBoxId != null : "fx:id=\"hBoxId\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        assert nextButtonId != null : "fx:id=\"nextButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        assert backButtonId != null : "fx:id=\"backButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        assert progressTextId != null : "fx:id=\"progressTextId\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        assert finishButtonId != null : "fx:id=\"finishButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
-        imageViewId.fitHeightProperty().bind(hBoxId.heightProperty());
-        imageViewId.fitWidthProperty().bind(hBoxId.widthProperty());
+        assert imageViewId != null
+        : "fx:id=\"imageViewID\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        assert hboxId != null :
+        "fx:id=\"hBoxId\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        assert nextButtonId != null
+        : "fx:id=\"nextButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        assert backButtonId != null
+        : "fx:id=\"backButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        assert progressTextId != null
+        : "fx:id=\"progressTextId\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        assert finishButtonId != null
+        : "fx:id=\"finishButtonId\" was not injected: check your FXML file 'Tutorial.fxml'.";
+        imageViewId.fitHeightProperty().bind(hboxId.heightProperty());
+        imageViewId.fitWidthProperty().bind(hboxId.widthProperty());
         backButtonId.setDisable(true);
     }
 
