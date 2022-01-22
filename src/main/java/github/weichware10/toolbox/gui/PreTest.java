@@ -71,11 +71,11 @@ public class PreTest {
      */
     protected void startTest() {
         switch (configClient.getConfig().getToolType()) {
-            case ZOOMMAPS:
-                new ZoomMaps(primaryStage, configClient, dataBaseClient);
-                break;
             case CODECHARTS:
                 new CodeCharts(primaryStage, configClient, dataBaseClient);
+                break;
+            case ZOOMMAPS:
+                new ZoomMaps(primaryStage, configClient, dataBaseClient);
                 break;
             default: // never
                 break;
