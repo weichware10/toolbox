@@ -5,6 +5,7 @@ import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
 import github.weichware10.util.db.DataBaseClient;
+import github.weichware10.util.gui.Window;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,6 +63,8 @@ public class End {
             saveTestToDataBase();
         }
         setPermissionAccess();
+
+        Window.refresh(primaryStage);
     }
 
     protected void saveTestToJson() {

@@ -6,6 +6,7 @@ import github.weichware10.toolbox.zoommaps.ZoomMaps;
 import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.db.DataBaseClient;
+import github.weichware10.util.gui.Window;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -64,6 +65,8 @@ public class PreTest {
         // Event welches beim schließen eines Fensters aufgerufen wird
         primaryStage.setOnCloseRequest(e -> WindowCloser.closeRequestFilter(e));
         primaryStage.setScene(scene);
+
+        Window.refresh(primaryStage);
     }
 
     /**

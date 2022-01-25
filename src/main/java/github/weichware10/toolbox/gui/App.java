@@ -7,6 +7,7 @@ import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.config.Configuration;
 import github.weichware10.util.config.ZoomMapsConfiguration;
 import github.weichware10.util.db.DataBaseClient;
+import github.weichware10.util.gui.Window;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -66,6 +67,8 @@ public class App {
             this.configClient = new ConfigClient(dataBaseClient);
         }
         setPermissionAccess();
+
+        Window.refresh(primaryStage);
     }
 
     /**
