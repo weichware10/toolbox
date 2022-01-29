@@ -1,27 +1,19 @@
 package github.weichware10.toolbox.zoommaps;
 
-import github.weichware10.util.Logger;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javafx.geometry.Point2D;
-import javafx.geometry.Point3D;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.ImageView;
 
 /**
  * Bekommt Rohdaten des Systems (Mausklick), berechnet neue Position des Bildes
  * und meldet Speichererfolg.
  */
-@SuppressWarnings("unused")
 public class ZoomCalculator {
     private double speed;
-    private Point3D position;
     private TrialData data;
     ConfigClient configClient;
     ZoomMapsController controller;
@@ -51,7 +43,6 @@ public class ZoomCalculator {
         speed = configClient.getConfig().getZoomMapsConfiguration().getSpeed();
         controller.setQuestion(question);
         zoomImage = new ZoomImage(imageUrl, controller.getImageView(), this);
-        position = new Point3D(zoomImage.imageSize[0] / 2, zoomImage.imageSize[1] / 2, 0);
     }
 
     /**
