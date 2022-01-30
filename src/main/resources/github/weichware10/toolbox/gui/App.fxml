@@ -52,7 +52,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="Datei">
               <items>
-              <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="JSON config öfnnen" />
+              <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="JSON config öffnen" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#changeDb" text="Datenbankverbindung ändern" />
                   <MenuItem mnemonicParsing="false" onAction="#resetDb" text="Datenbankverbindung zurücksetzten" />
