@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 /**
- * Kontrollierer für {@link Tutorial}.
+ * Controller für {@link Tutorial}.
  */
 public class TutorialController {
     private Tutorial tutorial;

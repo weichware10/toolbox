@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
- * Controller fuer {@link CodeChartsInput}.
+ * Controller für {@link CodeChartsInput}.
  */
 public class CodeChartsInputController {
 

@@ -38,7 +38,7 @@ public class ErrorDialog {
 
         ErrorDialogController controller = loader.getController();
 
-        // set icon
+        // Icon setzten
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(getClass().getResource("error.png").toString()));
 

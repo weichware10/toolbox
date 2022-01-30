@@ -28,18 +28,18 @@ public class DataBaseDialog {
     public DataBaseClient getDataBaseClient() {
         Dialog<Void> dialog = new Dialog<>();
 
-        // add buttons
+        // Buttons hinzufügen
         ButtonType okButtonType = new ButtonType("OK", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
 
-        // set icon
+        // Icon setzten
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(getClass().getResource("postgresql.png").toString()));
 
-        // set title
+        // Titel setzten
         dialog.setTitle("change database connection");
 
-        // load FXML
+        // FXML laden
         FXMLLoader loader = new FXMLLoader(DataBaseDialog.class.getResource("DataBaseDialog.fxml"));
 
         Parent root = null;
@@ -52,7 +52,7 @@ public class DataBaseDialog {
             return null;
         }
 
-        // controller to access fields
+        // Controller um auf Felder zuzugreifen
         DataBaseDialogController controller = loader.getController();
         // nur bei Erfolg Dialog verlassen
         final Button ok = (Button) dialog.getDialogPane().lookupButton(okButtonType);
@@ -65,7 +65,7 @@ public class DataBaseDialog {
                         controller.getPassword(),
                         controller.getSchema());
             } catch (IllegalArgumentException e) {
-                // display error
+                // Display Fehler
                 Logger.info("Error while changing database connection");
                 controller.setWarning("Your input is not valid:");
                 controller.setError(e.getMessage());

@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * Kümmert sich um das Design der Rückfrage.
+ * Zuständig für das das Design der Rückfrage.
  */
 public class ConfirmDialog {
 
@@ -47,7 +47,7 @@ public class ConfirmDialog {
         controller.setPrompt(prompt);
 
         Dialog<Boolean> dialog = new Dialog<>();
-        // set icon + graphic
+        // Icon und Grafik setzten
         if (icon != null) {
             Image image = null;
             try {
@@ -59,7 +59,7 @@ public class ConfirmDialog {
                 Logger.error("error when loading ConfirmDialog Image", e);
             }
         }
-        // set title
+        // Titel setzten
         dialog.setTitle(prompt);
 
         dialog.getDialogPane().setContent(root);

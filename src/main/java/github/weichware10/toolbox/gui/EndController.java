@@ -18,7 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * Takes care over the functionality and Design of the EndWindow.
+ * Controller für {@link End}.
  */
 public class EndController {
 

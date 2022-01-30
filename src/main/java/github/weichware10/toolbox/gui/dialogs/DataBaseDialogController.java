@@ -8,8 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
- * Controller für DataBaseDialog.
- * startet keine Funktionen, ist nur als Zugriff auf Textfelder usw. zuständig.
+ * Controller für {@link DataBaseDialog}.
  */
 public class DataBaseDialogController {
 

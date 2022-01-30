@@ -32,7 +32,7 @@ public class Main extends Application {
         String logfile = String.format(
                 Dotenv.load().get("LOGS") + "/%s.log", DateTime.now().toString("yMMdd-HHmmss"));
         Logger.setLogfile(logfile);
-        // delete temp dir
+        // temporären Ordner löschen
         Runtime.getRuntime().addShutdownHook(Files.deleteTempDir());
         launch(args);
     }
@@ -47,10 +47,10 @@ public class Main extends Application {
 
         Log.start();
 
-        // ICON und TITLE
+        // Icon und Titel
         primaryStage.getIcons().add(new Image("app-icon.png"));
 
-        // FENSTERGRÖẞE
+        // Fenstergröße
         primaryStage.setMinWidth(MINWIDTH);
         primaryStage.setMinHeight(MINHEIGHT);
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
@@ -61,7 +61,7 @@ public class Main extends Application {
 
         // ersten Bildschirm starten
         new App(primaryStage, null);
-        // ANZEIGEN
+        // Anzeigen
         primaryStage.show();
     }
 }

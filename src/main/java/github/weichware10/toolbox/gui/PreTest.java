@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Takes care of the functionality of PreTestWindow.
+ * Zuständig für die Funktionalität vom PreTestWindow.
  */
 public class PreTest {
 
@@ -21,9 +21,9 @@ public class PreTest {
     private final DataBaseClient dataBaseClient;
 
     /**
-     * This function shows the PreTestWindow.
+     * zeigt das PreTestWindow.
      *
-     * @param primaryStage - primary Window to do changes on.
+     * @param primaryStage - primäres Fenster
      */
     public PreTest(Stage primaryStage,
             ConfigClient configClient, DataBaseClient dataBaseClient) {

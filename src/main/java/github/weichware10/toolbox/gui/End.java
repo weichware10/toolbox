@@ -14,7 +14,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
- * Takes care of the functionality for the EndWindow.
+ * Zuständig für die Funktionalität vom Endfenster.
  */
 public class End {
     private final Stage primaryStage;

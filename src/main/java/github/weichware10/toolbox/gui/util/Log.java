@@ -16,7 +16,6 @@ import javafx.stage.WindowEvent;
 public class Log {
 
     private static Stage logStage;
-    // private static boolean visible = false;
 
     private static SimpleBooleanProperty visibleProperty = new SimpleBooleanProperty(false);
     public static ObservableBooleanValue visible = visibleProperty;

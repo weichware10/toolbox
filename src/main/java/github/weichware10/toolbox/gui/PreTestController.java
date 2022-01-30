@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
- * Controller für {@link PretestWindow}.
+ * Controller für {@link PreTest}.
  */
 public class PreTestController {
 

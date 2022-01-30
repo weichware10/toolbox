@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
 /**
- * Kontroller für {@link ErrorDialog}.
+ * Controller für {@link ErrorDialog}.
  */
 public class ErrorDialogController {
 
