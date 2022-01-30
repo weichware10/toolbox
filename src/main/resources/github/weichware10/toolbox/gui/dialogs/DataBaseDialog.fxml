@@ -26,32 +26,32 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="username">
+                  <Label text="Benutzername">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="usernameTextField" promptText="username" />
+                  <TextField fx:id="usernameTextField" promptText="Benutzername" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="password">
+                  <Label text="Passwort">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <PasswordField fx:id="passwordField" promptText="password" />
+                  <PasswordField fx:id="passwordField" promptText="Passwort" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="schema">
+                  <Label text="Schema">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="schemaTextField" promptText="schema" />
+                  <TextField fx:id="schemaTextField" promptText="Schema" />
                </children>
             </HBox>
             <Text fx:id="warningText" fill="#da3633" strokeType="OUTSIDE" strokeWidth="0.0" text="warning" visible="false" />
@@ -67,7 +67,7 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <header>
-      <Label text="insert login data:">
+      <Label text="Eingabe Login Daten:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

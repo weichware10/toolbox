@@ -25,8 +25,8 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="An error occured. Please contact the admin." wrappingWidth="350.0" />
-            <TextArea fx:id="errorMessage" editable="false" focusTraversable="false" prefHeight="60.0" prefWidth="200.0" promptText="no details available" wrapText="true" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ein Fehler ist aufgetreten. Bitte kontaktiere den Admin." wrappingWidth="350.0" />
+            <TextArea fx:id="errorMessage" editable="false" focusTraversable="false" prefHeight="60.0" prefWidth="200.0" promptText="keine Details verfügbar" wrapText="true" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

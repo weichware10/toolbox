@@ -18,7 +18,7 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
          <children>
-            <Label fx:id="outroLabel" text="You have finished your test." textAlignment="CENTER" wrapText="true">
+            <Label fx:id="outroLabel" text="Sie haben den Test abgeschlossen." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -32,8 +32,8 @@
             </HBox>
             <ButtonBar fx:id="buttonBar" prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                  <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#closeProgram" text="Close" ButtonBar.buttonData="LEFT" />
-                  <Button mnemonicParsing="false" onAction="#newTest" text="New Test" ButtonBar.buttonData="LEFT" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#closeProgram" text="Schließen" ButtonBar.buttonData="LEFT" />
+                  <Button mnemonicParsing="false" onAction="#newTest" text="Neuer Test" ButtonBar.buttonData="LEFT" />
               </buttons>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -48,14 +48,14 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Datei">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#saveToJson" text="Save To JSON" />
+              <MenuItem mnemonicParsing="false" onAction="#saveToJson" text="als JSON speichern" />
             </items>
           </Menu>
           <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#saveToDataBase" text="Save To DataBase" />
+              <MenuItem mnemonicParsing="false" onAction="#saveToDataBase" text="in Datenbank speichern" />
             </items>
           </Menu>
         </menus>
