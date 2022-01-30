@@ -6,9 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
 /**
- * Kontroller für {@link ImageNotFoundDialog}.
+ * Kontroller für {@link ErrorDialog}.
  */
-public class ImageNotFoundDialogController {
+public class ErrorDialogController {
 
     @FXML
     private ResourceBundle resources;

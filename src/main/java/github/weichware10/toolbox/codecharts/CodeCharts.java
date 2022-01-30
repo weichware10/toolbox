@@ -1,12 +1,13 @@
 package github.weichware10.toolbox.codecharts;
 
 import github.weichware10.toolbox.gui.End;
-import github.weichware10.toolbox.gui.dialogs.ImageNotFoundDialog;
+import github.weichware10.toolbox.gui.dialogs.ErrorDialog;
 import github.weichware10.util.Logger;
 import github.weichware10.util.ToolType;
 import github.weichware10.util.config.ConfigClient;
 import github.weichware10.util.data.TrialData;
 import github.weichware10.util.db.DataBaseClient;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -63,12 +64,13 @@ public class CodeCharts {
         try {
             coordinator = new CodeChartsCoordinator(configClient, dataBaseClient, trialData,
                     controller.getImageView(), controller.getStackPane(), primaryStage, this);
+            coordinator.iterate();
         } catch (Exception e) {
             Logger.error("Error while loading image", e, false);
             primaryStage.close();
-            new ImageNotFoundDialog().showImageNotFoundDialog(e);
+            new ErrorDialog().showErrorDialog(e);
+            Platform.exit();
         }
-        coordinator.iterate();
     }
 
     /**
