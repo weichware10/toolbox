@@ -71,7 +71,7 @@ public class CodeChartsCoordinator {
         CodeChartsConfiguration ccConfig = configClient.getConfig().getCodeChartsConfiguration();
         iterations = ccConfig.getIterations();
         maxDepth = ccConfig.getMaxDepth();
-        relativeSize = ccConfig.getRandomized();
+        relativeSize = ccConfig.getRelativeSize();
         timings = ccConfig.getTimings();
 
         // String-Listen initialisieren
