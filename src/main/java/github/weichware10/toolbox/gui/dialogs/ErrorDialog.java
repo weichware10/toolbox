@@ -10,25 +10,25 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * Dialogfenster, wenn Bild nicht geladen werden kann.
+ * Dialogfenster, wenn ein Fehler auftritt.
  */
-public class ImageNotFoundDialog {
+public class ErrorDialog {
 
     /**
-     * Dialogfenster, wenn Bild nicht geladen werden kann.
+     * Dialogfenster, wenn ein Fehler auftritt.
      *
      * @param error - Errornachicht
      */
-    public void showImageNotFoundDialog(Exception error) {
-        Logger.info("showing ImageNotFoundDialog...");
+    public void showErrorDialog(Exception error) {
+        Logger.info("showing ErrorDialog...");
 
         Dialog<Void> dialog = new Dialog<>();
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.setTitle("Image could not be loaded");
+        dialog.setTitle("An error occured");
 
         FXMLLoader loader = new FXMLLoader(
-                ImageNotFoundDialog.class.getResource("ImageNotFoundDialog.fxml"));
+                ErrorDialog.class.getResource("ErrorDialog.fxml"));
         Parent root = null;
         try {
             root = loader.load();
@@ -36,11 +36,11 @@ public class ImageNotFoundDialog {
             return;
         }
 
-        ImageNotFoundDialogController controller = loader.getController();
+        ErrorDialogController controller = loader.getController();
 
         // set icon
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResource("noimage.png").toString()));
+        stage.getIcons().add(new Image(getClass().getResource("error.png").toString()));
 
         controller.setErrorMessage(error.toString());
 
