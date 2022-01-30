@@ -65,7 +65,7 @@ public class DataBaseDialog {
                         controller.getPassword(),
                         controller.getSchema());
             } catch (IllegalArgumentException e) {
-                // Display Fehler
+                // Fehler anzeigen
                 Logger.info("Error while changing database connection");
                 controller.setWarning("Your input is not valid:");
                 controller.setError(e.getMessage());
