@@ -10,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 
 /**
- * Controller fuer {@link CodeCharts}.
+ * Controller für {@link CodeCharts}.
  */
 public class CodeChartsController {
 

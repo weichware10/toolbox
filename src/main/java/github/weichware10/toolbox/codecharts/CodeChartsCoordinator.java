@@ -46,7 +46,7 @@ public class CodeChartsCoordinator {
      * Konstruktor für den CodeChartsCoordinator.
      *
      * @param configClient - aus dem die Configuration geladen wird
-     * @param dataBaseClient -
+     * @param dataBaseClient - Datenbankzugriff
      * @throws IOException
      * @throws FileNotFoundException
      * @throws IllegalArgumentException
@@ -60,7 +60,7 @@ public class CodeChartsCoordinator {
         this.imageView = imageView;
         this.codeCharts = codeCharts;
         codeChartsInput = new CodeChartsInput();
-        // BILD SETZEN
+        // Bild setzen
         String imageUrl = Files.saveImage(configClient.getConfig().getImageUrl());
         Image image = new Image(Paths.get(imageUrl).toUri().toString());
         imageViewPort = new Rectangle2D(0, 0, image.getWidth(), image.getHeight());
@@ -117,8 +117,6 @@ public class CodeChartsCoordinator {
      * Durchführen einer CodeCharts Iteration.
      */
     public void iterate() {
-
-
         Task<Void> iteration = new Task<>() {
 
             @Override

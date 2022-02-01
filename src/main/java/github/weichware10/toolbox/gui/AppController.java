@@ -13,7 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 /**
- * Controller für Einstieg in App.
+ * Controller für {@link App}.
  */
 public class AppController {
 

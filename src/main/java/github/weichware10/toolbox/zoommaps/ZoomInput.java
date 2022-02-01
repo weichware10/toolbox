@@ -32,7 +32,7 @@ public class ZoomInput implements EventHandler<InputEvent> {
     }
 
     /**
-     * handlet clicks.
+     * handhabt Clicks.
      *
      * @param mouseEvent -
      */
@@ -45,7 +45,7 @@ public class ZoomInput implements EventHandler<InputEvent> {
     }
 
     /**
-     * handlet scrolls.
+     * handhabt Scrolls.
      *
      * @param scrollEvent -
      */

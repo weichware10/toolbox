@@ -23,7 +23,6 @@ public class CodeCharts {
     private final DataBaseClient dataBaseClient;
     private final TrialData trialData;
 
-
     /**
      * Startet den CodeCharts-Versuch.
      *

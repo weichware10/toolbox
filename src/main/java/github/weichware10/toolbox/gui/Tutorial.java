@@ -71,7 +71,7 @@ public class Tutorial {
         primaryStage.heightProperty().addListener(
                 o -> controller.getImageView().setFitHeight(primaryStage.getHeight() / 1.2));
 
-        //Kümmert sich um das Laden aller Bilder und setzt das erste Bild
+        //Zuständig für das Laden aller Bilder und Setzten des ersten Bildes
         boolean finished = false;
         int index = 0;
         while (!finished) {

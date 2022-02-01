@@ -189,10 +189,10 @@ public class App {
 
         createTestTrial(new Configuration(
                 "dunno yet",
-                "Test Question?",
-                "https://media.discordapp.net/attachments/707505654218358818/930115305852792932/geralt.jpg",
-                "Welcome to this magnificent CodeCharts Trial",
-                "Thanks for participating in this extraordinary CodeCharts Trial!",
+                "Wo ist Walter?",
+                "https://salonspanetwork.org/wp-content/uploads/2016/07/G3M_Wheres_Waldo.jpg",
+                "Willkommen zum Suchspiel \"Wo ist Walter\"!",
+                "Danke für die Teilnahme am Suchspiel \"Wo ist Walter\"!",
                 true,
                 codeChartsConfiguration),
                 trialIdInput);
@@ -217,7 +217,7 @@ public class App {
 
     /**
      * ändert die Zugangsdaten zur Datenbank.
-     * dabei wird ein neuer Dialog eingeblendet
+     * Dabei wird ein neuer Dialog eingeblendet
      */
     protected void changeDb() {
         DataBaseClient newClient = new DataBaseDialog().getDataBaseClient();

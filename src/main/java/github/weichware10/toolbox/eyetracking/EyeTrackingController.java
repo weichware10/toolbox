@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
 /**
- * Controller for {@link EyeTracking}.
+ * Controller für {@link EyeTracking}.
  */
 public class EyeTrackingController {
 

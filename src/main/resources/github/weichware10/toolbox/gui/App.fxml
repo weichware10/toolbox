@@ -50,25 +50,25 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-            <Menu mnemonicParsing="false" text="File">
+            <Menu mnemonicParsing="false" text="Datei">
               <items>
-              <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="open JSON config" />
+              <MenuItem mnemonicParsing="false" onAction="#loadJsonConfig" text="JSON config öffnen" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeDb" text="change database connection" />
-                  <MenuItem mnemonicParsing="false" onAction="#resetDb" text="reset database connection" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeDb" text="Datenbankverbindung ändern" />
+                  <MenuItem mnemonicParsing="false" onAction="#resetDb" text="Datenbankverbindung zurücksetzten" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="logsMenu" mnemonicParsing="false" onAction="#toggleLogs" text="show logs" />
+                  <MenuItem fx:id="logsMenu" mnemonicParsing="false" onAction="#toggleLogs" text="Logs anzeigen" />
               </items>
             </Menu>
           <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#createZoomMapsTestTrial" text="create zoommaps test" />
-                  <MenuItem mnemonicParsing="false" onAction="#createCodeChartsTestTrial" text="create codecharts test" />
+                  <MenuItem mnemonicParsing="false" onAction="#createZoomMapsTestTrial" text="ZoomMaps Test erstellen" />
+                  <MenuItem mnemonicParsing="false" onAction="#createCodeChartsTestTrial" text="CodeCharts Test erstellen" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Help">
+            <Menu mnemonicParsing="false" text="Hilfe">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#openDocumentation" text="read documentation" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDocumentation" text="Dokumentation" />
                </items>
             </Menu>
         </menus>
@@ -77,7 +77,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="insert TrialID" />
+            <Label text="Eingabe TrialID" />
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

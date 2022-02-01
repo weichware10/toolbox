@@ -43,13 +43,12 @@ public class ZoomImage {
         imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new ZoomInput(zoomCalculator));
         imageView.addEventFilter(ScrollEvent.SCROLL, new ZoomInput(zoomCalculator));
         imageView.getImage();
-        // imageView.addEventFilter(MouseEvent., eventFilter);
     }
 
     /**
      * Berechnet die Bildkoordinaten von ImageView Koordinaten.
      *
-     * @param imageViewCoordinates -
+     * @param imageViewCoordinates - ImageView Koordinaten
      * @return Bildkoordinaten
      */
     public Point2D getImageCoordinates(Point2D imageViewCoordinates) {

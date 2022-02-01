@@ -14,7 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 /**
- * Kontrollierer für {@link ZoomMaps}.
+ * Controller für {@link ZoomMaps}.
  */
 public class ZoomMapsController {
 

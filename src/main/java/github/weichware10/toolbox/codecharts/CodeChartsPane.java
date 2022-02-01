@@ -61,13 +61,10 @@ public class CodeChartsPane extends AnchorPane {
             depth = parent.depth + 1;
         }
 
-        // sizing
+        // Größe
         setPrefSize(width, height);
         setMinSize(width, height);
         setMaxSize(width, height);
-
-        // debug
-        Logger.info(String.format("created %s", toString()));
 
         if (showGrid) {
             setBorder(new Border(new BorderStroke(Color.BLACK,

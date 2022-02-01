@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * Managed ConfirmDialoge.
+ * Controller für {@link ConfirmDialog}.
  */
 public class ConfirmDialogController {
 
