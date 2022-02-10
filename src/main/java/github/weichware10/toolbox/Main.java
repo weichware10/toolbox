@@ -1,9 +1,9 @@
 package github.weichware10.toolbox;
 
 import github.weichware10.toolbox.gui.App;
-import github.weichware10.toolbox.gui.util.Log;
 import github.weichware10.util.Files;
 import github.weichware10.util.Logger;
+import github.weichware10.util.gui.Log;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -45,7 +45,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Log.start();
+        Log.start("app-icon.png");
 
         // Icon und Titel
         primaryStage.getIcons().add(new Image("app-icon.png"));
