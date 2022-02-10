@@ -189,7 +189,6 @@ public class App {
 
         createTestTrial(new Configuration(
                 "dunno yet",
-                "Wo ist Walter?",
                 "https://salonspanetwork.org/wp-content/uploads/2016/07/G3M_Wheres_Waldo.jpg",
                 "Willkommen zum Suchspiel \"Wo ist Walter\"!",
                 "Danke für die Teilnahme am Suchspiel \"Wo ist Walter\"!",
