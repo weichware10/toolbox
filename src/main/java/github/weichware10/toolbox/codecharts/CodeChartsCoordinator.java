@@ -169,12 +169,11 @@ public class CodeChartsCoordinator {
             int defaultHorizontal, int defaultVertical, int iterations) {
         int initialPanes = horizontal * vertical;
         int divisionResult = defaultHorizontal * defaultVertical;
-        if (defaultHorizontal < 0 || defaultVertical < 0) {
-            divisionResult = 2;
-        }
         // falls relative Größe ausgestellt ist, wird das Raster nicht weiter unterteilt
         if (!relativeSize) {
             divisionResult = 1;
+        } else if (defaultHorizontal < 0 || defaultVertical < 0) {
+            divisionResult = 2;
         }
         // initiale Anzahl * im Verlauf des Versuchs durchgeführte Unterteilungen
         return initialPanes + iterations * divisionResult;
